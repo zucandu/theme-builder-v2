@@ -1,6 +1,6 @@
 
 export default {
-    addProduct(formdata) {
+    cart_add_product(formdata) {
         return axios.post('/api/theme-builder/shopping-cart/add-product', formdata, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')

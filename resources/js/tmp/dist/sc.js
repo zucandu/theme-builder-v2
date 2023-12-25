@@ -35,8 +35,8 @@ const getters = {
 const actions = {
 
     async cart_add_product({ commit }, product) {
-        const resp = await API_CART.addProduct(product)
-        commit('pushProduct2Cart', resp.data.product)
+        const resp = await API_CART.cart_add_product(product)
+        commit('CART_PUSH_PRODUCT', resp.data.product)
     },
 
     /**
@@ -69,7 +69,7 @@ const actions = {
 // mutations is often used to filter results
 const mutations = {
 
-    pushProduct2Cart(state, { 
+    CART_PUSH_PRODUCT(state, { 
         id, sku, translations, images, attributes, weight, 
         quantity, price, sale_price, cart_quantity, tax_class_id 
     }) {
