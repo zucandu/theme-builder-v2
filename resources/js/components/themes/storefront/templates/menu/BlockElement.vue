@@ -1,8 +1,8 @@
 <template>
     <transition name="fade">
         <div v-if="loaded" class="container">
-            <section v-if="this.menuDetails[this.menuKey]" :class="`row g-3 ${menuKey}-section mt-lg-5 mt-3`">
-                <template v-for="(item, index) in this.menuDetails[this.menuKey].items" :key="index">
+            <section v-if="this.tool_menu_get_info[this.menuKey]" :class="`row g-3 ${menuKey}-section mt-lg-5 mt-3`">
+                <template v-for="(item, index) in this.tool_menu_get_info[this.menuKey].items" :key="index">
                     <h3 class="col-12">{{ setting_translation(item, 'title', $i18n.locale) }}</h3>
                     <div :class="`block-element col-lg-${block.block_width} mb-3 mb-lg-0`" v-for="(block, i) in item.blocks" :key="i">
                         <template v-for="(el, elindex) in block.elements" :key="el.id">
@@ -81,8 +81,8 @@ export default {
     components: { LinkMenu, BlockElementNodeChildren },
     props: ['menuKey', 'blockLoading', 'imgType'],
     created() {
-        if(this.menuDetails[this.menuKey] === undefined) {
-            this.$store.dispatch('menuDetails', this.menuKey).then(() => {
+        if(this.tool_menu_get_info[this.menuKey] === undefined) {
+            this.$store.dispatch('tool_menu_get_info', this.menuKey).then(() => {
                 this.loaded = true
             })
         } else {
@@ -91,7 +91,7 @@ export default {
     },
     computed: {
         ...mapState({
-            menuDetails: state => state.menu.menuDetails,
+            tool_menu_get_info: state => state.menu.tool_menu_get_info,
             
         }),
         ...mapGetters(['setting_translation']),

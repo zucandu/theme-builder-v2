@@ -22,18 +22,18 @@ export default {
     props: ['menuKey'],
     components: { LinkMenu },
     created() {
-        this.$store.dispatch('menuDetails', this.menuKey).then(() => {
+        this.$store.dispatch('tool_menu_get_info', this.menuKey).then(() => {
             this.loaded = true
         })
     },
     computed: {
         ...mapState({
-            menuDetails: state => state.menu.menuDetails,
+            tool_menu_get_info: state => state.menu.tool_menu_get_info,
             
         }),
         ...mapGetters(['setting_translation']),
         __navigation() {
-            return this.menuDetails[this.menuKey] || undefined
+            return this.tool_menu_get_info[this.menuKey] || undefined
         }
     }
 }
