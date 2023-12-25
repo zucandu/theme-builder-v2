@@ -113,7 +113,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['cart_total', 'cart_all_items', 'getZonesByCountryCode', 'catalog_product_display_price']),
+        ...mapGetters(['cart_total', 'cart_all_items', 'country_get_zones_by_country_code', 'catalog_product_display_price']),
         ...mapState({
             countries: state => state.country.countries,
             estimateFormData: state => state.cart.estimateFormData,
@@ -121,7 +121,7 @@ export default {
             profile: state => state.customer.profile,
         }),
         regions: function() {
-            const regions = this.getZonesByCountryCode(this.estimateFormData.country_code)
+            const regions = this.country_get_zones_by_country_code(this.estimateFormData.country_code)
             if(regions.length > 0 && regions.find(r => r.code === this.estimateFormData.zone_code) === undefined) {
 
                 this.estimateFormData.zone_code = regions.find(r => r.id > 0).code

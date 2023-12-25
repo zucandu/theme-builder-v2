@@ -169,14 +169,14 @@ export default {
             this.$store.dispatch('register', this.formdata).then(() => {
                     
                 // set country name
-                const country = this.getCountryById(this.formdata.country_id)
+                const country = this.country_get_by_id(this.formdata.country_id)
                 this.formdata = Object.assign({}, this.formdata, {
                     country_code: country.iso_code_2,
                     country_name: country.name
                 })
 
                 // set zone name
-                const zone = this.getZoneById(this.formdata.country_id, this.formdata.zone_id)
+                const zone = this.country_get_zone_by_id(this.formdata.country_id, this.formdata.zone_id)
                 if(zone) {
                     this.formdata = Object.assign({}, this.formdata, {
                         zone_code: zone.code,
@@ -223,15 +223,15 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['getZonesByCountryId', 'getCountryById', 'getCountryByCode', 
-        'getZoneById', 'getZoneByCode', 'addressLength', 'cart_all_items']),
+        ...mapGetters(['country_get_zones_by_country_id', 'country_get_by_id', 'getCountryByCode', 
+        'country_get_zone_by_id', 'country_get_zone_by_code', 'addressLength', 'cart_all_items']),
         ...mapState({
             countries: state => state.country.countries,
             profile: state => state.customer.profile,
             
         }),
         regions: function() {
-            const regions = this.getZonesByCountryId(this.formdata.country_id)
+            const regions = this.country_get_zones_by_country_id(this.formdata.country_id)
             if(regions && regions.length > 0 && regions.find(r => r.id == this.formdata.zone_id) === undefined) {
 
                 this.formdata.zone_id = regions.find(r => r.id > 0).id
