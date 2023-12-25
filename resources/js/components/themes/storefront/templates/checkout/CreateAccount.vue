@@ -224,7 +224,7 @@ export default {
     },
     computed: {
         ...mapGetters(['getZonesByCountryId', 'getCountryById', 'getCountryByCode', 
-        'getZoneById', 'getZoneByCode', 'addressLength', 'cartAllItems']),
+        'getZoneById', 'getZoneByCode', 'addressLength', 'cart_all_items']),
         ...mapState({
             countries: state => state.country.countries,
             profile: state => state.customer.profile,

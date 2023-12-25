@@ -1,5 +1,5 @@
 
-import apiCart from '@/api/sc'
+import API_CART from '@/api/sc'
 
 const items = (() => JSON.parse(localStorage.getItem('cart')) || [])()
 
@@ -7,13 +7,13 @@ const items = (() => JSON.parse(localStorage.getItem('cart')) || [])()
 const state = {
     items: items,
     refresh: false,
-    estimateFormData: {
+    shippingCalculator: {
         country_code: undefined,
         zone_code: undefined,
         zone_name: undefined,
         postcode: undefined
     },
-    estimateShippingCosts: [],
+    cart_estimate_shipping_costs: [],
 }
 
 // getters
@@ -26,16 +26,16 @@ const getters = {
         })
         return total.toFixed(2)
     },
-    cart_totalWeight: () => 0,
-    cartAllItems: state => state.items,
-    foundItemOutOfStock: () => false,
+    cart_all_items: state => state.items,
+    cart_has_out_of_stock: () => false,
+    cart_has_max_qty: () => false
 }
 
 // actions
 const actions = {
 
-    async addProduct2Cart({ commit }, product) {
-        const resp = await apiCart.addProduct(product)
+    async cart_add_product({ commit }, product) {
+        const resp = await API_CART.addProduct(product)
         commit('pushProduct2Cart', resp.data.product)
     },
 
@@ -45,7 +45,7 @@ const actions = {
      * @param {*} id 
      */
     async removeProduct({ commit }, id) {
-        commit('removeProduct', await apiCart.removeProduct(id))
+        commit('removeProduct', await API_CART.removeProduct(id))
     },
 
     /**
@@ -55,9 +55,9 @@ const actions = {
      */
     async updateProductQtyInCart({ commit }, product) {
         if(product.cart_quantity > 0) {
-            commit('updateItemQuantity', await apiCart.updateProduct(product))
+            commit('updateItemQuantity', await API_CART.updateProduct(product))
         } else {
-            commit('removeProduct', await apiCart.removeProduct(product.id))
+            commit('removeProduct', await API_CART.removeProduct(product.id))
         }
     },
 

@@ -66,7 +66,7 @@ export default {
     methods: {
         addToCart(item, qty = 1) {
             const productName = this.setting_translation(item, 'name', this.$i18n.locale)
-            this.$store.dispatch('addProduct2Cart', { id: item.id, cart_quantity: qty }).then(() => {
+            this.$store.dispatch('cart_add_product', { id: item.id, cart_quantity: qty }).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': `${productName} ${this.$t("has been added to your cart.")}`

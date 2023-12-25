@@ -2,7 +2,7 @@
     <section class="cart row">
         <div class="col-12 mt-5">
             <div v-if="items && items.length > 0">
-                <p class="text-danger" v-if="foundItemOutOfStock !== false">
+                <p class="text-danger" v-if="cart_has_out_of_stock !== false">
                     {{$t('Some items in your shopping cart currently do not have enough stock. Please make adjustments before continuing to checkout.')}}
                 </p>
 
@@ -289,7 +289,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['cart_total', 'foundItemOutOfStock', 'setting_translation', 'productImageSrc', 'productPrice', 'cartAllItems']),
+        ...mapGetters(['cart_total', 'cart_has_out_of_stock', 'setting_translation', 'productImageSrc', 'productPrice', 'cart_all_items']),
         ...mapState({
             items: state => state.cart.items,
             

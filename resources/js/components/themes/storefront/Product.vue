@@ -269,7 +269,7 @@ export default {
             })
         },
         add2Cart() {
-            this.$store.dispatch('addProduct2Cart', { id: this.actualProductDetails.id, cart_quantity: this.formdata.qty, meta: this.formdata.meta }).then(() => {
+            this.$store.dispatch('cart_add_product', { id: this.actualProductDetails.id, cart_quantity: this.formdata.qty, meta: this.formdata.meta }).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': `${this.productTranslation.name} ${this.$t("has been added to your cart.")}`
