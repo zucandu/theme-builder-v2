@@ -171,9 +171,6 @@ export default {
         next()
 
     },
-    unmounted() {
-        this.$store.commit('resetListing')
-    },
     methods: {
         queryProductListing(keyword, params) {
 

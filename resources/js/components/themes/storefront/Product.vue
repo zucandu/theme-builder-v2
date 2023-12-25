@@ -237,9 +237,6 @@ export default {
     mounted() {
 		const elTabs = [].slice.call(document.querySelectorAll('.section-product-desc button')).forEach(el => new Tab(el))
     },
-    unmounted() {
-        this.$store.commit('reSET_PRODUCT_DETAILS')
-    },
     beforeRouteUpdate (to, from, next) {
         if(to.params.productslug !== this.$route.params.productslug) {
             this.reinitialize()

@@ -160,9 +160,6 @@ export default {
         next()
 
     },
-    unmounted() {
-        this.$store.commit('resetListing')
-    },
     methods: {
         queryProductListing(slug, params) {
 
