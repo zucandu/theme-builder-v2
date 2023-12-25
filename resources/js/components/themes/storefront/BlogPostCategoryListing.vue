@@ -102,14 +102,14 @@ export default {
         next()
     },
     computed: {
-        ...mapGetters(['setting_translation', 'transObj', 'urlParamValueFromName', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'urlGetAllParams']),
         ...mapState({
             posts: state => state.blogpost.posts,
             paginationLinks: state => state.blogpost.paginationLinks,
             categoryDetails: state => state.blogpost.object,
         }),
         categoryTranslation() {
-            return this.transObj(this.categoryDetails, this.$i18n.locale) || undefined
+            return this.setting_trans_obj(this.categoryDetails, this.$i18n.locale) || undefined
         }
     },
     watch: {

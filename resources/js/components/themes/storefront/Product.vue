@@ -297,7 +297,7 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'setting_translation', 'transObj', 'productVariants', 'productAttributesReadonly', 'productAttributesText', 
+            'setting_translation', 'setting_trans_obj', 'productVariants', 'productAttributesReadonly', 'productAttributesText', 
             'childProductByAttributes', 'productPrice'
         ]),
         ...mapState({
@@ -313,10 +313,10 @@ export default {
             }
         },
         productTranslation() {
-            return this.transObj(this.actualProductDetails, this.$i18n.locale)
+            return this.setting_trans_obj(this.actualProductDetails, this.$i18n.locale)
         },
         manufacturerTranslation() {
-            return this.transObj(this.productDetails.manufacturer , this.$i18n.locale) || undefined
+            return this.setting_trans_obj(this.productDetails.manufacturer , this.$i18n.locale) || undefined
         }
     },
     watch: {

@@ -2,10 +2,10 @@
     <span class="display-price-with-currency">
         <template v-if="realCurrency">
             <span v-if="realCurrency.position === 'l'">
-                {{ realCurrency.symbol }}{{ moneyFormat(realPrice, setting_get_currency_by_code(currency).decimal_digits) }}
+                {{ realCurrency.symbol }}{{ global_money_format(realPrice, setting_get_currency_by_code(currency).decimal_digits) }}
             </span>
             <span v-else>
-                {{ moneyFormat(realPrice, setting_get_currency_by_code(currency).decimal_digits) }}{{ realCurrency.symbol }}
+                {{ global_money_format(realPrice, setting_get_currency_by_code(currency).decimal_digits) }}{{ realCurrency.symbol }}
             </span>
         </template>
         <span v-else>___</span>
@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
     props: ['price', 'currency'],
     computed: {
-        ...mapGetters(['setting_get_currency_by_code', 'moneyFormat']),
+        ...mapGetters(['setting_get_currency_by_code', 'global_money_format']),
         realCurrency() {
             return this.setting_get_currency_by_code(this.currency)
         },

@@ -112,14 +112,14 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['isCustomer', 'transObj', 'setting_translation']),
+        ...mapGetters(['isCustomer', 'setting_trans_obj', 'setting_translation']),
         ...mapState({
             productDetails: state => state.product.productDetails,
             storeConfig: state => state.setting.storeConfig,
             profile: state => state.customer.profile,
         }),
         productTranslation() {
-            return this.transObj(this.productDetails, this.$i18n.locale)
+            return this.setting_trans_obj(this.productDetails, this.$i18n.locale)
         }
     },
     watch: {

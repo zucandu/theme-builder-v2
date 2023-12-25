@@ -57,13 +57,13 @@ const getters = {
         return state.productDetails.id === 38 ? [ 
             { 
                 "id": 1, 
-                "setting_translations": [ { "name": "Color", "locale": "en" } ], 
+                "translations": [ { "name": "Color", "locale": "en" } ], 
                 "values": [ 
                     { 
                         "id": 1, 
                         "attribute_option_id": 1, 
                         "filterable": 1, "sort": 0, 
-                        "setting_translations": [ { "name": "Grey", "locale": "en" } ], 
+                        "translations": [ { "name": "Grey", "locale": "en" } ], 
                         "vid": 1 
                     }, 
                     { 
@@ -71,7 +71,7 @@ const getters = {
                         "attribute_option_id": 1, 
                         "filterable": 1, 
                         "sort": 0, 
-                        "setting_translations": [ { "name": "Brown", "locale": "en" } ], 
+                        "translations": [ { "name": "Brown", "locale": "en" } ], 
                         "vid": 2 
                     }, 
                     { 
@@ -79,7 +79,7 @@ const getters = {
                         "attribute_option_id": 1, 
                         "filterable": 1, 
                         "sort": 0, 
-                        "setting_translations": [ { "name": "Pink", "locale": "en" } ], 
+                        "translations": [ { "name": "Pink", "locale": "en" } ], 
                         "vid": 3 
                     } 
                 ], 
@@ -90,7 +90,7 @@ const getters = {
     productAttributesReadonly: (state) => {
         return state.productDetails.id === 38 ? {
             "8": {
-                "setting_translations": [
+                "translations": [
                     {
                         "name": "Features",
                         "locale": "en"
@@ -102,7 +102,7 @@ const getters = {
                         "attribute_option_id": 8,
                         "filterable": 1,
                         "sort": 0,
-                        "setting_translations": [
+                        "translations": [
                             {
                                 "name": "LED Display",
                                 "locale": "en"
@@ -115,7 +115,7 @@ const getters = {
                         "attribute_option_id": 8,
                         "filterable": 1,
                         "sort": 0,
-                        "setting_translations": [
+                        "translations": [
                             {
                                 "name": "Touch",
                                 "locale": "en"
@@ -126,7 +126,7 @@ const getters = {
                 ]
             },
             "9": {
-                "setting_translations": [
+                "translations": [
                     {
                         "name": "Application",
                         "locale": "en"
@@ -138,7 +138,7 @@ const getters = {
                         "attribute_option_id": 9,
                         "filterable": 1,
                         "sort": 0,
-                        "setting_translations": [
+                        "translations": [
                             {
                                 "name": "Indoor",
                                 "locale": "en"
@@ -151,7 +151,7 @@ const getters = {
                         "attribute_option_id": 9,
                         "filterable": 1,
                         "sort": 0,
-                        "setting_translations": [
+                        "translations": [
                             {
                                 "name": "Garden",
                                 "locale": "en"
@@ -164,7 +164,7 @@ const getters = {
                         "attribute_option_id": 9,
                         "filterable": 1,
                         "sort": 0,
-                        "setting_translations": [
+                        "translations": [
                             {
                                 "name": "Camping",
                                 "locale": "en"

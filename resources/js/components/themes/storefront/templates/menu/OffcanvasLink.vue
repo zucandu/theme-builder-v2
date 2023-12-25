@@ -26,9 +26,9 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['transObj', 'trim']),
+        ...mapGetters(['setting_trans_obj', 'trim']),
         setting_translation() {
-            return this.transObj(this.item, this.$i18n.locale)
+            return this.setting_trans_obj(this.item, this.$i18n.locale)
         },
         url() {
             return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.setting_translation.url}` : `/${_.trim(this.setting_translation.url, '/')}`

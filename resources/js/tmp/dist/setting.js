@@ -18,19 +18,18 @@ const getters = {
     setting_get_lang_by_code: (state) => code => state.languages.find(lang => lang.iso_code === code) || undefined,
     setting_default_tax: (state) => state.taxes || [],
     setting_translation: () => (item, field, locale) => item && !_.isEmpty(item.translations) && item.translations.find(trans => trans.locale === locale)[field] || undefined,
-    transObj: () => (item, locale) => item && item.translations && item.translations.find(trans => trans.locale === locale) || undefined,
-    imageSrc: () => src => src.indexOf('http') === -1 ? `/storage/${src}` : src,
-    isEmpty: () => value => _.isEmpty(value) || false,
-    isPlainObject: () => value => _.isPlainObject(value) || false,
-    moneyFormat: () => (price, decimal) => (+price).toFixed(decimal).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
+    setting_trans_obj: () => (item, locale) => item && item.translations && item.translations.find(trans => trans.locale === locale) || undefined,
+    setting_img_src: () => src => src.indexOf('http') === -1 ? `/storage/${src}` : src,
+    setting_check_empty: () => value => _.isEmpty(value) || false,
+    setting_check_plain_obj: () => value => _.isPlainObject(value) || false,
 
     /**
      * Update meta tags
      */
-    updateMetaTags: (state, getters) => (routeName, locale) => {
+    setting_set_meta_tags: (state, getters) => (routeName, locale) => {
         const meta = state.metaTags.find(meta => meta.pagename === routeName)
         if(meta) {
-            const setting_translation = getters.transObj(meta, locale)
+            const setting_translation = getters.setting_trans_obj(meta, locale)
             document.title = setting_translation.meta_title
             document.querySelector('meta[name="description"]').setAttribute("content", setting_translation.meta_description)
         }

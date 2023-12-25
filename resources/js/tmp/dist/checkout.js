@@ -33,7 +33,7 @@ const getters = {
                 {
                     "id": 43,
                     "sku": "Model2Green",
-                    "setting_translations": [
+                    "translations": [
                         {
                             "id": 43,
                             "product_id": 43,

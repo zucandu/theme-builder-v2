@@ -223,7 +223,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'transObj', 'urlParamValueFromName', 'productPrice', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'productPrice', 'urlGetAllParams']),
         ...mapState({
             products: state => state.listing.products,
             paginationLinks: state => state.listing.paginationLinks,

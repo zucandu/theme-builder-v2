@@ -36,6 +36,7 @@ const getters = {
             element.classList.toggle(className)
          }
      },
+     global_money_format: () => (price, decimal) => (+price).toFixed(decimal).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
     
 }
   

@@ -26,12 +26,12 @@ export default {
     props: ['item', 'extraClass'],
     components: { ProductDisplayPrice, DisplayRating },
     computed: {
-        ...mapGetters(['transObj', 'trim', 'productPrice']),
+        ...mapGetters(['setting_trans_obj', 'trim', 'productPrice']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig
         }),
         setting_translation() {
-            return this.transObj(this.item, this.$i18n.locale)
+            return this.setting_trans_obj(this.item, this.$i18n.locale)
         },
         url() {
             return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.setting_translation.url}` : `/${_.trim(this.setting_translation.url, '/')}`

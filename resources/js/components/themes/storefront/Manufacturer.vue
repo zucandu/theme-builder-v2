@@ -212,7 +212,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'transObj', 'urlParamValueFromName', 'productPrice', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'productPrice', 'urlGetAllParams']),
         ...mapState({
             products: state => state.listing.products,
             paginationLinks: state => state.listing.paginationLinks,
@@ -222,7 +222,7 @@ export default {
             storeConfig: state => state.setting.storeConfig
         }),
         manufacturerTranslation() {
-            return !_.isEmpty(this.manufacturerDetails) ? this.transObj(this.manufacturerDetails, this.$i18n.locale) : undefined
+            return !_.isEmpty(this.manufacturerDetails) ? this.setting_trans_obj(this.manufacturerDetails, this.$i18n.locale) : undefined
         }
     },
     watch: {

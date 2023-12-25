@@ -69,11 +69,11 @@ export default {
      * Change meta tag for static pages
      */
     beforeRouteUpdate (to, from, next) {
-        this.updateMetaTags(to, this.$i18n.locale)
+        this.setting_set_meta_tags(to, this.$i18n.locale)
         next()
     },
     computed: {
-        ...mapGetters(['customerAccessToken', 'updateMetaTags']),
+        ...mapGetters(['customerAccessToken', 'setting_set_meta_tags']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig,
             language: state => state.setting.language,

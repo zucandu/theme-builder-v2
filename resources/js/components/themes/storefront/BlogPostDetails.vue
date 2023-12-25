@@ -124,13 +124,13 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['transObj', 'setting_translation']),
+        ...mapGetters(['setting_trans_obj', 'setting_translation']),
         ...mapState({
             postDetails: state => state.blogpost.postDetails,
             storeConfig: state => state.setting.storeConfig
         }),
         postTranslation() {
-            return this.transObj(this.postDetails, this.$i18n.locale) || undefined
+            return this.setting_trans_obj(this.postDetails, this.$i18n.locale) || undefined
         }
     },
     watch: {

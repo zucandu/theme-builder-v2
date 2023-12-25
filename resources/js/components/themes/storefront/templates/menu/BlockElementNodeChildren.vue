@@ -26,9 +26,9 @@ import { mapGetters } from 'vuex'
 export default {
     props: ['item', 'index', 'imgSize', 'imgType'],
     computed: {
-        ...mapGetters(['transObj']),
+        ...mapGetters(['setting_trans_obj']),
         setting_translation() {
-            return this.transObj(this.item, this.$i18n.locale)
+            return this.setting_trans_obj(this.item, this.$i18n.locale)
         },
         url() {
             return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.setting_translation.url}` : `/${_.trim(this.setting_translation.url, '/')}`
