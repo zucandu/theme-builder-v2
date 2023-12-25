@@ -25,7 +25,7 @@
         <section class="py-4 border-top mt-5 bg-gray-200">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">&copy; {{ storeConfig.store_name }} {{ year }}. All rights reserved.</div>
+                    <div class="col-lg-6">&copy; {{ zucConfig.store_name }} {{ year }}. All rights reserved.</div>
                     <div class="col-lg-6 text-lg-end">
                         <img src="/storage/credit-card-accept.png" alt="Credit Cards" width="197" height="20">
                     </div>

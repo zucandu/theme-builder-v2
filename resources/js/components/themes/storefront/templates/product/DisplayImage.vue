@@ -1,5 +1,5 @@
 <template>
-    <div :style="`cursor:pointer;height:${storeConfig.medium_image_size}px; background-image: url('${storeConfig.store_url}/storage/${src}'); background-repeat: no-repeat; background-size: cover; background-position: center;`"></div>
+    <div :style="`cursor:pointer;height:${zucConfig.medium_image_size}px; background-image: url('${zucConfig.store_url}/storage/${src}'); background-repeat: no-repeat; background-size: cover; background-position: center;`"></div>
 </template>
 
 <script>

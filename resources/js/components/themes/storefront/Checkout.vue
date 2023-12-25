@@ -18,8 +18,8 @@
                                             <tbody>
                                                 <tr v-for="item in items" :key="item.id">
                                                     <td>
-                                                        <img v-if="item.images && item.images.length > 0" :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :width="storeConfig.small_image_size" alt="product" class="img-thumbnail">
-                                                        <img v-else src="/storage/no-image.png" alt="No image" :width="storeConfig.small_image_size" class="img-thumbnail">
+                                                        <img v-if="item.images && item.images.length > 0" :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" :width="zucConfig.small_image_size" alt="product" class="img-thumbnail">
+                                                        <img v-else src="/storage/no-image.png" alt="No image" :width="zucConfig.small_image_size" class="img-thumbnail">
                                                     </td>
                                                     <td>
                                                         <div v-html="setting_translation(item, 'name', $i18n.locale)"></div>

@@ -43,8 +43,8 @@
                             <div class="z-cart-modal__inner">
                                 <div v-for="(item, key) in items" :key="item.id" :class="`d-flex ${key > 0 ? 'mt-2 pt-2 border-top' : ''}`">
                                     <div class="p-2 flex-shrink-1 bd-highlight">
-                                        <img v-if="item.images && item.images.length > 0" :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :alt="setting_translation(item, 'name', $i18n.locale)" :width="storeConfig.small_image_size" class="img-thumbnail">
-                                        <img v-else :src="`/storage/${storeConfig.small_image_size}/no-image.png`" :alt="setting_translation(item, 'name', $i18n.locale)" :width="storeConfig.small_image_size" class="img-thumbnail">
+                                        <img v-if="item.images && item.images.length > 0" :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" :alt="setting_translation(item, 'name', $i18n.locale)" :width="zucConfig.small_image_size" class="img-thumbnail">
+                                        <img v-else :src="`/storage/${zucConfig.small_image_size}/no-image.png`" :alt="setting_translation(item, 'name', $i18n.locale)" :width="zucConfig.small_image_size" class="img-thumbnail">
                                     </div>
                                     <div class="w-100 small">
                                         <div class="d-flex justify-content-between align-items-start">

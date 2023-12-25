@@ -4,7 +4,7 @@
             <div v-for="(item, index) in chunkedRelatedProducts" :key="index" :class="`col-12 mb-4 ${extraClass ? extraClass : ``}`">
                 <div class="section-relatedproducts__info d-flex">
                     <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">
-                        <img :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading">
+                        <img :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading">
                     </router-link>
                     <div class="text ms-3">
                         <h3 class="h6"><router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">{{ setting_translation(item, 'name', $i18n.locale) }}</router-link></h3>
@@ -37,7 +37,7 @@
         <div class="row">
             <div v-for="i in 3" :key="i" :class="`col-12 mb-4 ${extraClass ? extraClass : ``}`">
                 <div class="section-relatedproducts__info d-flex">
-                    <div><img :src="`/storage/store/no-image.png`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" alt="image loading" class="img-fluid img-loading"></div>
+                    <div><img :src="`/storage/store/no-image.png`" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" alt="image loading" class="img-fluid img-loading"></div>
                     <div class="text ms-3">
                         <div class="bg-gray-200" style="width:200px;height:12px;"></div>
                         <div class="bg-gray-200 mt-3" style="width:70px;height:12px;"></div>

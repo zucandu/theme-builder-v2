@@ -8,7 +8,7 @@
                 <div class="row g-3 my-3 align-items-center">
                     <div class="col-lg-2 col-md-5">
                         <router-link class="navbar-brand flex-shrink-0" to="/">
-                            <img :src="`/storage/${storeConfig.fileuploader_store_logo}`" :width="storeConfig.store_logo_width" :height="storeConfig.store_logo_height" :alt="storeConfig.store_name" @load="imgloaded" class="img-loading img-fluid">
+                            <img :src="`/storage/${zucConfig.fileuploader_store_logo}`" :width="zucConfig.store_logo_width" :height="zucConfig.store_logo_height" :alt="zucConfig.store_name" @load="imgloaded" class="img-loading img-fluid">
                         </router-link>
                     </div>
                     <div class="col-lg-7 d-lg-block d-none">

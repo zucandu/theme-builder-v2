@@ -5,7 +5,7 @@
                 <display-carousel :images="productDetails.images" :current-image="actualProductDetails.images[0]" :product-name="productTranslation.name"></display-carousel>
             </template>
             <template v-else>
-                <loading-carousel :small-size="storeConfig.small_image_size" :large-size="storeConfig.large_image_size"></loading-carousel>
+                <loading-carousel :small-size="zucConfig.small_image_size" :large-size="zucConfig.large_image_size"></loading-carousel>
             </template>
         </div>
         <div class="col-md-5 offset-md-1">
@@ -82,7 +82,7 @@
                                         <div class="mb-2"><span class="fw-bold">{{ setting_translation(ao, 'name', $i18n.locale) }}:</span><span class="ms-2">{{ setting_translation(ao.values.find(v => v.id === selectedAttributes[ao.id]), 'name', $i18n.locale) }}</span></div>
                                         <div v-for="aov in ao.values" :value="aov.vid" :key="aov.vid" @click.stop="selectedAttributes[ao.id] = aov.vid" :data-aovid="aov.vid" :id="`attr-${ao.id}-${aov.vid}`" :class="`dropdown-item cursor-pointer py-2 px-3 d-inline-block me-3 mb-3 pa ${selectedAttributes[ao.id] === aov.vid ? 'pa-selected' : ''}`">
                                             <template v-if="aov.image">
-                                                <img :src="`/storage/${storeConfig.small_image_size}/${aov.image}`" :alt="productTranslation.name" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" class="img-fluid">
+                                                <img :src="`/storage/${zucConfig.small_image_size}/${aov.image}`" :alt="productTranslation.name" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" class="img-fluid">
                                             </template>
                                             <template v-else>
                                                 {{ setting_translation(aov, 'name', $i18n.locale) }}

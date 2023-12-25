@@ -48,7 +48,7 @@
                                 <display-price-with-currency :price="order.shipping_amount" :currency="order.currency"></display-price-with-currency>
                             </td>
                         </tr>
-                        <tr v-if="storeConfig.product_price_with_tax === 'n' && order.order_tax > 0">
+                        <tr v-if="zucConfig.product_price_with_tax === 'n' && order.order_tax > 0">
                             <td colspan="3" class="text-end border-0">{{ $t('Tax:') }}</td>
                             <td class="text-end border-0">
                                 <display-price-with-currency :price="order.order_tax" :currency="order.currency"></display-price-with-currency>

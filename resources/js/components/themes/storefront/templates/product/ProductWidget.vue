@@ -3,7 +3,7 @@
         <div class="product-widget__inner">
             <div class="inner__img mb-3">
                 <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">
-                    <img :src="`/storage/${storeConfig.medium_image_size}/${item.images[0].src}`" :width="storeConfig.medium_image_size" :height="storeConfig.medium_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-fluid">
+                    <img :src="`/storage/${zucConfig.medium_image_size}/${item.images[0].src}`" :width="zucConfig.medium_image_size" :height="zucConfig.medium_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-fluid">
                 </router-link>
             </div>
             <h3 class="inner__title h6 fw-light mb-0">

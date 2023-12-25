@@ -3,7 +3,7 @@
         <div class="col-md-3 text-center order-md-0 order-1">
             <div class="thumbnails">
                 <div v-for="(img, index) in images" :key="index" :class="`thumb thumb-${index} mb-md-3 mx-md-0 mx-2 cursor-pointer d-md-block d-inline-block`">
-                    <img @click.stop="moveTo(index)" @load="imgloaded" :src="`/storage/${storeConfig.small_image_size}/${img.src}`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="productName" class="img-loading img-fluid">
+                    <img @click.stop="moveTo(index)" @load="imgloaded" :src="`/storage/${zucConfig.small_image_size}/${img.src}`" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" :alt="productName" class="img-loading img-fluid">
                 </div>
             </div>
         </div>
@@ -11,7 +11,7 @@
             <div id="product-image-carousel" class="carousel slide">
                 <div class="carousel-inner text-center">
                     <div :class="`carousel-item ${+index === 0 ? 'active' : ''}`" v-for="(img, index) in images" :key="index">
-                        <img @click="openImgPopup" @load="imgloaded" :src="`/storage/${storeConfig.large_image_size}/${img.src}`" :width="storeConfig.large_image_size" :height="storeConfig.large_image_size" :alt="productName" class="img-loading img-fluid cursor-pointer"  data-bs-toggle="modal" data-bs-target="#img-popup">
+                        <img @click="openImgPopup" @load="imgloaded" :src="`/storage/${zucConfig.large_image_size}/${img.src}`" :width="zucConfig.large_image_size" :height="zucConfig.large_image_size" :alt="productName" class="img-loading img-fluid cursor-pointer"  data-bs-toggle="modal" data-bs-target="#img-popup">
                     </div>
                 </div>
                 <div v-if="(images && images.length > 1)">

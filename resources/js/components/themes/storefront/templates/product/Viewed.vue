@@ -6,7 +6,7 @@
                 <div v-for="item in rows" :key="item.id" :class="`col-12 col-md-4 mb-4`">
                     <div class="section-viewed__info d-flex">
                         <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">
-                            <img :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading">
+                            <img :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading">
                         </router-link>
                         <div class="text ms-3">
                             <h3 class="h6"><router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">{{ setting_translation(item, 'name', $i18n.locale) }}</router-link></h3>

@@ -22,7 +22,7 @@
                     <div v-for="item in items" :key="item.id" class="row mb-3 pb-3 border-bottom">
                         <div class="col-3 col-md-2">
                             <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">
-                                <img :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" alt="" class="img-thumbnail">
+                                <img :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" alt="" class="img-thumbnail">
                             </router-link>
                         </div>
                         <div class="col-9 col-md-4">

@@ -88,7 +88,7 @@
         </div>
         <div class="row g-4">
             <div v-for="post in latestPosts" :key="post.id" class="post-index col-lg col-lg-4 col-md-6 col-12">
-                <div class="post-index__bg w-100 bg-gray-200" :style="`height:180px; background: #e9ecef url('/storage/${storeConfig.medium_image_size}/${post.image}') center center no-repeat;background-size: cover;`"></div>
+                <div class="post-index__bg w-100 bg-gray-200" :style="`height:180px; background: #e9ecef url('/storage/${zucConfig.medium_image_size}/${post.image}') center center no-repeat;background-size: cover;`"></div>
                 <h4 class="h6 fw-bold my-3">
                     <router-link class="text-dark text-decoration-none" :to="`/article/${setting_translation(post, 'slug', $i18n.locale)}`">
                         {{ setting_translation(post, 'title', $i18n.locale) }}

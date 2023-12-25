@@ -66,9 +66,9 @@ export default {
 
             // Get Google reCAPTCHA token if the site key is set
             const _ = this
-            if(_.storeConfig && _.storeConfig.recaptcha_site_key) {
+            if(_.zucConfig && _.zucConfig.recaptcha_site_key) {
                 grecaptcha.ready(function() {
-                    grecaptcha.execute(_.storeConfig.recaptcha_site_key, { action: 'submit' }).then(function(token) {
+                    grecaptcha.execute(_.zucConfig.recaptcha_site_key, { action: 'submit' }).then(function(token) {
                         _.formdata.grecaptcha_token = token
                     })
                 })

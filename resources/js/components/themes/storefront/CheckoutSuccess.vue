@@ -36,8 +36,8 @@
                         <tbody>
                             <tr v-for="item in order.items" :key="item.id">
                                 <td>
-                                    <img v-if="item.images && item.images.length > 0" :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="item.name" class="img-thumbnail">
-                                    <img v-else src="/storage/store/no-image.png" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="item.name" class="img-thumbnail">
+                                    <img v-if="item.images && item.images.length > 0" :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" :alt="item.name" class="img-thumbnail">
+                                    <img v-else src="/storage/store/no-image.png" :width="zucConfig.small_image_size" :height="zucConfig.small_image_size" :alt="item.name" class="img-thumbnail">
                                 </td>
                                 <td>
                                     <div class="w300px">{{ item.name }}</div>
@@ -66,7 +66,7 @@
                                     <display-price-with-currency :price="order.shipping_amount" :currency="order.currency"></display-price-with-currency>
                                 </td>
                             </tr>
-                            <tr v-if="storeConfig.product_price_with_tax === 'n' && order.order_tax > 0">
+                            <tr v-if="zucConfig.product_price_with_tax === 'n' && order.order_tax > 0">
                                 <td colspan="2" class="text-end border-0">{{ $t(order.order_tax_name) }}</td>
                                 <td class="text-end border-0">
                                     <display-price-with-currency :price="order.order_tax" :currency="order.currency"></display-price-with-currency>

@@ -7,7 +7,7 @@
                     <div :class="`block-element col-lg-${block.block_width} mb-3 mb-lg-0`" v-for="(block, i) in item.blocks" :key="i">
                         <template v-for="(el, elindex) in block.elements" :key="el.id">
                             <link-menu v-if="el.block_type === 'link'" :item="el"></link-menu>
-                            <block-element-node-children v-else :item="el" :index="elindex" :img-type="imgType" :img-size="storeConfig.medium_image_size"></block-element-node-children>
+                            <block-element-node-children v-else :item="el" :index="elindex" :img-type="imgType" :img-size="zucConfig.medium_image_size"></block-element-node-children>
                         </template>
                     </div>
                 </template>

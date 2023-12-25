@@ -1,14 +1,14 @@
 <template>
     <div class="card" v-if="loaded">
         <div class="d-none print-only justify-content-between p-3">
-            <img :src="`/storage/${storeConfig.fileuploader_store_logo}`" :width="storeConfig.store_logo_width" :height="storeConfig.store_logo_height" :alt="storeConfig.store_name" @load="imgloaded">
+            <img :src="`/storage/${zucConfig.fileuploader_store_logo}`" :width="zucConfig.store_logo_width" :height="zucConfig.store_logo_height" :alt="zucConfig.store_name" @load="imgloaded">
             <address>
-                {{ storeConfig.store_name }}<br>
-                {{ storeConfig.store_address }}<br>
-                {{ storeConfig.store_city }}, {{ storeConfig.store_zone }} {{ storeConfig.store_postcode }}<br>
-                {{ storeConfig.store_country }}<br>
-                {{ storeConfig.store_phone }}<br>
-                {{ storeConfig.store_email }}
+                {{ zucConfig.store_name }}<br>
+                {{ zucConfig.store_address }}<br>
+                {{ zucConfig.store_city }}, {{ zucConfig.store_zone }} {{ zucConfig.store_postcode }}<br>
+                {{ zucConfig.store_country }}<br>
+                {{ zucConfig.store_phone }}<br>
+                {{ zucConfig.store_email }}
             </address>
         </div>
         <div class="card-header fw-bold">{{ $t('Order ID') }}# {{ order.id }}</div>
@@ -57,7 +57,7 @@
                             <display-price-with-currency :price="order.shipping_amount" :currency="order.currency"></display-price-with-currency>
                         </td>
                     </tr>
-                    <tr v-if="storeConfig.product_price_with_tax === 'n' && order.order_tax > 0">
+                    <tr v-if="zucConfig.product_price_with_tax === 'n' && order.order_tax > 0">
                         <td colspan="3" class="text-end border-0">{{ $t('Tax:') }}</td>
                         <td class="text-end border-0">
                             <display-price-with-currency :price="order.order_tax" :currency="order.currency"></display-price-with-currency>

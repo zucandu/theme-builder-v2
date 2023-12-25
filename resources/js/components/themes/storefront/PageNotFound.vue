@@ -9,7 +9,7 @@
                     <li>{{ $t(`Check your search term for typos`) }}</li>
                     <li>{{ $t(`Use more generic search terms`) }}</li>
                     <li>{{ $t(`Some things you're searching for may be discontinued or not yet on our site`) }}</li>
-                    <li>{{ $t(`Need help finding something?`) }} {{ $t(`Call`) }} <a :href="`tel:${storeConfig.store_phone}`">{{ storeConfig.store_phone }}</a> {{ $t('or') }} <router-link to="/contact-us">{{ $t(`Email us`) }}</router-link></li>
+                    <li>{{ $t(`Need help finding something?`) }} {{ $t(`Call`) }} <a :href="`tel:${zucConfig.store_phone}`">{{ zucConfig.store_phone }}</a> {{ $t('or') }} <router-link to="/contact-us">{{ $t(`Email us`) }}</router-link></li>
                 </ul>
             </div>
         </div>

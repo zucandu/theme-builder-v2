@@ -34,8 +34,8 @@
             </div>
         </div>
         <div class="col-lg-7">
-            <div id="store-map" :class="`${storeConfig.googlemap_api ? `w-100 h-100` : `d-none`}`"></div>
-            <div v-if="!storeConfig.googlemap_api"  id="store-map-bg" class="w-100 h-100"></div>
+            <div id="store-map" :class="`${zucConfig.googlemap_api ? `w-100 h-100` : `d-none`}`"></div>
+            <div v-if="!zucConfig.googlemap_api"  id="store-map-bg" class="w-100 h-100"></div>
         </div>
     </div>
 </template>
@@ -53,8 +53,8 @@ export default {
         },
     }),
     mounted() {
-        if(this.storeConfig.googlemap_api) {
-            this.initMap(this.storeConfig)
+        if(this.zucConfig.googlemap_api) {
+            this.initMap(this.zucConfig)
         }
     },
     methods: {
@@ -62,9 +62,9 @@ export default {
             
             // Get Google reCAPTCHA token if the site key is set
             const _ = this
-            if(_.storeConfig && _.storeConfig.recaptcha_site_key) {
+            if(_.zucConfig && _.zucConfig.recaptcha_site_key) {
                 grecaptcha.ready(function() {
-                    grecaptcha.execute(_.storeConfig.recaptcha_site_key, { action: 'submit' }).then(function(token) {
+                    grecaptcha.execute(_.zucConfig.recaptcha_site_key, { action: 'submit' }).then(function(token) {
                         _.formdata.grecaptcha_token = token
                     })
                 })
@@ -115,7 +115,7 @@ export default {
         })
     },
     watch: {
-        storeConfig(v) {
+        zucConfig(v) {
             if(v && v.googlemap_api) {
                 this.initMap(v)
             }

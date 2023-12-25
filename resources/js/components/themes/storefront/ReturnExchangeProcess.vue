@@ -17,8 +17,8 @@
                         <tbody>
                             <tr v-for="item in order.items" :key="item.product_id">
                                 <td class="py-4">
-									<img v-if="item.images && item.images.length > 0" :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" alt="" class="img-thumbnail">
-                                    <img v-else :src="`/storage/${storeConfig.small_image_size}/store/no-image.png`" alt="" class="img-thumbnail">
+									<img v-if="item.images && item.images.length > 0" :src="`/storage/${zucConfig.small_image_size}/${item.images[0].src}`" alt="" class="img-thumbnail">
+                                    <img v-else :src="`/storage/${zucConfig.small_image_size}/store/no-image.png`" alt="" class="img-thumbnail">
 								</td>
                                 <td class="py-4">
                                     <p>{{ item.name }}</p>

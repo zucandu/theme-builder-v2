@@ -29,13 +29,13 @@
                         <div class="product-widget__inner mb-3">
                             <div class="inner__img mb-3">
                                 <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">
-                                    <img :src="`/storage/${storeConfig.medium_image_size}/${item.images[0].src}`" :width="storeConfig.medium_image_size" :height="storeConfig.medium_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" :id="`img-listing-${item.id}`" class="img-fluid">
+                                    <img :src="`/storage/${zucConfig.medium_image_size}/${item.images[0].src}`" :width="zucConfig.medium_image_size" :height="zucConfig.medium_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" :id="`img-listing-${item.id}`" class="img-fluid">
                                 </router-link>
                             </div>
                             <div class="inner__additional-images d-flex justify-content-center align-items-center">
                                 <template v-if="item.images.length > 1">
                                     <template v-for="(ai, index) in item.images" :key="ai">
-                                        <img v-if="index < 3" @mouseover="changeImgSrc(item.id, ai.src)" :src="`/storage/${storeConfig.small_image_size}/${ai.src}`" width="30" height="30" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading img-fluid cursor-pointer mx-1">
+                                        <img v-if="index < 3" @mouseover="changeImgSrc(item.id, ai.src)" :src="`/storage/${zucConfig.small_image_size}/${ai.src}`" width="30" height="30" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading img-fluid cursor-pointer mx-1">
                                     </template>
                                 </template>
                                 <router-link v-if="item.images.length > 3" :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="small">+{{ item.images.length-3 }} {{ $t('options') }}</router-link>

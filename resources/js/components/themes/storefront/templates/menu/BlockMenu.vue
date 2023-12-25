@@ -3,7 +3,7 @@
         <figure v-if="item.extra_data && item.extra_data.image">
             <router-link :class="`nav-link ${ extraClass !== undefined ? extraClass : '' }`" :to="url">
                 <img v-if="item.link === 'banner'" :src="`/storage/${item.extra_data.image}`" :alt="setting_translation.title" class="img-fluid">
-                <img v-else :src="`/storage/${storeConfig.medium_image_size}/${item.extra_data.image}`" :alt="setting_translation.title" class="img-fluid">
+                <img v-else :src="`/storage/${zucConfig.medium_image_size}/${item.extra_data.image}`" :alt="setting_translation.title" class="img-fluid">
             </router-link>
         </figure>
         <h5 class="menu-element__content">

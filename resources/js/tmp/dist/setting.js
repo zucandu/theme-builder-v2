@@ -5,7 +5,7 @@ const state = {
     currencies: [],
     currency: "USD",
     alert: {},
-    storeConfig: {}, //use to show data,
+    zucConfig: {}, //use to show data,
     taxes: undefined,
     metaTags: [],
 }
