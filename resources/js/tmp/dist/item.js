@@ -4,7 +4,7 @@ import API_ITEM from '@/api/item'
 // initial state
 const state = {
     products: [],
-    catalog_product_widget: {
+    productWidget: {
         new: [],
         sale: [],
         featured: []
@@ -200,7 +200,7 @@ const actions = {
 // mutations is often used to filter results
 const mutations = {
     SET_PRODUCT_WIDGET(state, response) {
-        state.catalog_product_widget = response.data
+        state.productWidget = response.data
     },
 
     SET_PRODUCT_DETAILS(state, response) {
