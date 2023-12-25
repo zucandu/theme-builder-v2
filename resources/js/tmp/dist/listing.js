@@ -1,4 +1,4 @@
-import apiListing from '@/api/listing'
+import API_LISTING from '@/api/listing'
 
 
 // initial state
@@ -12,7 +12,7 @@ const state = {
 
 // getters
 const getters = {
-    handleParams: () => (params) => {
+    catalog_listing_params: () => (params) => {
         return { 
             slug: params.slug, 
             keyword: params.keyword, 
@@ -28,30 +28,30 @@ const actions = {
      * 
      * @param {Object} params An object of the category slug and query string 
      */
-    async productListingFromCategory({ commit, getters }, params) {
-        commit('setProducts', await apiListing.productListingFromCategory(getters.handleParams(params)))
+    async catalog_listing_by_category({ commit, getters }, params) {
+        commit('SET_LISTING_PRODUCTS', await API_LISTING.catalog_listing_by_category(getters.catalog_listing_params(params)))
     },
 
     /**
      * 
      * @param {Object} params An object of the manufacturer slug and query string 
      */
-    async productListingFromManufacturer({ commit, getters }, params) {
-        commit('setProducts', await apiListing.productListingFromManufacturer(getters.handleParams(params)))
+    async catalog_listing_by_manufacturer({ commit, getters }, params) {
+        commit('SET_LISTING_PRODUCTS', await API_LISTING.catalog_listing_by_manufacturer(getters.catalog_listing_params(params)))
     },
 
     /**
      * 
      * @param {Object} params An object of the keyword and query string 
      */
-    async productListingFromSearchResult({ commit, getters }, params) {
-        commit('setProducts', await apiListing.productListingFromSearchResult(getters.handleParams(params)))
+    async catalog_listing_by_keyword({ commit, getters }, params) {
+        commit('SET_LISTING_PRODUCTS', await API_LISTING.catalog_listing_by_keyword(getters.catalog_listing_params(params)))
     },
 }
 
 // mutations is often used to filter results
 const mutations = {
-    setProducts(state, response) {
+    SET_LISTING_PRODUCTS(state, response) {
         const { paginator, filters, object } = response.data
         state.products = paginator.data
         state.paginationLinks = paginator.links

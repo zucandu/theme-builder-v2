@@ -17,11 +17,11 @@ const getters = {
 const actions = {
     
     async postListing({ commit, rootGetters }, params) {
-        commit('setPosts', await apiDiscover.postListing(rootGetters.handleParams(params)))
+        commit('setPosts', await apiDiscover.postListing(rootGetters.catalog_listing_params(params)))
     },
 
     async postListingFromCategory({ commit, rootGetters }, params) {
-        commit('setPosts', await apiDiscover.postListingFromCategory(rootGetters.handleParams(params)))
+        commit('setPosts', await apiDiscover.postListingFromCategory(rootGetters.catalog_listing_params(params)))
     },
 
     async postDetails({ commit }, slug) {
@@ -29,7 +29,7 @@ const actions = {
     },
 
     async postListingFromKeyword({ commit, rootGetters }, params) {
-        commit('setPosts', await apiDiscover.postListingFromKeyword(rootGetters.handleParams(params)))
+        commit('setPosts', await apiDiscover.postListingFromKeyword(rootGetters.catalog_listing_params(params)))
     },
     
     async latestPosts({ commit }) {

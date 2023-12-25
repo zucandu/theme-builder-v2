@@ -168,7 +168,7 @@ export default {
 
             this.loading = true
 
-            this.$store.dispatch('productListingFromManufacturer', {slug: slug, objParams: params}).catch(error => {
+            this.$store.dispatch('catalog_listing_by_manufacturer', {slug: slug, objParams: params}).catch(error => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
