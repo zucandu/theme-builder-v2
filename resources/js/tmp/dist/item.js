@@ -1,4 +1,4 @@
-import apiItem from '@/api/item'
+import API_ITEM from '@/api/item'
 
 
 // initial state
@@ -21,19 +21,19 @@ const getters = {
      * @param {price} float 
      * @param {taxAmount} float
      */
-     basePriceWithTax: () => () => 0,
+     catalog_product_base_price_with_tax: () => () => 0,
 
     /**
      * Calculate price for product
      * @param {item} object
      */
-     calculatedPrice: () => (item) => ({
+     catalog_product_calc: () => (item) => ({
         retail: item.price,
         sale: +item.sale_price > 0 ? item.sale_price : undefined,
         final: +item.sale_price > 0 ? item.sale_price : item.price,
         tax: 0
     }),
-    displayPrice: () => (price, qty) => {
+    catalog_product_display_price: () => (price, qty) => {
         const __price = price*qty
         return __price ? __price.toFixed(2) : '___'
     },
@@ -41,10 +41,10 @@ const getters = {
     taxRate: () => () => 0,
     priceFormat: () => (price) => price,
     productPrice: (state, getters) => (item, qty = 1) => {
-        const calculated = getters.calculatedPrice(item)
+        const calculated = getters.catalog_product_calc(item)
         return {
-            base: getters.displayPrice(calculated.retail, qty),
-            sale: getters.displayPrice(calculated.sale, qty)
+            base: getters.catalog_product_display_price(calculated.retail, qty),
+            sale: getters.catalog_product_display_price(calculated.sale, qty)
         }
     },
     childProductByAttributes: () => (product, selectedAtt) => {
@@ -184,15 +184,15 @@ const getters = {
 const actions = {
 
     async productWidget({commit}) {
-        commit('setProductWidget', await apiItem.productWidget())
+        commit('setProductWidget', await API_ITEM.productWidget())
     },
 
     async productDetails({commit}, slug) {
-        commit('setProductDetails', await apiItem.productDetails(slug))
+        commit('setProductDetails', await API_ITEM.productDetails(slug))
     },
 
     async latestProductReviews({commit}, id) {
-        commit('setReviews', await apiItem.latestProductReviews(id))
+        commit('setReviews', await API_ITEM.latestProductReviews(id))
     },
     
 }

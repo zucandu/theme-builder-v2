@@ -40,7 +40,7 @@
                                             </div>
                                         </div>
                                         <div class="col-4 shipping-cost text-end">
-                                            <display-price :price="displayPrice(method.cost, 1)"></display-price>
+                                            <display-price :price="catalog_product_display_price(method.cost, 1)"></display-price>
                                         </div>
                                     </template>
                                     <template v-else>
@@ -186,7 +186,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['displayPrice', 'orderParams', 'orderShippingMethods', 'orderPaymentMethods', 'orderPromotions']),
+        ...mapGetters(['catalog_product_display_price', 'orderParams', 'orderShippingMethods', 'orderPaymentMethods', 'orderPromotions']),
         ...mapState({
             formOrderData: state => state.order.formOrderData,
         })

@@ -85,7 +85,7 @@
                             <li v-for="(option, index) in filterOptions" :key="index" class="py-2">
                                 <input v-model="selected" :value="option.id" class="form-check-input" type="checkbox" :id="`cb-option${option.id}`" :disabled="option.count === 0">
                                 <label class="form-check-label ms-2" :for="`cb-option${option.id}`">
-                                    <display-price-range :price-range="displayPriceRange(option.name)"></display-price-range> ({{option.count}})
+                                    <display-price-range :price-range="catalog_product_display_priceRange(option.name)"></display-price-range> ({{option.count}})
                                 </label>
                             </li>
                         </ul>
@@ -129,7 +129,7 @@ export default {
         [...document.querySelectorAll('.collapse')].map(collapseEl => new Collapse(collapseEl))
     },
     computed: {
-        ...mapGetters(['setting_translation', 'displayPriceRange', 'urlParamValueFromName'])
+        ...mapGetters(['setting_translation', 'catalog_product_display_priceRange', 'urlParamValueFromName'])
     },
     watch: {
         selected(v) {

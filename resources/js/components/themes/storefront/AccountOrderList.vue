@@ -73,7 +73,7 @@ export default {
         })
     },
     computed: {
-        ...mapGetters(['displayPrice']),
+        ...mapGetters(['catalog_product_display_price']),
         ...mapState({
             profile: state => state.customer.profile,
             orders: state => state.customer.orders,

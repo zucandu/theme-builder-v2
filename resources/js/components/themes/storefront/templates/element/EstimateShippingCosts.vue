@@ -57,7 +57,7 @@
                         <div v-for="method in shipping.methods" :key="method.id" class="row">
                             <div class="col-9">{{ method.title }}</div>
                             <div class="col-3 text-end">
-                                <display-price :price="displayPrice(method.cost, 1)"></display-price>
+                                <display-price :price="catalog_product_display_price(method.cost, 1)"></display-price>
                             </div>
                         </div>
                     </template>
@@ -113,7 +113,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['cart_total', 'cart_all_items', 'getZonesByCountryCode', 'displayPrice']),
+        ...mapGetters(['cart_total', 'cart_all_items', 'getZonesByCountryCode', 'catalog_product_display_price']),
         ...mapState({
             countries: state => state.country.countries,
             estimateFormData: state => state.cart.estimateFormData,

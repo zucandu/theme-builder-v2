@@ -27,7 +27,7 @@ const getters = {
         return __params
     },
 
-    displayPriceRange: () => (priceRange) => {
+    catalog_product_display_priceRange: () => (priceRange) => {
         const [minPrice, maxPrice] = priceRange.split('-')
         return { min: minPrice, max: maxPrice }
     },
