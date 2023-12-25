@@ -8,7 +8,7 @@ export default {
         })
     },
 
-    updateProduct(formdata) {
+    cart_update_qty_in_cart(formdata) {
         return axios.post('/api/theme-builder/shopping-cart/update-product', formdata, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')

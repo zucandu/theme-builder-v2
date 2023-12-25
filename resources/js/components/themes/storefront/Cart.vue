@@ -190,7 +190,7 @@ export default {
     },
     methods: {
         setProductQtyInput(product, event) {
-            this.$store.dispatch('updateProductQtyInCart', { ...product, ...{ id: product.id, cart_quantity: event.target.value }}).then(() => {
+            this.$store.dispatch('cart_update_qty_in_cart', { ...product, ...{ id: product.id, cart_quantity: event.target.value }}).then(() => {
                 // 
             }).catch(error => {
                 this.$store.commit('SETTING_SET_ALERT', {

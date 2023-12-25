@@ -53,9 +53,9 @@ const actions = {
      * @param {*} param0 
      * @param {*} product 
      */
-    async updateProductQtyInCart({ commit }, product) {
+    async cart_update_qty_in_cart({ commit }, product) {
         if(product.cart_quantity > 0) {
-            commit('updateItemQuantity', await API_CART.updateProduct(product))
+            commit('updateItemQuantity', await API_CART.cart_update_qty_in_cart(product))
         } else {
             commit('CART_REMOVE_PRODUCT', await API_CART.cart_remove_product(product.id))
         }
@@ -103,7 +103,7 @@ const mutations = {
         localStorage.setItem('cart', JSON.stringify(state.items))
     },
 
-    updateProductQtyInCart(state, product) {
+    cart_update_qty_in_cart(state, product) {
         const cartItem = state.items.find(item => +item.id === +product.id)
         cartItem.qty = +product.cart_quantity
 
