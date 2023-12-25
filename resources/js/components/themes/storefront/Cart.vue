@@ -72,12 +72,12 @@
                 <section class="container">
                     <div class="row mt-lg-5 mt-3">
                         <template v-if="loadedWidgets">
-                            <template v-if="productWidget.new.length > 0">
+                            <template v-if="catalog_product_widget.new.length > 0">
                                 <img @load="initTinySliderNew" src="/storage/pixel.gif" alt="js" class="d-none">
                                 <div class="col-12 h3 fw-light pb-5 mb-0"><span class="fw-bold text-dark">{{ $t("New Arrival") }}</span> {{ $t('products') }}</div>
                                 <div :class="`col-12 position-relative ${loadingTinySliderNew ? 'd-none' : ''}`">
                                     <div class="z-tiny-slider-new-section">
-                                        <product-widget :products="productWidget.new" @pickItemRestock="pickItemRestock"></product-widget>
+                                        <product-widget :products="catalog_product_widget.new" @pickItemRestock="pickItemRestock"></product-widget>
                                     </div>
                                 </div>
                                 <template v-if="loadingTinySliderNew">
@@ -97,12 +97,12 @@
                 <section class="container">
                     <div class="row mt-lg-5 mt-3">
                         <template v-if="loadedWidgets">
-                            <template v-if="productWidget.featured.length > 0">
+                            <template v-if="catalog_product_widget.featured.length > 0">
                                 <img @load="initTinySliderFeatured" src="/storage/pixel.gif" alt="js" class="d-none">
                                 <div class="col-12 h3 fw-light pb-5 mb-0"><span class="fw-bold text-dark">{{ $t("Best Selling") }}</span> {{ $t('products') }}</div>
                                 <div :class="`col-12 position-relative ${loadingTinySliderFeatured ? 'd-none' : ''}`">
                                     <div class="z-tiny-slider-featured-section">
-                                        <product-widget :products="productWidget.featured" @pickItemRestock="pickItemRestock"></product-widget>
+                                        <product-widget :products="catalog_product_widget.featured" @pickItemRestock="pickItemRestock"></product-widget>
                                     </div>
                                 </div>
                                 <template v-if="loadingTinySliderFeatured">
@@ -122,12 +122,12 @@
                 <section class="container">
                     <div class="row mt-lg-5 mt-3">
                         <template v-if="loadedWidgets">
-                            <template v-if="productWidget.sale.length > 0">
+                            <template v-if="catalog_product_widget.sale.length > 0">
                                 <img @load="initTinySliderSale" src="/storage/pixel.gif" alt="js" class="d-none">
                                 <div class="col-12 h3 fw-light pb-5 mb-0"><span class="fw-bold text-dark">{{ $t("Sale") }}</span> {{ $t('products') }}</div>
                                 <div :class="`col-12 position-relative ${loadingTinySliderSale ? 'd-none' : ''}`">
                                     <div class="z-tiny-slider-sale-section">
-                                        <product-widget :products="productWidget.sale" @pickItemRestock="pickItemRestock"></product-widget>
+                                        <product-widget :products="catalog_product_widget.sale" @pickItemRestock="pickItemRestock"></product-widget>
                                     </div>
                                 </div>
                                 <template v-if="loadingTinySliderSale">
@@ -186,7 +186,7 @@ export default {
         ProductWidgetLoading, ProductRestockModal, ProductCrosssell, ProductUpsell
     },
     created() {
-        this.$store.dispatch('productWidget').then(() => this.loadedWidgets = true)
+        this.$store.dispatch('catalog_product_widget').then(() => this.loadedWidgets = true)
     },
     methods: {
         setProductQtyInput(product, event) {
@@ -293,7 +293,7 @@ export default {
         ...mapState({
             items: state => state.cart.items,
             
-            productWidget: state => state.product.productWidget,
+            catalog_product_widget: state => state.product.catalog_product_widget,
         })
     }
 }

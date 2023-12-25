@@ -38,7 +38,7 @@ export default {
     }),
     props: ['id', 'average'],
     created() {
-        this.$store.dispatch('latestProductReviews', this.id).then(() => {
+        this.$store.dispatch('catalog_product_latest_reviews', this.id).then(() => {
             this.loadedReviews = true
         })
     },

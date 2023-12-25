@@ -4,12 +4,12 @@ import API_ITEM from '@/api/item'
 // initial state
 const state = {
     products: [],
-    productWidget: {
+    catalog_product_widget: {
         new: [],
         sale: [],
         featured: []
     },
-    productDetails: {},
+    catalog_product_get_info: {},
     reviews: []
 }
 
@@ -54,7 +54,7 @@ const getters = {
     },
     catalog_product_display_attributes: () => ([]),
     catalog_product_variants: (state) => {
-        return state.productDetails.id === 38 ? [ 
+        return state.catalog_product_get_info.id === 38 ? [ 
             { 
                 "id": 1, 
                 "translations": [ { "name": "Color", "locale": "en" } ], 
@@ -88,7 +88,7 @@ const getters = {
         ] : undefined
     },
     catalog_product_attributes_read_only: (state) => {
-        return state.productDetails.id === 38 ? {
+        return state.catalog_product_get_info.id === 38 ? {
             "8": {
                 "translations": [
                     {
@@ -183,16 +183,16 @@ const getters = {
 // actions
 const actions = {
 
-    async productWidget({commit}) {
-        commit('setProductWidget', await API_ITEM.productWidget())
+    async catalog_product_widget({commit}) {
+        commit('setProductWidget', await API_ITEM.catalog_product_widget())
     },
 
-    async productDetails({commit}, slug) {
-        commit('setProductDetails', await API_ITEM.productDetails(slug))
+    async catalog_product_get_info({commit}, slug) {
+        commit('setProductDetails', await API_ITEM.catalog_product_get_info(slug))
     },
 
-    async latestProductReviews({commit}, id) {
-        commit('setReviews', await API_ITEM.latestProductReviews(id))
+    async catalog_product_latest_reviews({commit}, id) {
+        commit('setReviews', await API_ITEM.catalog_product_latest_reviews(id))
     },
     
 }
@@ -200,11 +200,11 @@ const actions = {
 // mutations is often used to filter results
 const mutations = {
     setProductWidget(state, response) {
-        state.productWidget = response.data
+        state.catalog_product_widget = response.data
     },
 
     setProductDetails(state, response) {
-        state.productDetails = response.data.product
+        state.catalog_product_get_info = response.data.product
     },
 
     setReviews(state, response) {
@@ -212,7 +212,7 @@ const mutations = {
     },
 
     resetProductDetails(state) {
-        state.productDetails = {}
+        state.catalog_product_get_info = {}
     }
 }
 
