@@ -1,11 +1,11 @@
 <template>
     <span class="inline-block">
-        <span v-if="currencyConverter">
-            <span v-if="currencyConverter.position === 'l'">
-                {{currencyConverter.symbol}}{{displayPrice(priceRange.min, 1)}} - {{currencyConverter.symbol}}{{displayPrice(priceRange.max, 1)}}
+        <span v-if="setting_currency_converter">
+            <span v-if="setting_currency_converter.position === 'l'">
+                {{setting_currency_converter.symbol}}{{displayPrice(priceRange.min, 1)}} - {{setting_currency_converter.symbol}}{{displayPrice(priceRange.max, 1)}}
             </span>
-            <span v-else-if="currencyConverter.position === 'r'">
-                {{displayPrice(priceRange.min, 1)}}{{currencyConverter.symbol}} - {{displayPrice(priceRange.max, 1)}}{{currencyConverter.symbol}}
+            <span v-else-if="setting_currency_converter.position === 'r'">
+                {{displayPrice(priceRange.min, 1)}}{{setting_currency_converter.symbol}} - {{displayPrice(priceRange.max, 1)}}{{setting_currency_converter.symbol}}
             </span>
         </span>
         <span v-else>___</span>
@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
     props: ['priceRange'],
     computed: {
-        ...mapGetters(['currencyConverter', 'displayPrice']),
+        ...mapGetters(['setting_currency_converter', 'displayPrice']),
     }
 }
 </script>

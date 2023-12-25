@@ -1,11 +1,11 @@
 <template>
     <span>
-        <span v-if="currencyConverter">
-            <span v-if="currencyConverter.position === 'l'">
-                {{ currencyConverter.symbol }}{{ moneyFormat(price, this.currencyConverter.decimal_digits) }}
+        <span v-if="setting_currency_converter">
+            <span v-if="setting_currency_converter.position === 'l'">
+                {{ setting_currency_converter.symbol }}{{ moneyFormat(price, this.setting_currency_converter.decimal_digits) }}
             </span>
-            <span v-else-if="currencyConverter.position === 'r'">
-                {{ moneyFormat(price, this.currencyConverter.decimal_digits) }}{{ currencyConverter.symbol }}
+            <span v-else-if="setting_currency_converter.position === 'r'">
+                {{ moneyFormat(price, this.setting_currency_converter.decimal_digits) }}{{ setting_currency_converter.symbol }}
             </span>
         </span>
         <span v-else>___</span>
@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
     props: ['price'],
     computed: {
-        ...mapGetters(['currencyConverter', 'moneyFormat']),
+        ...mapGetters(['setting_currency_converter', 'moneyFormat']),
     }
 }
 </script>

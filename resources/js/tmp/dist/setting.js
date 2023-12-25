@@ -12,8 +12,8 @@ const state = {
 
 // getters
 const getters = {
-    currencyConverter: (state) => state.currencies.find(currency => currency.code === state.currency) || undefined,
-    currencyByCode: (state) => code => state.currencies.find(currency => currency.code === code) || undefined,
+    setting_currency_converter: (state) => state.currencies.find(currency => currency.code === state.currency) || undefined,
+    setting_get_currency_by_code: (state) => code => state.currencies.find(currency => currency.code === code) || undefined,
     selectedLanguage: (state) => state.languages.find(lang => lang.iso_code === state.language) || undefined,
     selectedCurrency: (state) => state.currencies.find(cur => cur.code === state.currency) || undefined,
     getLanguageById: (state) => id => state.languages.find(lang => +lang.id === +id) || undefined,
