@@ -71,7 +71,7 @@ export default {
             language: state => state.setting.language,
             metaTags: state => state.setting.metaTags,
             profile: state => state.customer.profile,
-            banners: state => state.global.globalBanners
+            banners: state => state.global.globalBanners,
         })
     },
 
