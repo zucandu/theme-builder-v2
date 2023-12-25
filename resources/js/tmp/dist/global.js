@@ -1,3 +1,5 @@
+import API_GLOBAL from '@/api/global';
+
 // initial state
 const state = {}
 
@@ -45,6 +47,14 @@ const actions = {
 
     sendMail({}) {
         alert('OK')
+    },
+
+    /**
+     * Storefront loads banners
+     * @param {*} param0 
+     */
+    async global_banner_all({ commit }) {
+        commit('SET_SF_BANNERS', await API_GLOBAL.global_banner_all())
     },
 }
 

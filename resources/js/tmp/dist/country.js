@@ -21,20 +21,15 @@ const getters = {
 const actions = {
 
     async country_list({commit}) {
-        commit('setCountries', await API_COUNTRY.country_list());
+        commit('SET_COUNTRIES', await API_COUNTRY.country_list());
     }
 }
 
 // mutations is often used to filter results
 const mutations = {
-    setCountries(state, response) {
+    SET_COUNTRIES(state, response) {
         state.countries = response.data.countries;
-    },
-
-    resetFormData(state) {
-        state.formData = {}
-    },
-    
+    }
 }
 
 export default {
