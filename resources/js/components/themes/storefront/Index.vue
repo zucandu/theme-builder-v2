@@ -87,7 +87,7 @@
             <div class="col-12 h3 fw-light pb-5 mb-0"><span class="fw-bold text-dark">{{ $t("Our") }}</span> {{ $t('blog') }}</div>
         </div>
         <div class="row g-4">
-            <div v-for="post in latestPosts" :key="post.id" class="post-index col-lg col-lg-4 col-md-6 col-12">
+            <div v-for="post in tool_post_latest" :key="post.id" class="post-index col-lg col-lg-4 col-md-6 col-12">
                 <div class="post-index__bg w-100 bg-gray-200" :style="`height:180px; background: #e9ecef url('/storage/${zucConfig.medium_image_size}/${post.image}') center center no-repeat;background-size: cover;`"></div>
                 <h4 class="h6 fw-bold my-3">
                     <router-link class="text-dark text-decoration-none" :to="`/article/${setting_translation(post, 'slug', $i18n.locale)}`">
@@ -126,7 +126,7 @@ export default {
     components: { BannerSlideshow, BannersTop, BlockElement, ProductWidget, ProductWidgetLoading, ProductRestockModal },
     created() {
         if(this.posts.length === 0) {
-            this.$store.dispatch('latestPosts')
+            this.$store.dispatch('tool_post_latest')
         }
         this.$store.dispatch('catalog_product_widget').then(() => this.loadedWidgets = true)
     },
@@ -231,7 +231,7 @@ export default {
             
             posts: state => state.blogpost.posts
         }),
-        latestPosts() {
+        tool_post_latest() {
             return _.chunk(this.posts.sort(() => 0.5 - Math.random()) , 5)[0] || []
         }
     }

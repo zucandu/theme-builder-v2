@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         queryPostListing(slug, params) {
-            this.$store.dispatch('postListingFromCategory', { slug: slug, objParams: params }).catch(error => {
+            this.$store.dispatch('tool_post_listing_by_category', { slug: slug, objParams: params }).catch(error => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)

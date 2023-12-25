@@ -105,7 +105,7 @@ export default {
 
             this.loading = true
             
-            this.$store.dispatch('postDetails', slug).catch(error => {
+            this.$store.dispatch('tool_post_get_info', slug).catch(error => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)

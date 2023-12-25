@@ -1,4 +1,4 @@
-import apiDiscover from '@/api/discover'
+import API_DISCOVER from '@/api/discover'
 
 
 // initial state
@@ -16,45 +16,45 @@ const getters = {
 // actions
 const actions = {
     
-    async postListing({ commit, rootGetters }, params) {
-        commit('setPosts', await apiDiscover.postListing(rootGetters.catalog_listing_params(params)))
+    async tool_post_listing({ commit, rootGetters }, params) {
+        commit('SET_POSTS', await API_DISCOVER.tool_post_listing(rootGetters.catalog_listing_params(params)))
     },
 
-    async postListingFromCategory({ commit, rootGetters }, params) {
-        commit('setPosts', await apiDiscover.postListingFromCategory(rootGetters.catalog_listing_params(params)))
+    async tool_post_listing_by_category({ commit, rootGetters }, params) {
+        commit('SET_POSTS', await API_DISCOVER.tool_post_listing_by_category(rootGetters.catalog_listing_params(params)))
     },
 
-    async postDetails({ commit }, slug) {
-        commit('setPostDetails', await apiDiscover.postDetails(slug))
+    async tool_post_listing_by_author({ commit, rootGetters }, params) {
+        commit('SET_POSTS', await API_BLOG_POST.tool_post_listing_by_author(rootGetters.catalog_listing_params(params)))
     },
 
-    async postListingFromKeyword({ commit, rootGetters }, params) {
-        commit('setPosts', await apiDiscover.postListingFromKeyword(rootGetters.catalog_listing_params(params)))
+    async tool_post_listing_by_keyword({ commit, rootGetters }, params) {
+        commit('SET_POSTS', await API_DISCOVER.tool_post_listing_by_keyword(rootGetters.catalog_listing_params(params)))
+    },
+
+    async tool_post_get_info({ commit }, slug) {
+        commit('SET_POST_DETAILS', await API_DISCOVER.tool_post_get_info(slug))
     },
     
-    async latestPosts({ commit }) {
-        commit('setLatestPosts', await apiDiscover.latestPosts())
+    async tool_post_latest({ commit }) {
+        commit('SET_LATEST_POSTS', await API_DISCOVER.tool_post_latest())
     },
 }
 
 // mutations is often used to filter results
 const mutations = {
-    setPosts(state, response) {
+    SET_POSTS(state, response) {
         const { paginator, object } = response.data
         state.posts = paginator.data
         state.paginationLinks = paginator.links
         state.object = !_.isEmpty(object) ? object : undefined
     },
-    setLatestPosts(state, response) {
+    SET_LATEST_POSTS(state, response) {
         state.posts = response.data.posts
     },
-    setPostDetails(state, response) {
+    SET_POST_DETAILS(state, response) {
         state.postDetails = response.data.post
-    },
-
-    resetPostDetails(state) {
-        state.postDetails = {}
-    },
+    }
 }
 
 export default {
