@@ -40,7 +40,7 @@ export default {
         /**
          * Get Init Settings
          */
-        this.$store.dispatch('initSettings').then(() => this.$i18n.locale = this.language)
+        this.$store.dispatch('setting_initialize').then(() => this.$i18n.locale = this.language)
 
         // Loads account info
         if(this.customerAccessToken && Object.keys(this.profile).length === 0) {

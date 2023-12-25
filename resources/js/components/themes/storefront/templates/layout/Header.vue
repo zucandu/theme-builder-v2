@@ -95,7 +95,7 @@ export default {
             return e.target.classList.remove('img-loading')
         },
 		changeLanguage(isoCode) {
-			this.$store.dispatch('selectLanguage', isoCode).then(() => this.$i18n.locale = this.language)
+			this.$store.dispatch('setting_select_lang', isoCode).then(() => this.$i18n.locale = this.language)
 		},
 		changeCurrency(code) {
 			this.$store.commit('setCurrency', { currency: code })
