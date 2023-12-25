@@ -86,7 +86,7 @@ export default {
             }
 
             // Submit review
-            this.$store.dispatch('addProductReview', { ...this.formdata, locale: this.$i18n.locale, product_id: this.catalog_product_get_info.id }).then(() => {
+            this.$store.dispatch('addProductReview', { ...this.formdata, locale: this.$i18n.locale, product_id: this.productDetails.id }).then(() => {
                 
                 this.resetForm()
                 this.$store.commit('SETTING_SET_ALERT', {
@@ -114,12 +114,12 @@ export default {
     computed: {
         ...mapGetters(['isCustomer', 'setting_trans_obj', 'setting_translation']),
         ...mapState({
-            catalog_product_get_info: state => state.product.catalog_product_get_info,
+            productDetails: state => state.product.productDetails,
             
             profile: state => state.customer.profile,
         }),
         productTranslation() {
-            return this.setting_trans_obj(this.catalog_product_get_info, this.$i18n.locale)
+            return this.setting_trans_obj(this.productDetails, this.$i18n.locale)
         }
     },
     watch: {

@@ -2,7 +2,7 @@
     <section class="section-product row g-3 mb-5">
         <div class="col-md-6 h-100">
             <template v-if="loadedProduct">
-                <display-carousel :images="catalog_product_get_info.images" :current-image="actualProductDetails.images[0]" :product-name="productTranslation.name"></display-carousel>
+                <display-carousel :images="productDetails.images" :current-image="actualProductDetails.images[0]" :product-name="productTranslation.name"></display-carousel>
             </template>
             <template v-else>
                 <loading-carousel :small-size="zucConfig.small_image_size" :large-size="zucConfig.large_image_size"></loading-carousel>
@@ -12,7 +12,7 @@
             <div v-if="loadedProduct" class="section-product__details">
                 <form @submit.prevent="add2Cart">
                     <h1 class="fw-light h2">{{ productTranslation.name }}</h1>
-                    <display-rating :rating="catalog_product_get_info.rating" :total="catalog_product_get_info.total_reviews" :url="`/product-review-write/${productTranslation.slug}`" :move-to-element="`#product-reviews-section`"></display-rating>
+                    <display-rating :rating="productDetails.rating" :total="productDetails.total_reviews" :url="`/product-review-write/${productTranslation.slug}`" :move-to-element="`#product-reviews-section`"></display-rating>
                     <div class="mt-3">
                         <template v-if="manufacturerTranslation">
                             <router-link class="d-inline-block text-decoration-none" :to="`/manufacturer/${manufacturerTranslation.slug}`">{{ manufacturerTranslation.name }}</router-link>
@@ -40,9 +40,9 @@
                             {{ $t('Out of stock') }}
                         </span>
                     </div>
-                    <div v-if="catalog_product_get_info.categories.length > 0" class="mt-3">
+                    <div v-if="productDetails.categories.length > 0" class="mt-3">
                         {{ $t('Department(s)') }}: 
-                        <router-link v-for="(category, index) in catalog_product_get_info.categories" :key="category.id" :to="`/category/${setting_translation(category, 'slug', $i18n.locale)}`" class="text-decoration-none">
+                        <router-link v-for="(category, index) in productDetails.categories" :key="category.id" :to="`/category/${setting_translation(category, 'slug', $i18n.locale)}`" class="text-decoration-none">
                             <template v-if="index > 0">, </template>
                             {{ setting_translation(category, 'name', $i18n.locale) }}
                         </router-link>
@@ -110,7 +110,7 @@
                     <div v-if="actualProductDetails.availability_date" class="mt-3 text-info"><strong>{{ $t('Restock date:') }}</strong> {{ actualProductDetails.availability_date }}</div>
 
                     <!-- Display articles for this product. E.g Size, Color, How to use... -->
-                    <product-article :ids="catalog_product_get_info.meta && catalog_product_get_info.meta.articles"></product-article>
+                    <product-article :ids="productDetails.meta && productDetails.meta.articles"></product-article>
 
                     <!-- Product cart form -->
                     <div class="d-inline-block mt-3">
@@ -176,7 +176,7 @@
         <div class="tab-content">
             <div class="tab-pane active" id="zuc-product-description" role="tabpanel" v-html="productTranslation.description"></div>
             <div class="tab-pane" id="zuc-product-reviews" role="tabpanel">
-                <latest-product-reviews :id="catalog_product_get_info.id" :average="catalog_product_get_info.review"></latest-product-reviews>
+                <latest-product-reviews :id="productDetails.id" :average="productDetails.review"></latest-product-reviews>
             </div>
         </div>
     </section>
@@ -254,8 +254,8 @@ export default {
 
             this.$store.dispatch('catalog_product_get_info', slug).then(() => {
 
-                if(this.catalog_product_get_info.default_attributes !== undefined) {
-                    Object.keys(this.catalog_product_get_info.default_attributes).forEach(aoId => (this.selectedAttributes = {  ...this.selectedAttributes, [aoId]: this.catalog_product_get_info.default_attributes[aoId] }))
+                if(this.productDetails.default_attributes !== undefined) {
+                    Object.keys(this.productDetails.default_attributes).forEach(aoId => (this.selectedAttributes = {  ...this.selectedAttributes, [aoId]: this.productDetails.default_attributes[aoId] }))
                 }
 
                 this.loadedProduct = true
@@ -301,22 +301,22 @@ export default {
             'catalog_product_get_child', 'catalog_product_price'
         ]),
         ...mapState({
-            catalog_product_get_info: state => state.product.catalog_product_get_info,
+            productDetails: state => state.product.productDetails,
             
         }),
         actualProductDetails() {
-            const actualProduct = this.catalog_product_get_child(this.catalog_product_get_info, this.selectedAttributes)
+            const actualProduct = this.catalog_product_get_child(this.productDetails, this.selectedAttributes)
             if(actualProduct !== undefined) {
                 return actualProduct;
             } else {
-                return this.catalog_product_get_info;
+                return this.productDetails;
             }
         },
         productTranslation() {
             return this.setting_trans_obj(this.actualProductDetails, this.$i18n.locale)
         },
         manufacturerTranslation() {
-            return this.setting_trans_obj(this.catalog_product_get_info.manufacturer , this.$i18n.locale) || undefined
+            return this.setting_trans_obj(this.productDetails.manufacturer , this.$i18n.locale) || undefined
         }
     },
     watch: {
@@ -336,9 +336,9 @@ export default {
                 oids.forEach(oid => {
                     const attrEls = document.querySelectorAll(`#option${oid} .dropdown-item`)
                     attrEls.forEach(e => document.querySelector(`#attr-${oid}-${e.getAttribute('data-aovid')}`).classList.remove('outofstock'))
-                    this.catalog_product_get_info.attributes.filter(at => +at.attribute_option_id === +oid)
+                    this.productDetails.attributes.filter(at => +at.attribute_option_id === +oid)
                                                     .map(r => r.attribute_option_value_id)
-                                                    .forEach(ovid => this.catalog_product_get_child(this.catalog_product_get_info, { ...this.selectedAttributes, [oid]: ovid }).quantity === 0 
+                                                    .forEach(ovid => this.catalog_product_get_child(this.productDetails, { ...this.selectedAttributes, [oid]: ovid }).quantity === 0 
                                                         && document.querySelector(`#attr-${oid}-${ovid}`).classList.add('outofstock') )
                 })
             }

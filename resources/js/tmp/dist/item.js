@@ -9,7 +9,7 @@ const state = {
         sale: [],
         featured: []
     },
-    catalog_product_get_info: {},
+    productDetails: {},
     reviews: []
 }
 
@@ -54,7 +54,7 @@ const getters = {
     },
     catalog_product_display_attributes: () => ([]),
     catalog_product_variants: (state) => {
-        return state.catalog_product_get_info.id === 38 ? [ 
+        return state.productDetails.id === 38 ? [ 
             { 
                 "id": 1, 
                 "translations": [ { "name": "Color", "locale": "en" } ], 
@@ -88,7 +88,7 @@ const getters = {
         ] : undefined
     },
     catalog_product_attributes_read_only: (state) => {
-        return state.catalog_product_get_info.id === 38 ? {
+        return state.productDetails.id === 38 ? {
             "8": {
                 "translations": [
                     {
@@ -204,7 +204,7 @@ const mutations = {
     },
 
     SET_PRODUCT_DETAILS(state, response) {
-        state.catalog_product_get_info = response.data.product
+        state.productDetails = response.data.product
     },
 
     SET_PRODUCT_REVIEWS(state, response) {
@@ -212,7 +212,7 @@ const mutations = {
     },
 
     reSET_PRODUCT_DETAILS(state) {
-        state.catalog_product_get_info = {}
+        state.productDetails = {}
     }
 }
 

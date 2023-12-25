@@ -96,7 +96,7 @@ export default {
         ...mapGetters(['setting_translation', 'catalog_product_price']),
         ...mapState({
             
-            catalog_product_get_info: state => state.product.catalog_product_get_info,
+            productDetails: state => state.product.productDetails,
         })
     },
     watch: {
@@ -105,8 +105,8 @@ export default {
             if(!v)  return false
             
             let ids = []
-            if(this.catalog_product_get_info.meta && this.catalog_product_get_info.meta.upsells) {
-                ids = this.catalog_product_get_info.meta.upsells
+            if(this.productDetails.meta && this.productDetails.meta.upsells) {
+                ids = this.productDetails.meta.upsells
             } else if(this.items && this.items.length > 0) {
                 this.items.map(i => ids.push(i.id))
             }
