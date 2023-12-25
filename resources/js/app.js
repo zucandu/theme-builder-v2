@@ -17,6 +17,8 @@ import router from './router'
 // Vue I18n Translations
 import i18n from './i18n'
 
+
+
 // Dropzone
 import Dropzone from "dropzone"
 Dropzone.autoDiscover = false
@@ -25,6 +27,10 @@ Dropzone.autoDiscover = false
 import AppComponent from './components/themes/themebuilder.vue'
 
 const app = createApp(AppComponent)
+
+// zucConfig is stored at views/app.blade.php
+app.config.globalProperties.zucConfig = zucConfig
+
 app.use(router)
 .use(tmp)
 .use(i18n)
