@@ -107,13 +107,13 @@ export default {
                     ]
                 },
                 products: this.cartAllItems,
-                subtotal: this.cartTotal
+                subtotal: this.cart_total
 
             }).finally(() => this.estimateLoading = false)
         }
     },
     computed: {
-        ...mapGetters(['cartTotal', 'cartAllItems', 'getZonesByCountryCode', 'displayPrice']),
+        ...mapGetters(['cart_total', 'cartAllItems', 'getZonesByCountryCode', 'displayPrice']),
         ...mapState({
             countries: state => state.country.countries,
             estimateFormData: state => state.cart.estimateFormData,

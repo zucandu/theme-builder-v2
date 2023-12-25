@@ -44,7 +44,7 @@
                                                 <tr>
                                                     <td colspan="3" class="text-end border-0">{{$t('Subtotal:')}}</td>
                                                     <td class="text-end border-0">
-                                                        <display-price :price="cartTotal"></display-price>
+                                                        <display-price :price="cart_total"></display-price>
                                                     </td>
                                                 </tr>
                                                 <tr v-if="formOrderData.shipping.id">
@@ -156,7 +156,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'cartTotal', 'isCustomerLogged', 
+        ...mapGetters(['setting_translation', 'cart_total', 'isCustomerLogged', 
                         'account_customer_access_token', 'productPrice', 
                         'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
                         'ready2Checkout', 'orderTaxName', 'orderShippingMethods']),

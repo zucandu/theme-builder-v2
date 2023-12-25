@@ -18,16 +18,15 @@ const state = {
 
 // getters
 const getters = {
-    cartNumberOfItems: (state) => state.items.length || 0,
-    cartTotalQuantity: () => 0,
-    cartTotal: (state) => {
+    cart_number_of_items: (state) => state.items.length || 0,
+    cart_total: (state) => {
         let total = 0
         state.items.forEach(item => {
             total += item.qty * item.price
         })
         return total.toFixed(2)
     },
-    cartTotalWeight: () => 0,
+    cart_totalWeight: () => 0,
     cartAllItems: state => state.items,
     foundItemOutOfStock: () => false,
 }

@@ -24,7 +24,7 @@
                 </div>
                 <div class="total-items">
                     <a href="javascript:void(0);" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#z-cart-modal">
-                        {{ items.length }} {{ $t('item(s)') }} - <display-price :price="cartTotal"></display-price>
+                        {{ items.length }} {{ $t('item(s)') }} - <display-price :price="cart_total"></display-price>
                     </a>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                             <div class="card-footer bg-transparent px-0 py-3">
                                 <div class="d-flex justify-content-between mb-3">
                                     <div>{{ $t('Subtotal') }}</div>
-                                    <div><display-price :price="cartTotal"></display-price></div>
+                                    <div><display-price :price="cart_total"></display-price></div>
                                 </div>
                                 <div class="row g-3">
                                     <div class="col-6">
@@ -93,7 +93,7 @@ export default {
         DisplayPrice, ProductDisplayPrice
     },
     computed: {
-        ...mapGetters(['setting_translation', 'productPrice', 'cartTotal']),
+        ...mapGetters(['setting_translation', 'productPrice', 'cart_total']),
         ...mapState({
             
             items: state => state.cart.items,

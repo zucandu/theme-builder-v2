@@ -54,11 +54,11 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                        <estimate-shipping-costs :subtotal="cartTotal"></estimate-shipping-costs>
+                        <estimate-shipping-costs :subtotal="cart_total"></estimate-shipping-costs>
                     </div>
                     <div class="col-lg-6 text-end">
                         <div class="text-end fw-bold h5 mb-3">
-                            {{ $t('Subtotal') }}: <display-price :price="cartTotal"></display-price>
+                            {{ $t('Subtotal') }}: <display-price :price="cart_total"></display-price>
                         </div>
                         <div class="text-end">
                             <router-link class="btn btn-primary" to="/checkout">{{$t('Go to the checkout')}}</router-link>
@@ -289,7 +289,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['cartTotal', 'foundItemOutOfStock', 'setting_translation', 'productImageSrc', 'productPrice', 'cartAllItems']),
+        ...mapGetters(['cart_total', 'foundItemOutOfStock', 'setting_translation', 'productImageSrc', 'productPrice', 'cartAllItems']),
         ...mapState({
             items: state => state.cart.items,
             
