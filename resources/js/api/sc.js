@@ -16,7 +16,7 @@ export default {
         })
     },
 
-    removeProduct(id) {
+    cart_remove_product(id) {
         return axios.get(`/api/theme-builder/shopping-cart/remove-product/${id}`)
     },
 

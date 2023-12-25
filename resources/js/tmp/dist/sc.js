@@ -44,8 +44,8 @@ const actions = {
      * @param {*} param0 
      * @param {*} id 
      */
-    async removeProduct({ commit }, id) {
-        commit('removeProduct', await API_CART.removeProduct(id))
+    async cart_remove_product({ commit }, id) {
+        commit('CART_REMOVE_PRODUCT', await API_CART.cart_remove_product(id))
     },
 
     /**
@@ -57,7 +57,7 @@ const actions = {
         if(product.cart_quantity > 0) {
             commit('updateItemQuantity', await API_CART.updateProduct(product))
         } else {
-            commit('removeProduct', await API_CART.removeProduct(product.id))
+            commit('CART_REMOVE_PRODUCT', await API_CART.cart_remove_product(product.id))
         }
     },
 
@@ -98,7 +98,7 @@ const mutations = {
         localStorage.setItem('cart', JSON.stringify(state.items));
     },
 
-    removeProduct(state, {}) {
+    CART_REMOVE_PRODUCT(state, {}) {
         state.items.splice(0, 1)
         localStorage.setItem('cart', JSON.stringify(state.items))
     },
