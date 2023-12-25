@@ -129,7 +129,7 @@ export default {
             if(this.profile.is_guest !== 1) {
                 this.$store.dispatch('account')
             }
-            this.$store.commit('cartReset')
+            this.$store.commit('CART_RESET')
         }).catch(error => {
             this.$store.commit('SETTING_SET_ALERT', {
                 'color': 'danger', 
