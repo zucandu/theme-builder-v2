@@ -61,7 +61,7 @@
 
                     <!-- Product price -->
                     <div class="h4 mt-3 mb-0 fw-bold">
-                        <product-display-price :product-price="productPrice(actualProductDetails, 1)"></product-display-price>
+                        <product-display-price :product-price="catalog_product_price(actualProductDetails, 1)"></product-display-price>
                     </div>
 
                     <!-- Product variants -->
@@ -298,7 +298,7 @@ export default {
     computed: {
         ...mapGetters([
             'setting_translation', 'setting_trans_obj', 'productVariants', 'productAttributesReadonly', 'productAttributesText', 
-            'childProductByAttributes', 'productPrice'
+            'childProductByAttributes', 'catalog_product_price'
         ]),
         ...mapState({
             productDetails: state => state.product.productDetails,

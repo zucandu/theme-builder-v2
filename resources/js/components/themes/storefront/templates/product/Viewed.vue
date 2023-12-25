@@ -13,7 +13,7 @@
                             <display-rating :rating="item.rating" :total="item.total_reviews"></display-rating>
                             <div class="d-flex align-items-center">
                                 <div class="fw-bold">
-                                    <product-display-price :product-price="productPrice(item, 1)"></product-display-price>
+                                    <product-display-price :product-price="catalog_product_price(item, 1)"></product-display-price>
                                 </div>
                                 <template v-if="+item.has_attributes === 0">
                                     <svg v-if="item.quantity > 0" @click.stop="addToCart(item)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill text-success ms-2 cursor-pointer" viewBox="0 0 16 16">
@@ -79,7 +79,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'productPrice']),
+        ...mapGetters(['setting_translation', 'catalog_product_price']),
         ...mapState({
             
         }),

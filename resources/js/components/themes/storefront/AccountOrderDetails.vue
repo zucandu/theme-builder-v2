@@ -216,7 +216,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['productPrice', 'catalog_product_display_price']),
+        ...mapGetters(['catalog_product_price', 'catalog_product_display_price']),
         ...mapState({
             order: state => state.order.orderFromDb,
             orderTrackingDetails: state => state.order.orderTrackingDetails,

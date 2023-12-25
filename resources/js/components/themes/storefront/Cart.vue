@@ -45,10 +45,10 @@
                             <p class="small text-danger" v-if="item.qty > item.inventory">{{$t('Current inventory in stock:')}} {{item.inventory}}</p>
                         </div>
                         <div class="offset-3 offset-md-0 col-6 col-md-2 text-md-end">
-                            <product-display-price :product-price="productPrice(item, 1)"></product-display-price>
+                            <product-display-price :product-price="catalog_product_price(item, 1)"></product-display-price>
                         </div>
                         <div class="offset-3 offset-md-0 col-6 col-md-2 text-md-end">
-                            <product-display-price :product-price="productPrice(item, item.qty)"></product-display-price>
+                            <product-display-price :product-price="catalog_product_price(item, item.qty)"></product-display-price>
                         </div>
                     </div>
                 </div>
@@ -289,7 +289,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['cart_total', 'cart_has_out_of_stock', 'setting_translation', 'productImageSrc', 'productPrice', 'cart_all_items']),
+        ...mapGetters(['cart_total', 'cart_has_out_of_stock', 'setting_translation', 'productImageSrc', 'catalog_product_price', 'cart_all_items']),
         ...mapState({
             items: state => state.cart.items,
             

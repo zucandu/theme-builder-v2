@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="inner__price fw-bold mt-3">
-                                <product-display-price :product-price="productPrice(item, 1)"></product-display-price>
+                                <product-display-price :product-price="catalog_product_price(item, 1)"></product-display-price>
                             </div>
                             <template v-if="item.quantity > 0">
                                 <div v-if="+item.has_attributes === 0" class="inner__cart d-flex w-100 bottom-0 mt-3">
@@ -212,7 +212,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'productPrice', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'catalog_product_price', 'urlGetAllParams']),
         ...mapState({
             products: state => state.listing.products,
             paginationLinks: state => state.listing.paginationLinks,

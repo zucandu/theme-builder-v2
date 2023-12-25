@@ -32,7 +32,7 @@
 
                                                     </td>
                                                     <td class="text-end">
-                                                        <product-display-price :product-price="productPrice(item, item.qty)"></product-display-price>
+                                                        <product-display-price :product-price="catalog_product_price(item, item.qty)"></product-display-price>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -157,7 +157,7 @@ export default {
     },
     computed: {
         ...mapGetters(['setting_translation', 'cart_total', 'isCustomerLogged', 
-                        'account_customer_access_token', 'productPrice', 
+                        'account_customer_access_token', 'catalog_product_price', 
                         'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
                         'ready2Checkout', 'orderTaxName', 'orderShippingMethods']),
         ...mapState({

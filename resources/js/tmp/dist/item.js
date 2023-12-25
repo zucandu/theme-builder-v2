@@ -37,10 +37,10 @@ const getters = {
         const __price = price*qty
         return __price ? __price.toFixed(2) : '___'
     },
-    taxRateAmount: () => () => 0,
-    taxRate: () => () => 0,
-    priceFormat: () => (price) => price,
-    productPrice: (state, getters) => (item, qty = 1) => {
+    catalog_product_tax_rate_amount: () => () => 0,
+    catalog_product_tax_rate: () => () => 0,
+    catalog_product_price_format: () => (price) => price,
+    catalog_product_price: (state, getters) => (item, qty = 1) => {
         const calculated = getters.catalog_product_calc(item)
         return {
             base: getters.catalog_product_display_price(calculated.retail, qty),

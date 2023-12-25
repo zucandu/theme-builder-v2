@@ -56,7 +56,7 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        <product-display-price :product-price="productPrice(item, item.qty)"></product-display-price>
+                                        <product-display-price :product-price="catalog_product_price(item, item.qty)"></product-display-price>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ export default {
         DisplayPrice, ProductDisplayPrice
     },
     computed: {
-        ...mapGetters(['setting_translation', 'productPrice', 'cart_total']),
+        ...mapGetters(['setting_translation', 'catalog_product_price', 'cart_total']),
         ...mapState({
             
             items: state => state.cart.items,

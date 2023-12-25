@@ -13,7 +13,7 @@
         </h5>
         <template v-if="item.rating || item.extra_data.price">
             <display-rating :rating="item.rating" :total="item.total_reviews"></display-rating>
-            <product-display-price :product-price="productPrice(item.extra_data, 1)"></product-display-price>
+            <product-display-price :product-price="catalog_product_price(item.extra_data, 1)"></product-display-price>
         </template>
     </section>
 </template>
@@ -26,7 +26,7 @@ export default {
     props: ['item', 'extraClass'],
     components: { ProductDisplayPrice, DisplayRating },
     computed: {
-        ...mapGetters(['setting_trans_obj', 'trim', 'productPrice']),
+        ...mapGetters(['setting_trans_obj', 'trim', 'catalog_product_price']),
         ...mapState({
             
         }),
