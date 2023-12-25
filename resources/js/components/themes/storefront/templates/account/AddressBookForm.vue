@@ -113,7 +113,7 @@ export default {
             }
 
             // Set CountryID
-            const country = this.getCountryByCode(this.formdata.country_code)
+            const country = this.country_get_by_code(this.formdata.country_code)
             this.formdata = Object.assign({}, this.formdata, {
                  country_id: country.id
             })
@@ -186,7 +186,7 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'country_get_zones_by_country_id', 'country_get_by_id', 'getCountryByCode', 
+            'country_get_zones_by_country_id', 'country_get_by_id', 'country_get_by_code', 
             'country_get_zone_by_id', 'country_get_zone_by_code', 'addressLength'
         ]),
         ...mapState({

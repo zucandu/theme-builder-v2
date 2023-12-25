@@ -72,7 +72,7 @@ export default {
     },
     mounted() {
         if(this.countries.length === 0) {
-            this.$store.dispatch('listCountries')
+            this.$store.dispatch('country_list')
         }
     },
     methods: {

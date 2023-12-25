@@ -130,7 +130,7 @@ export default {
     }),
     created() {
         if(this.countries.length === 0) {
-            this.$store.dispatch('listCountries').then(() => {
+            this.$store.dispatch('country_list').then(() => {
                 this.setCountryId()
             })
         }
@@ -223,7 +223,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['country_get_zones_by_country_id', 'country_get_by_id', 'getCountryByCode', 
+        ...mapGetters(['country_get_zones_by_country_id', 'country_get_by_id', 'country_get_by_code', 
         'country_get_zone_by_id', 'country_get_zone_by_code', 'addressLength', 'cart_all_items']),
         ...mapState({
             countries: state => state.country.countries,

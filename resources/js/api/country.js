@@ -1,5 +1,5 @@
 export default {
-    listCountries() {
+    country_list() {
         return axios.get('/api/theme-builder/country-list');
     },
 }

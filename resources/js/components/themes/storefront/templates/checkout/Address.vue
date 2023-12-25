@@ -141,7 +141,7 @@ export default {
         
         // Load countries and set country default
         if(this.countries.length === 0) {
-            this.$store.dispatch('listCountries').then(() => {
+            this.$store.dispatch('country_list').then(() => {
                 this.setCountryId()
             })
         }
@@ -230,7 +230,7 @@ export default {
             if(this.formdata.country_code !== undefined) {
 
                 // Assign country id
-                const country = this.getCountryByCode(this.formdata.country_code)
+                const country = this.country_get_by_code(this.formdata.country_code)
                 if(country) {
                     this.formdata = { ...this.formdata, country_id: country.id }
                 }
@@ -259,7 +259,7 @@ export default {
             Object.keys(address).map(k => this.formdata[k] = address[k])
 
             // Assign country id
-            const country = this.getCountryByCode(this.formdata.country_code)
+            const country = this.country_get_by_code(this.formdata.country_code)
             if(country) {
                 this.formdata = { ...this.formdata, country_id: country.id }
             }
@@ -274,7 +274,7 @@ export default {
     },
     computed: {
         ...mapGetters(['addressLength', 'defaultBillingAddress', 'defaultShippingAddress', 
-        'country_get_zones_by_country_id', 'country_get_by_id', 'getCountryByCode', 'country_get_zone_by_id', 'country_get_zone_by_code']),
+        'country_get_zones_by_country_id', 'country_get_by_id', 'country_get_by_code', 'country_get_zone_by_id', 'country_get_zone_by_code']),
         ...mapState({
             countries: state => state.country.countries,
             profile: state => state.customer.profile,

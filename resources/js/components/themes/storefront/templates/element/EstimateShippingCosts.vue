@@ -82,7 +82,7 @@ export default {
 
         // Get countries and assign the default country
         if(this.countries.length === 0) {
-            this.$store.dispatch('listCountries').then(() => this.estimateFormData.country_code = this.countries.find(country => country.id > 0).iso_code_2)
+            this.$store.dispatch('country_list').then(() => this.estimateFormData.country_code = this.countries.find(country => country.id > 0).iso_code_2)
         } else {
             this.estimateFormData.country_code = this.countries.find(country => country.id > 0).iso_code_2
         }
