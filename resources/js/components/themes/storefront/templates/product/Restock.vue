@@ -82,12 +82,12 @@ export default {
             }}
 
             this.$store.dispatch('restockNotifySignup', this.formdata).then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('You have been successfully subscribed to the restock notification list.')
                 })
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

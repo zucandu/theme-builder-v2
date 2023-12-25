@@ -82,7 +82,7 @@ export default {
                     this.$router.push('/')
                 })
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 });

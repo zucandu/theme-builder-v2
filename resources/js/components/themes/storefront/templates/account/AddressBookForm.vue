@@ -157,26 +157,26 @@ export default {
                     id: this.$route.params.id
                 })
                 this.$store.dispatch('updateAddress', this.formdata).then(() => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('Updated!')
                     });
                     this.$router.push('/account/address-book');
                 }).catch(error => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'danger', 
                         'message': this.$t(error.response.data.message)
                     });
                 });
             } else {
                 this.$store.dispatch('addNewAddress', this.formdata).then(() => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('A new address has been created')
                     });
                     this.$router.push('/account/address-book')
                 }).catch(error => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'danger', 
                         'message': this.$t(error.response.data.message)
                     })

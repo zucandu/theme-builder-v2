@@ -40,12 +40,12 @@ export default {
             }
 
             this.$store.dispatch('subscribeNewsletter', this.formdata).then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Thank you for subscribing to our newsletter.')
                 })
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

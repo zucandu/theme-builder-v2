@@ -40,13 +40,13 @@ export default {
     methods: {
         resetPassword() {
             this.$store.dispatch('resetPassword', this.formdata).then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Your password has been reset. Please login and happy shopping!')
                 });
                 this.$router.push('/login')
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 });

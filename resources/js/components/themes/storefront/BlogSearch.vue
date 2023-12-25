@@ -63,7 +63,7 @@ export default {
     methods: {
         queryPostListing(params) {
             this.$store.dispatch('postListingFromKeyword', { objParams: params }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

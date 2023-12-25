@@ -79,12 +79,12 @@ export default {
         convertGuest2NormalAccount() {
             this.converting = true
             this.$store.dispatch('convertGuest2NormalAccount').then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t("We have emailed you a temporary password. Please check your email and change it as soon as possible.")
                 })
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

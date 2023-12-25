@@ -28,13 +28,13 @@ export default {
     methods: {
         unsubscribeNewsletter() {
             this.$store.dispatch('unsubscribeNewsletter', this.formdata).then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t("You've been unsubscribed from our newsletter."),
                 })
                 this.$router.push('/');
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': error.response.data.message,
                 })

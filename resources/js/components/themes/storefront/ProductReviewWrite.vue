@@ -89,7 +89,7 @@ export default {
             this.$store.dispatch('addProductReview', { ...this.formdata, locale: this.$i18n.locale, product_id: this.productDetails.id }).then(() => {
                 
                 this.resetForm()
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Thank you for the review. We will review and publish it as soon as possible.')
                 })
@@ -98,7 +98,7 @@ export default {
                 this.$router.push(`/${this.$route.params.productslug}`)
 
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

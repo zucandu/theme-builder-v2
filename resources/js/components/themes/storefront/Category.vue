@@ -175,7 +175,7 @@ export default {
             this.loading = true
 
             this.$store.dispatch('productListingFromCategory', {slug: slug, objParams: params}).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })
@@ -198,12 +198,12 @@ export default {
         addToCart(item, qty) {
             const productName = this.setting_translation(item, 'name', this.$i18n.locale)
             this.$store.dispatch('addProduct2Cart', { id: item.id, cart_quantity: qty }).then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': `${productName} ${this.$t("has been added to your cart.")}`
                 })
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

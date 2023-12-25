@@ -61,7 +61,7 @@ export default {
             this.$emit('updateContent', { field: 'avatar', content: undefined })
         },
         dzError(file, response) {
-            this.$store.commit('setAlert', {
+            this.$store.commit('SETTING_SET_ALERT', {
                 'color': 'danger', 
                 'message': this.$t(response.message)
             })

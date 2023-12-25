@@ -149,7 +149,7 @@ export default {
             }
             this.loaded = true
         }).catch(error => {
-            this.$store.commit('setAlert', {
+            this.$store.commit('SETTING_SET_ALERT', {
                 'color': 'danger', 
                 'message': this.$t(error.response.data.message)
             })
@@ -163,13 +163,13 @@ export default {
 
             this.$store.dispatch('rmaRequest', this.formdata).then(() => {
                 this.$store.dispatch('orderDetailsByRef', this.$route.params.ref).then(() => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t(`We have received your request and we will contact you as soon as possible.`)
                     })
                 })
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

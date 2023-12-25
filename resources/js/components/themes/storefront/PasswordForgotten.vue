@@ -46,12 +46,12 @@ export default {
             }
 
             this.$store.dispatch('forgotPassword', this.formdata).then(() => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('We have e-mailed your password reset link!')
                 });
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 });

@@ -197,26 +197,26 @@ export default {
             if(this.isNewAddress === false) {
                 this.formdata = { ...this.formdata, id: this.formdata.id}
                 this.$store.dispatch('updateAddress', this.formdata).then(() => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('Updated!')
                     });
                     this.$emit('updateCheckoutStep', { step: 'CheckoutForm' })
                 }).catch(error => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'error', 
                         'message': this.$t(error.response.data.message)
                     });
                 });
             } else {
                 this.$store.dispatch('addNewAddress', this.formdata).then(() => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('Your new address created!')
                     });
                     this.$emit('updateCheckoutStep', { step: 'CheckoutForm' })
                 }).catch(error => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'danger', 
                         'message': this.$t(error.response.data.message)
                     })

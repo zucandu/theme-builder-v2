@@ -98,7 +98,7 @@ export default {
 			this.$store.dispatch('setting_select_lang', isoCode).then(() => this.$i18n.locale = this.language)
 		},
 		changeCurrency(code) {
-			this.$store.commit('setCurrency', { currency: code })
+			this.$store.commit('SETTING_SET_CURRRENCY', { currency: code })
 		}
     },
     computed: {

@@ -56,7 +56,7 @@ export default {
             this.$store.dispatch('verifyOrderByGuest', this.formdata).then(() => {
                 this.$router.push(`/track-order/${this.orderRef}`)
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

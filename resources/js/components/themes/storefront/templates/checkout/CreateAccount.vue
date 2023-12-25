@@ -143,7 +143,7 @@ export default {
             
             // Check password
             if(this.formdata.password !== this.formdata.passwordconfirm) {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t("Password does not match!")
                 })
@@ -195,14 +195,14 @@ export default {
                 this.$store.dispatch('addNewAddress', this.formdata).then(() => {
                     this.$emit('updateCheckoutStep', { step: 'CheckoutForm' })
                 }).catch(error => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'danger', 
                         'message': this.$t(error.response.data.message)
                     })
                 })
 
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 });

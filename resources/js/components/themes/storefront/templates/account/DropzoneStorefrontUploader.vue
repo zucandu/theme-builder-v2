@@ -40,7 +40,7 @@ export default {
             })
         },
         dzError(file, response) {
-            this.$store.commit('setAlert', {
+            this.$store.commit('SETTING_SET_ALERT', {
                 'color': 'danger', 
                 'message': this.$t(response.message)
             })

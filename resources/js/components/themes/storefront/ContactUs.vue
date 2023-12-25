@@ -74,13 +74,13 @@ export default {
             }
 
             this.$store.dispatch('sendMail', this.formdata).then(() => {
-               this.$store.commit('setAlert', {
+               this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Thank you for contacting us. We will get to you as soon as possible.')
                 })
                 this.resetForm()
             }).catch(error => {
-                this.$store.commit('setAlert', {
+                this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })

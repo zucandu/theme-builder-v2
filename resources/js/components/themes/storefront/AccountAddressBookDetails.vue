@@ -51,12 +51,12 @@ export default {
             let wConfirm = confirm("Are you sure you want to delete this address?");
             if(wConfirm == true) {
                 this.$store.dispatch('deleteAddress', id).then(() => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('Your address has been deleted')
                     })
                 }).catch(error => {
-                    this.$store.commit('setAlert', {
+                    this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'danger', 
                         'message': this.$t(error.response.data.message)
                     })

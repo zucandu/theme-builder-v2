@@ -48,10 +48,7 @@ const actions = {
         commit('SETTING_SET_METATAGS', meta)
     },
     setting_select_lang({ commit }) {
-        commit('setLanguage', `{"lang":"en"}`)
-    },
-    resetSettingState ({ commit }) {
-        commit('resetSettingState')
+        commit('SETTING_SET_LANG', `{"lang":"en"}`)
     }
 }
 
@@ -61,7 +58,7 @@ const mutations = {
         state.languages = languages;
     },
 
-    setLanguage(state, json) {
+    SETTING_SET_LANG(state, json) {
         state.language = JSON.parse(json).lang
         localStorage.setItem('language', state.language)
     },
@@ -70,7 +67,7 @@ const mutations = {
         state.currencies = currencies
     },
 
-    setCurrency(state, payload) {
+    SETTING_SET_CURRRENCY(state, payload) {
         state.currency = payload.currency;
         localStorage.setItem('currency', payload.currency)
     },
@@ -83,16 +80,8 @@ const mutations = {
         state.metaTags = respMetaTags
     },
 
-    setAlert(state, msg) {
+    SETTING_SET_ALERT(state, msg) {
         state.alert = Object.assign({}, msg, {time: new Date().getTime()})
-    },
-
-    resetAlert(state) {
-        state.alert = {}
-    },
-    
-    setConfigCache(state, zucConfig) {
-        state.storeConfig = zucConfig;
     },
 }
 
