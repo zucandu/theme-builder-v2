@@ -9,12 +9,12 @@
                         <div class="text-gray-500 d-md-flex justify-content-between my-4">
                             <div class="left d-sm-flex align-items-center mb-sm-3 mb-md-0">
                                 <div v-if="postDetails.categories.length > 0" class="mb-2 mb-sm-0">
-                                    <router-link v-for="category in postDetails.categories" :key="category" class="btn btn-sm btn-outline-success me-3" :to="`/blog/category/${translation(category, 'slug', $i18n.locale)}`">
+                                    <router-link v-for="category in postDetails.categories" :key="category" class="btn btn-sm btn-outline-success me-3" :to="`/blog/category/${setting_translation(category, 'slug', $i18n.locale)}`">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag me-1" viewBox="0 0 16 16">
                                             <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
                                             <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
                                         </svg>
-                                        {{ translation(category, 'name', $i18n.locale) }}
+                                        {{ setting_translation(category, 'name', $i18n.locale) }}
                                     </router-link>
                                 </div>
                                 <div>
@@ -34,7 +34,7 @@
                             <ul class="list-unstyled">
                                 <li v-for="post in postDetails.related_posts" :key="post.id" class="d-flex mb-3">
                                     <div class="fw-bold text-danger me-3">{{ post.date_added }}</div>
-                                    <router-link :to="`/article/${translation(post, 'slug', this.$i18n.locale)}`" class="text-decoration-none">{{ translation(post, 'title', this.$i18n.locale) }}</router-link>
+                                    <router-link :to="`/article/${setting_translation(post, 'slug', this.$i18n.locale)}`" class="text-decoration-none">{{ setting_translation(post, 'title', this.$i18n.locale) }}</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -124,7 +124,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['transObj', 'translation']),
+        ...mapGetters(['transObj', 'setting_translation']),
         ...mapState({
             postDetails: state => state.blogpost.postDetails,
             storeConfig: state => state.setting.storeConfig

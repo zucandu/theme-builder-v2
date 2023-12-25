@@ -5,13 +5,13 @@
                 <ul class="list-unstyled mt-3 mb-0">
                     <li v-for="article in articles" :key="article.id">
                         <button v-if="+article.block === 2" type="button" class="btn btn-link p-0 text-decoration-none" @click.stop="openModal(article)">
-                            {{ translation(article, 'name', $i18n.locale) }}
+                            {{ setting_translation(article, 'name', $i18n.locale) }}
                         </button>
                         <div v-else-if="+article.block === 1" class="block-single-article">
-                            <h5 class="h6 title">{{ translation(article, 'name', $i18n.locale) }}</h5>
-                            <div class="summary" v-html="translation(article, 'summary', $i18n.locale)"></div>
+                            <h5 class="h6 title">{{ setting_translation(article, 'name', $i18n.locale) }}</h5>
+                            <div class="summary" v-html="setting_translation(article, 'summary', $i18n.locale)"></div>
                         </div>
-                        <router-link v-else :to="`/article/${translation(article, 'slug', $i18n.locale)}`">{{ translation(article, 'name', $i18n.locale) }}</router-link>
+                        <router-link v-else :to="`/article/${setting_translation(article, 'slug', $i18n.locale)}`">{{ setting_translation(article, 'name', $i18n.locale) }}</router-link>
                     </li>
                 </ul>
             </section>
@@ -25,11 +25,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-article-label">{{ translation(modalContent, 'name', $i18n.locale) }}</h5>
+                    <h5 class="modal-title" id="modal-article-label">{{ setting_translation(modalContent, 'name', $i18n.locale) }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div v-html="translation(modalContent, 'summary', $i18n.locale)"></div>
+                    <div v-html="setting_translation(modalContent, 'summary', $i18n.locale)"></div>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['translation']),
+        ...mapGetters(['setting_translation']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig
         }),

@@ -2,13 +2,13 @@
     <div v-for="item in products" :key="item.id" class="product-widget px-3">
         <div class="product-widget__inner">
             <div class="inner__img mb-3">
-                <router-link :to="`/${translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">
-                    <img :src="`/storage/${storeConfig.medium_image_size}/${item.images[0].src}`" :width="storeConfig.medium_image_size" :height="storeConfig.medium_image_size" :alt="translation(item, 'name', $i18n.locale)" class="img-fluid">
+                <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">
+                    <img :src="`/storage/${storeConfig.medium_image_size}/${item.images[0].src}`" :width="storeConfig.medium_image_size" :height="storeConfig.medium_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-fluid">
                 </router-link>
             </div>
             <h3 class="inner__title h6 fw-light mb-0">
-                <router-link :to="`/${translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none text-dark">
-                    {{ translation(item, 'name', $i18n.locale) }}
+                <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none text-dark">
+                    {{ setting_translation(item, 'name', $i18n.locale) }}
                 </router-link>
             </h3>
             <div v-if="item.total_reviews > 0" class="d-flex justify-content-between">
@@ -30,7 +30,7 @@
                     </button>
                 </div>
                 <div v-else class="inner__cart d-flex w-100 bottom-0 mt-3">
-                    <router-link class="btn btn-sm btn-success text-white w-100 d-block" :to="`/${translation(item, 'slug', $i18n.locale)}`">{{ $t('Choose options') }}</router-link>
+                    <router-link class="btn btn-sm btn-success text-white w-100 d-block" :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">{{ $t('Choose options') }}</router-link>
                 </div>
             </template>
             <template v-else>
@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         addToCart(item, qty = 1) {
-            const productName = this.translation(item, 'name', this.$i18n.locale)
+            const productName = this.setting_translation(item, 'name', this.$i18n.locale)
             this.$store.dispatch('addProduct2Cart', { id: item.id, cart_quantity: qty }).then(() => {
                 this.$store.commit('setAlert', {
                     'color': 'success', 
@@ -79,11 +79,11 @@ export default {
             })
         },
         pickpickItemRestock(item) {
-            this.$emit('pickItemRestock', { id: item.id, name: this.translation(item, 'name', this.$i18n.locale) })
+            this.$emit('pickItemRestock', { id: item.id, name: this.setting_translation(item, 'name', this.$i18n.locale) })
         }
     },
     computed: {
-        ...mapGetters(['productPrice', 'translation']),
+        ...mapGetters(['productPrice', 'setting_translation']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig,
         })

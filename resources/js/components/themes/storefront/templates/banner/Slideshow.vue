@@ -2,10 +2,10 @@
     <div id="slideshow" :class="`carousel slide px-0 ${loading ? `loading` : `loaded`}`" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div :class="`carousel-item position-relative cursor-pointer ${index === 0 ? 'active' : '__'}`" v-for="(banner, index) in slideshow" :key="index" @click.stop="goto(banner)">
-                <img @load="imgload" :src="`/storage/${banner.image}`" :alt="banner.translations[0].title" class="img-fluid">
+                <img @load="imgload" :src="`/storage/${banner.image}`" :alt="banner.setting_translations[0].title" class="img-fluid">
                 <div class="position-absolute top-50 start-50 translate-middle text-success text-center col-10 col-lg-8">
-                    <h1 class="slideshow__h1 display-3">{{ translation(banner, 'title', $i18n.locale) }}</h1>
-                    <div class="d-none d-lg-block" v-if="translation(banner, 'summary', $i18n.locale)" v-html="translation(banner, 'summary', $i18n.locale)"></div>
+                    <h1 class="slideshow__h1 display-3">{{ setting_translation(banner, 'title', $i18n.locale) }}</h1>
+                    <div class="d-none d-lg-block" v-if="setting_translation(banner, 'summary', $i18n.locale)" v-html="setting_translation(banner, 'summary', $i18n.locale)"></div>
                     <button class="mt-lg-4 mt-md-2 d-none d-lg-inline-block btn btn-success btn-lg rounded-0 fw-bold px-5 text-white shadow-lg">{{ $t('Get it now') }}</button>
                 </div>
             </div>
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         goto(banner) {
-            const url = this.translation(banner, 'url_primary', this.$i18n.locale)
+            const url = this.setting_translation(banner, 'url_primary', this.$i18n.locale)
             if(url !== undefined) {
                 this.$router.push(`/${url}`)
             }
@@ -46,7 +46,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['translation']),
+        ...mapGetters(['setting_translation']),
         ...mapState({
             banners: state => state.banner.banners
         }),

@@ -90,8 +90,8 @@
             <div v-for="post in latestPosts" :key="post.id" class="post-index col-lg col-lg-4 col-md-6 col-12">
                 <div class="post-index__bg w-100 bg-gray-200" :style="`height:180px; background: #e9ecef url('/storage/${storeConfig.medium_image_size}/${post.image}') center center no-repeat;background-size: cover;`"></div>
                 <h4 class="h6 fw-bold my-3">
-                    <router-link class="text-dark text-decoration-none" :to="`/article/${translation(post, 'slug', $i18n.locale)}`">
-                        {{ translation(post, 'title', $i18n.locale) }}
+                    <router-link class="text-dark text-decoration-none" :to="`/article/${setting_translation(post, 'slug', $i18n.locale)}`">
+                        {{ setting_translation(post, 'title', $i18n.locale) }}
                     </router-link>
                 </h4>
                 <div class="post-index__date text-success opacity-75">{{ dateFormat(post.created_at) }}</div>
@@ -225,7 +225,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['productPrice', 'translation']),
+        ...mapGetters(['productPrice', 'setting_translation']),
         ...mapState({
             productWidget: state => state.product.productWidget,
             storeConfig: state => state.setting.storeConfig,

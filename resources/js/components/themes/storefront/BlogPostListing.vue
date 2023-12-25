@@ -95,7 +95,7 @@ export default {
         next()
     },
     computed: {
-        ...mapGetters(['translation', 'transObj', 'urlParamValueFromName', 'urlGetAllParams', 'customerAccessToken']),
+        ...mapGetters(['setting_translation', 'transObj', 'urlParamValueFromName', 'urlGetAllParams', 'customerAccessToken']),
         ...mapState({
             posts: state => state.blogpost.posts,
             paginationLinks: state => state.blogpost.paginationLinks

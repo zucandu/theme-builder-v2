@@ -15,8 +15,8 @@
             <div class="card-text text-dark opacity-50" v-html="postTranslation.summary"></div>
             <div v-if="item.categories.length > 0" class="my-3">
                 <span>{{ $t('Tag(s)') }}:</span>
-                <router-link v-for="category in item.categories" :key="category" class="ms-1 text-decoration-none badge bg-primary" :to="`/blog/category/${translation(category, 'slug', $i18n.locale)}`">
-                    {{ translation(category, 'name', $i18n.locale) }}
+                <router-link v-for="category in item.categories" :key="category" class="ms-1 text-decoration-none badge bg-primary" :to="`/blog/category/${setting_translation(category, 'slug', $i18n.locale)}`">
+                    {{ setting_translation(category, 'name', $i18n.locale) }}
                 </router-link>
             </div>
         </div>
@@ -36,7 +36,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['transObj', 'translation']),
+        ...mapGetters(['transObj', 'setting_translation']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig
         }),

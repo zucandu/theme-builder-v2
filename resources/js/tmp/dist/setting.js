@@ -14,13 +14,10 @@ const state = {
 const getters = {
     setting_currency_converter: (state) => state.currencies.find(currency => currency.code === state.currency) || undefined,
     setting_get_currency_by_code: (state) => code => state.currencies.find(currency => currency.code === code) || undefined,
-    selectedLanguage: (state) => state.languages.find(lang => lang.iso_code === state.language) || undefined,
-    selectedCurrency: (state) => state.currencies.find(cur => cur.code === state.currency) || undefined,
-    getLanguageById: (state) => id => state.languages.find(lang => +lang.id === +id) || undefined,
-    languageByCode: (state) => code => state.languages.find(lang => lang.iso_code === code) || undefined,
-    getCurrencyById: (state) => id => state.currencies.find(currency => +currency.id === +id),
-    defaultTax: (state) => state.taxes || [],
-    translation: () => (item, field, locale) => item && !_.isEmpty(item.translations) && item.translations.find(trans => trans.locale === locale)[field] || undefined,
+    setting_current_currency: (state) => state.currencies.find(cur => cur.code === state.currency) || undefined,
+    setting_get_lang_by_code: (state) => code => state.languages.find(lang => lang.iso_code === code) || undefined,
+    setting_default_tax: (state) => state.taxes || [],
+    setting_translation: () => (item, field, locale) => item && !_.isEmpty(item.translations) && item.translations.find(trans => trans.locale === locale)[field] || undefined,
     transObj: () => (item, locale) => item && item.translations && item.translations.find(trans => trans.locale === locale) || undefined,
     imageSrc: () => src => src.indexOf('http') === -1 ? `/storage/${src}` : src,
     isEmpty: () => value => _.isEmpty(value) || false,
@@ -33,9 +30,9 @@ const getters = {
     updateMetaTags: (state, getters) => (routeName, locale) => {
         const meta = state.metaTags.find(meta => meta.pagename === routeName)
         if(meta) {
-            const translation = getters.transObj(meta, locale)
-            document.title = translation.meta_title
-            document.querySelector('meta[name="description"]').setAttribute("content", translation.meta_description)
+            const setting_translation = getters.transObj(meta, locale)
+            document.title = setting_translation.meta_title
+            document.querySelector('meta[name="description"]').setAttribute("content", setting_translation.meta_description)
         }
     },
 

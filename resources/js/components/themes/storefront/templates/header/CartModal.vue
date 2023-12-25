@@ -43,12 +43,12 @@
                             <div class="z-cart-modal__inner">
                                 <div v-for="(item, key) in items" :key="item.id" :class="`d-flex ${key > 0 ? 'mt-2 pt-2 border-top' : ''}`">
                                     <div class="p-2 flex-shrink-1 bd-highlight">
-                                        <img v-if="item.images && item.images.length > 0" :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :alt="translation(item, 'name', $i18n.locale)" :width="storeConfig.small_image_size" class="img-thumbnail">
-                                        <img v-else :src="`/storage/${storeConfig.small_image_size}/no-image.png`" :alt="translation(item, 'name', $i18n.locale)" :width="storeConfig.small_image_size" class="img-thumbnail">
+                                        <img v-if="item.images && item.images.length > 0" :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :alt="setting_translation(item, 'name', $i18n.locale)" :width="storeConfig.small_image_size" class="img-thumbnail">
+                                        <img v-else :src="`/storage/${storeConfig.small_image_size}/no-image.png`" :alt="setting_translation(item, 'name', $i18n.locale)" :width="storeConfig.small_image_size" class="img-thumbnail">
                                     </div>
                                     <div class="w-100 small">
                                         <div class="d-flex justify-content-between align-items-start">
-                                            <router-link :to="`/${translation(item, 'slug', $i18n.locale)}`" v-html="`${item.qty} x ${translation(item, 'name', $i18n.locale)}`"></router-link>
+                                            <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" v-html="`${item.qty} x ${setting_translation(item, 'name', $i18n.locale)}`"></router-link>
                                             <button class="btn btn-link btn-sm p-0 text-secondary text-decoration-none ms-3" @click.stop="this.$store.dispatch('removeProduct', item.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -93,7 +93,7 @@ export default {
         DisplayPrice, ProductDisplayPrice
     },
     computed: {
-        ...mapGetters(['translation', 'productPrice', 'cartTotal']),
+        ...mapGetters(['setting_translation', 'productPrice', 'cartTotal']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig,
             items: state => state.cart.items,

@@ -21,12 +21,12 @@
                     </div>
                     <div v-for="item in items" :key="item.id" class="row mb-3 pb-3 border-bottom">
                         <div class="col-3 col-md-2">
-                            <router-link :to="`/${translation(item, 'slug', $i18n.locale)}`">
+                            <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">
                                 <img :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" alt="" class="img-thumbnail">
                             </router-link>
                         </div>
                         <div class="col-9 col-md-4">
-                            <router-link :to="`/${translation(item, 'slug', $i18n.locale)}`" class="text-dark text-decoration-none">{{ translation(item, 'name', $i18n.locale) }}</router-link>
+                            <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-dark text-decoration-none">{{ setting_translation(item, 'name', $i18n.locale) }}</router-link>
                             <button class="btn btn-sm btn-link" @click.stop="this.$store.dispatch('removeProduct', item.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -289,7 +289,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['cartTotal', 'foundItemOutOfStock', 'translation', 'productImageSrc', 'productPrice', 'cartAllItems']),
+        ...mapGetters(['cartTotal', 'foundItemOutOfStock', 'setting_translation', 'productImageSrc', 'productPrice', 'cartAllItems']),
         ...mapState({
             items: state => state.cart.items,
             storeConfig: state => state.setting.storeConfig,

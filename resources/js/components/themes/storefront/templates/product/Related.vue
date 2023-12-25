@@ -3,11 +3,11 @@
         <div v-if="chunkedRelatedProducts.length > 0" class="row">
             <div v-for="(item, index) in chunkedRelatedProducts" :key="index" :class="`col-12 mb-4 ${extraClass ? extraClass : ``}`">
                 <div class="section-relatedproducts__info d-flex">
-                    <router-link :to="`/${translation(item, 'slug', $i18n.locale)}`">
-                        <img :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="translation(item, 'name', $i18n.locale)" class="img-loading">
+                    <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">
+                        <img :src="`/storage/${storeConfig.small_image_size}/${item.images[0].src}`" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" :alt="setting_translation(item, 'name', $i18n.locale)" class="img-loading">
                     </router-link>
                     <div class="text ms-3">
-                        <h3 class="h6"><router-link :to="`/${translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">{{ translation(item, 'name', $i18n.locale) }}</router-link></h3>
+                        <h3 class="h6"><router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" class="text-decoration-none">{{ setting_translation(item, 'name', $i18n.locale) }}</router-link></h3>
                         <display-rating :rating="item.rating" :total="item.total_reviews"></display-rating>
                         <div class="d-flex align-items-center">
                             <div class="fw-bold">
@@ -22,7 +22,7 @@
                                     <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"/>
                                 </svg>
                             </template>
-                            <router-link v-else :to="`/${translation(item, 'slug', $i18n.locale)}`">
+                            <router-link v-else :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap text-primary ms-2 cursor-pointer" viewBox="0 0 16 16">
                                     <path d="M4 2v2H2V2h2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2v2H7V2h2zm5 0v2h-2V2h2zM4 7v2H2V7h2zm5 0v2H7V7h2zm5 0h-2v2h2V7zM4 12v2H2v-2h2zm5 0v2H7v-2h2zm5 0v2h-2v-2h2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z"/>
                                 </svg>
@@ -76,7 +76,7 @@ export default {
     },
     methods: {
         addToCart(item) {
-            const productName = this.translation(item, 'name', this.$i18n.locale)
+            const productName = this.setting_translation(item, 'name', this.$i18n.locale)
             this.$store.dispatch('addProduct2Cart', { id: item.id, cart_quantity: 1 }).then(() => {
                 this.$store.commit('setAlert', {
                     'color': 'success', 
@@ -94,7 +94,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['translation', 'productPrice']),
+        ...mapGetters(['setting_translation', 'productPrice']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig
         }),

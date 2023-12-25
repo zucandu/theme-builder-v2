@@ -42,19 +42,19 @@
                     </div>
                     <div v-if="productDetails.categories.length > 0" class="mt-3">
                         {{ $t('Department(s)') }}: 
-                        <router-link v-for="(category, index) in productDetails.categories" :key="category.id" :to="`/category/${translation(category, 'slug', $i18n.locale)}`" class="text-decoration-none">
+                        <router-link v-for="(category, index) in productDetails.categories" :key="category.id" :to="`/category/${setting_translation(category, 'slug', $i18n.locale)}`" class="text-decoration-none">
                             <template v-if="index > 0">, </template>
-                            {{ translation(category, 'name', $i18n.locale) }}
+                            {{ setting_translation(category, 'name', $i18n.locale) }}
                         </router-link>
                     </div>
 
                     <!-- Attributes read only -->
                     <ul v-if="Object.keys(productAttributesReadonly).length > 0" class="list-unstyled mt-3">
                         <li v-for="optId in Object.keys(productAttributesReadonly)" :key="optId">
-                            <span class="fw-bold me-2">{{ translation(productAttributesReadonly[optId], 'name', this.$i18n.locale) }}:</span>
+                            <span class="fw-bold me-2">{{ setting_translation(productAttributesReadonly[optId], 'name', this.$i18n.locale) }}:</span>
                             <span v-for="(optval, index) in productAttributesReadonly[optId].values" :key="optval.id">
                                 <template v-if="index !== 0">, </template>
-                                {{ translation(optval, 'name', this.$i18n.locale) }}
+                                {{ setting_translation(optval, 'name', this.$i18n.locale) }}
                             </span>
                         </li>
                     </ul>
@@ -69,23 +69,23 @@
                         <div class="col-12">
                             <div v-for="ao in productVariants" :key="ao.id" class="mb-3">
                                 <template v-if="ao.values.length > 4">
-                                    <div class="mb-2 fw-bold">{{ translation(ao, 'name', $i18n.locale) }}:</div>
+                                    <div class="mb-2 fw-bold">{{ setting_translation(ao, 'name', $i18n.locale) }}:</div>
                                     <div class="dropdown">
-                                        <button class="btn border dropdown-toggle" type="button" data-bs-toggle="dropdown">{{ translation(ao.values.find(v => v.id === selectedAttributes[ao.id]), 'name', $i18n.locale) }}</button>
+                                        <button class="btn border dropdown-toggle" type="button" data-bs-toggle="dropdown">{{ setting_translation(ao.values.find(v => v.id === selectedAttributes[ao.id]), 'name', $i18n.locale) }}</button>
                                         <ul :id="`option${ao.id}`" class="dropdown-menu">
-                                            <li v-for="aov in ao.values" :value="aov.vid" :key="aov.vid"><a class="dropdown-item cursor-pointer" @click="selectedAttributes[ao.id] = aov.vid" :data-aovid="aov.vid" :id="`attr-${ao.id}-${aov.vid}`">{{ translation(aov, 'name', $i18n.locale) }}</a></li>
+                                            <li v-for="aov in ao.values" :value="aov.vid" :key="aov.vid"><a class="dropdown-item cursor-pointer" @click="selectedAttributes[ao.id] = aov.vid" :data-aovid="aov.vid" :id="`attr-${ao.id}-${aov.vid}`">{{ setting_translation(aov, 'name', $i18n.locale) }}</a></li>
                                         </ul>
                                     </div>
                                 </template>
                                 <template v-else>
                                     <div :id="`option${ao.id}`">
-                                        <div class="mb-2"><span class="fw-bold">{{ translation(ao, 'name', $i18n.locale) }}:</span><span class="ms-2">{{ translation(ao.values.find(v => v.id === selectedAttributes[ao.id]), 'name', $i18n.locale) }}</span></div>
+                                        <div class="mb-2"><span class="fw-bold">{{ setting_translation(ao, 'name', $i18n.locale) }}:</span><span class="ms-2">{{ setting_translation(ao.values.find(v => v.id === selectedAttributes[ao.id]), 'name', $i18n.locale) }}</span></div>
                                         <div v-for="aov in ao.values" :value="aov.vid" :key="aov.vid" @click.stop="selectedAttributes[ao.id] = aov.vid" :data-aovid="aov.vid" :id="`attr-${ao.id}-${aov.vid}`" :class="`dropdown-item cursor-pointer py-2 px-3 d-inline-block me-3 mb-3 pa ${selectedAttributes[ao.id] === aov.vid ? 'pa-selected' : ''}`">
                                             <template v-if="aov.image">
                                                 <img :src="`/storage/${storeConfig.small_image_size}/${aov.image}`" :alt="productTranslation.name" :width="storeConfig.small_image_size" :height="storeConfig.small_image_size" class="img-fluid">
                                             </template>
                                             <template v-else>
-                                                {{ translation(aov, 'name', $i18n.locale) }}
+                                                {{ setting_translation(aov, 'name', $i18n.locale) }}
                                             </template>
                                         </div>
                                     </div>
@@ -99,8 +99,8 @@
                         <div class="col-12">
                             <div v-for="ao in productAttributesText" :key="ao.id" class="mb-3">
                                 <div :id="`option${ao.id}`">
-                                    <div class="mb-2"><span class="fw-bold">{{ translation(ao, 'name', $i18n.locale) }}:</span></div>
-                                    <textarea v-model="formdata.meta[`${ao.id}_${aov.vid}`]" v-for="aov in ao.values" :key="aov.vid" class="form-control" :placeholder="translation(aov, 'name', $i18n.locale)" rows="1"></textarea>
+                                    <div class="mb-2"><span class="fw-bold">{{ setting_translation(ao, 'name', $i18n.locale) }}:</span></div>
+                                    <textarea v-model="formdata.meta[`${ao.id}_${aov.vid}`]" v-for="aov in ao.values" :key="aov.vid" class="form-control" :placeholder="setting_translation(aov, 'name', $i18n.locale)" rows="1"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                     
                     <!-- Hook after add to cart button. -->
                     <template v-for="(component, index) in $pluginStorefrontHooks['product_after_add_to_cart_button']" :key="index">
-                        <component :is="component" :product="actualProductDetails" :translation="productTranslation" @updateMetaForm="updateMetaForm"></component>
+                        <component :is="component" :product="actualProductDetails" :setting_translation="productTranslation" @updateMetaForm="updateMetaForm"></component>
                     </template>
 
                     <div class="mt-3">
@@ -144,7 +144,7 @@
 				
 				<!-- Hook after the form -->
                 <template v-for="(component, index) in $pluginStorefrontHooks['product_after_the_form']" :key="index">
-                    <component :is="component" :product="actualProductDetails" :translation="productTranslation" @updateMetaForm="updateMetaForm"></component>
+                    <component :is="component" :product="actualProductDetails" :setting_translation="productTranslation" @updateMetaForm="updateMetaForm"></component>
                 </template>
 
                 <product-restock-modal :product-id="actualProductDetails.id" :product-name="productTranslation.name" :show-modal="showModal" @updateModalStatus="updateModalStatus"></product-restock-modal>
@@ -194,7 +194,7 @@
     <!-- Hook at the bottom -->
     <section v-if="loadedProduct">
         <template v-for="(component, index) in $pluginStorefrontHooks['product_at_the_bottom']" :key="index">
-            <component :is="component" :product="actualProductDetails" :translation="productTranslation" @updateMetaForm="updateMetaForm"></component>
+            <component :is="component" :product="actualProductDetails" :setting_translation="productTranslation" @updateMetaForm="updateMetaForm"></component>
         </template>
     </section>
     
@@ -297,7 +297,7 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'translation', 'transObj', 'productVariants', 'productAttributesReadonly', 'productAttributesText', 
+            'setting_translation', 'transObj', 'productVariants', 'productAttributesReadonly', 'productAttributesText', 
             'childProductByAttributes', 'productPrice'
         ]),
         ...mapState({

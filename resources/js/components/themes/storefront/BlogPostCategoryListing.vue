@@ -102,7 +102,7 @@ export default {
         next()
     },
     computed: {
-        ...mapGetters(['translation', 'transObj', 'urlParamValueFromName', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'transObj', 'urlParamValueFromName', 'urlGetAllParams']),
         ...mapState({
             posts: state => state.blogpost.posts,
             paginationLinks: state => state.blogpost.paginationLinks,

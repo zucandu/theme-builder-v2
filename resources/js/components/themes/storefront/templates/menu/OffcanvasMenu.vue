@@ -48,7 +48,7 @@ export default {
             menuDetails: state => state.menu.menuDetails,
             storeConfig: state => state.setting.storeConfig,
         }),
-        ...mapGetters(['translation']),
+        ...mapGetters(['setting_translation']),
         __navigation() {
             return this.menuDetails[this.menuKey] || undefined
         }

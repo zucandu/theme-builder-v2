@@ -2,13 +2,13 @@
     <section :class="`menu-element menu-element-${item.id} menu-${item.link}-element`">
         <figure v-if="item.extra_data && item.extra_data.image">
             <router-link :class="`nav-link ${ extraClass !== undefined ? extraClass : '' }`" :to="url">
-                <img v-if="item.link === 'banner'" :src="`/storage/${item.extra_data.image}`" :alt="translation.title" class="img-fluid">
-                <img v-else :src="`/storage/${storeConfig.medium_image_size}/${item.extra_data.image}`" :alt="translation.title" class="img-fluid">
+                <img v-if="item.link === 'banner'" :src="`/storage/${item.extra_data.image}`" :alt="setting_translation.title" class="img-fluid">
+                <img v-else :src="`/storage/${storeConfig.medium_image_size}/${item.extra_data.image}`" :alt="setting_translation.title" class="img-fluid">
             </router-link>
         </figure>
         <h5 class="menu-element__content">
             <router-link :class="`nav-link ${ extraClass !== undefined ? extraClass : '' }`" :to="url">
-                {{ translation.title }}
+                {{ setting_translation.title }}
             </router-link>
         </h5>
         <template v-if="item.rating || item.extra_data.price">
@@ -30,11 +30,11 @@ export default {
         ...mapState({
             storeConfig: state => state.setting.storeConfig
         }),
-        translation() {
+        setting_translation() {
             return this.transObj(this.item, this.$i18n.locale)
         },
         url() {
-            return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.translation.url}` : `/${_.trim(this.translation.url, '/')}`
+            return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.setting_translation.url}` : `/${_.trim(this.setting_translation.url, '/')}`
         }
     },
 }

@@ -71,14 +71,14 @@ const actions = {
 const mutations = {
 
     pushProduct2Cart(state, { 
-        id, sku, translations, images, attributes, weight, 
+        id, sku, setting_translations, images, attributes, weight, 
         quantity, price, sale_price, cart_quantity, tax_class_id 
     }) {
         
         state.items = [ ...state.items, {
             id: id,
             sku: sku,
-            translations: translations,
+            setting_translations: setting_translations,
             images: images,
             attributes: attributes,
             weight: +weight,

@@ -112,7 +112,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['isCustomer', 'transObj', 'translation']),
+        ...mapGetters(['isCustomer', 'transObj', 'setting_translation']),
         ...mapState({
             productDetails: state => state.product.productDetails,
             storeConfig: state => state.setting.storeConfig,

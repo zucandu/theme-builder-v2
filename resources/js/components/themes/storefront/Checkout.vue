@@ -22,7 +22,7 @@
                                                         <img v-else src="/storage/no-image.png" alt="No image" :width="storeConfig.small_image_size" class="img-thumbnail">
                                                     </td>
                                                     <td>
-                                                        <div v-html="translation(item, 'name', $i18n.locale)"></div>
+                                                        <div v-html="setting_translation(item, 'name', $i18n.locale)"></div>
                                                         <div class="text-gray-500 small">{{ $t('Qty') }}: {{ item.qty }}</div>
 
                                                         <!-- Hook product title. -->
@@ -156,7 +156,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['translation', 'cartTotal', 'isCustomerLogged', 
+        ...mapGetters(['setting_translation', 'cartTotal', 'isCustomerLogged', 
                         'customerAccessToken', 'productPrice', 
                         'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
                         'ready2Checkout', 'orderTaxName', 'orderShippingMethods']),

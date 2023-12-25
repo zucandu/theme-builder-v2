@@ -45,7 +45,7 @@ export default {
     props: ['loaded', 'items'],
     methods: {
         addToCart(item) {
-            const productName = this.translation(item, 'name', this.$i18n.locale)
+            const productName = this.setting_translation(item, 'name', this.$i18n.locale)
             this.$store.dispatch('addProduct2Cart', { id: item.id, cart_quantity: 1 }).then(() => {
                 this.$store.commit('setAlert', {
                     'color': 'success', 
@@ -93,7 +93,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['translation', 'productPrice']),
+        ...mapGetters(['setting_translation', 'productPrice']),
         ...mapState({
             storeConfig: state => state.setting.storeConfig,
             productDetails: state => state.product.productDetails,

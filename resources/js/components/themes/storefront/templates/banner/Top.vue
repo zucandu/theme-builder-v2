@@ -3,8 +3,8 @@
         <section v-if="banners && banners.length > 0" class="container mt-lg-5 mt-3">
             <div class="row">
                 <div v-for="banner in bannersTop" :key="banner.id" class="col-md-4 col-12 mb-md-0 mb-3">
-                    <router-link :to="`/${translation(banner, 'url_primary', $i18n.locale)}`">
-                        <img :src="`/storage/${banner.image}`" :alt="translation(banner, 'title', $i18n.locale)" @load="imgloaded" class="img-fluid img-loading">
+                    <router-link :to="`/${setting_translation(banner, 'url_primary', $i18n.locale)}`">
+                        <img :src="`/storage/${banner.image}`" :alt="setting_translation(banner, 'title', $i18n.locale)" @load="imgloaded" class="img-fluid img-loading">
                     </router-link>
                 </div>
             </div>
@@ -29,7 +29,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['translation']),
+        ...mapGetters(['setting_translation']),
         ...mapState({
             banners: state => state.banner.banners
         }),

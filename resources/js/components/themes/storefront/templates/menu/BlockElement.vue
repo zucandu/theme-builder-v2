@@ -3,7 +3,7 @@
         <div v-if="loaded" class="container">
             <section v-if="this.menuDetails[this.menuKey]" :class="`row g-3 ${menuKey}-section mt-lg-5 mt-3`">
                 <template v-for="(item, index) in this.menuDetails[this.menuKey].items" :key="index">
-                    <h3 class="col-12">{{ translation(item, 'title', $i18n.locale) }}</h3>
+                    <h3 class="col-12">{{ setting_translation(item, 'title', $i18n.locale) }}</h3>
                     <div :class="`block-element col-lg-${block.block_width} mb-3 mb-lg-0`" v-for="(block, i) in item.blocks" :key="i">
                         <template v-for="(el, elindex) in block.elements" :key="el.id">
                             <link-menu v-if="el.block_type === 'link'" :item="el"></link-menu>
@@ -94,7 +94,7 @@ export default {
             menuDetails: state => state.menu.menuDetails,
             storeConfig: state => state.setting.storeConfig,
         }),
-        ...mapGetters(['translation']),
+        ...mapGetters(['setting_translation']),
     }
 }
 </script>

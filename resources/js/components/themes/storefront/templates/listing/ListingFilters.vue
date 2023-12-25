@@ -27,7 +27,7 @@
                         <ul :id="`filter-${filterName}`" :class="`collapse show list-unstyled filter-options count-${filterOptions.length}`">
                             <li v-for="(option, index) in filterOptions" :key="index" class="py-2">
                                 <input v-model="selected" :value="option.id" class="form-check-input" type="checkbox" :id="`cb-option${option.id}`" :disabled="option.count === 0">
-                                <label class="form-check-label ms-2" :for="`cb-option${option.id}`">{{ translation(option, 'name', $i18n.locale) }} ({{option.count}})</label>
+                                <label class="form-check-label ms-2" :for="`cb-option${option.id}`">{{ setting_translation(option, 'name', $i18n.locale) }} ({{option.count}})</label>
                             </li>
                         </ul>
                     </div>
@@ -39,14 +39,14 @@
                     <div v-for="(attOption, aoid) in filters.attribute" :key="aoid" class="my-4">
                         <div class="h5 mb-3">
                             <a class="text-decoration-none text-dark d-flex align-items-center justify-content-between collapsed" role="button" data-bs-toggle="collapse" :data-bs-target="`#filter-${aoid}`" :aria-controls="`#filter-${aoid}`" aria-expanded="true">
-                                <span>{{ translation(attOption, 'name', $i18n.locale) }}</span>
+                                <span>{{ setting_translation(attOption, 'name', $i18n.locale) }}</span>
                                 <span class="arrow">&#8250;</span>
                             </a>
                         </div>
                         <ul :id="`filter-${aoid}`" :class="`collapse list-unstyled filter-options count-${Object.keys(attOption.values).length}`">
                             <li v-for="(attOptionValue, aovid) in attOption.values" :key="aovid" class="py-2">
                                 <input v-model="selected" :value="attOptionValue.id" class="form-check-input" type="checkbox" :id="`cb-option-value${attOptionValue.id}`" :disabled="attOptionValue.count === 0">
-                                <label class="form-check-label ms-2" :for="`cb-option-value${attOptionValue.id}`">{{translation(attOptionValue, 'name', $i18n.locale)}} ({{attOptionValue.count}})</label>
+                                <label class="form-check-label ms-2" :for="`cb-option-value${attOptionValue.id}`">{{setting_translation(attOptionValue, 'name', $i18n.locale)}} ({{attOptionValue.count}})</label>
                             </li>
                         </ul>
                     </div>
@@ -129,7 +129,7 @@ export default {
         [...document.querySelectorAll('.collapse')].map(collapseEl => new Collapse(collapseEl))
     },
     computed: {
-        ...mapGetters(['translation', 'displayPriceRange', 'urlParamValueFromName'])
+        ...mapGetters(['setting_translation', 'displayPriceRange', 'urlParamValueFromName'])
     },
     watch: {
         selected(v) {
