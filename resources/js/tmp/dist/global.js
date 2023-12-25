@@ -27,11 +27,11 @@ const getters = {
         return __params
     },
 
-    catalog_product_display_priceRange: () => (priceRange) => {
+    global_price_range: () => (priceRange) => {
         const [minPrice, maxPrice] = priceRange.split('-')
         return { min: minPrice, max: maxPrice }
     },
-     toggleClass: () => (element, className) => {
+     global_toggle: () => (element, className) => {
          if(element) {
             element.classList.toggle(className)
          }
