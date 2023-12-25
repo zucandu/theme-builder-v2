@@ -1,7 +1,9 @@
 import API_GLOBAL from '@/api/global';
 
 // initial state
-const state = {}
+const state = {
+    banners: []
+}
 
 // getters
 const getters = {
@@ -59,7 +61,9 @@ const actions = {
 }
 
 // mutations is often used to filter results
-const mutations = {}
+const mutations = {
+    SET_SF_BANNERS: (state, response) => state.globalBanners = response.data.banners
+}
 
 export default {
     state,

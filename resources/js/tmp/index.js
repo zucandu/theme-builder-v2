@@ -10,13 +10,12 @@ import cart from './dist/sc'
 import order from './dist/checkout'
 import listing from './dist/listing'
 import product from './dist/item'
-import banner from './dist/billboard'
 import menu from './dist/navigation'
 import blogpost from './dist/discover'
 
 // Create a new store instance.
 export default createStore({
     modules: {
-        i18n, auth, setting, country, menu, blogpost, customer, global, cart, listing, order, product, banner
+        i18n, auth, setting, country, menu, blogpost, customer, global, cart, listing, order, product
     },
 })
