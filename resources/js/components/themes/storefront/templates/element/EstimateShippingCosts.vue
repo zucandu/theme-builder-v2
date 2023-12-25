@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </form>
-            <template v-if="estimateShippingCosts.length > 0">
-                <div v-for="shipping in estimateShippingCosts" :key="shipping.code" class="mt-3">
+            <template v-if="cart_estimate_shipping_costs.length > 0">
+                <div v-for="shipping in cart_estimate_shipping_costs" :key="shipping.code" class="mt-3">
                     <div class="d-flex justify-content-between mb-3 align-items-center">
                         <div class="h6 fw-bold">{{ shipping.name }}</div>
                         <div v-if="shipping.image"><img :src="`/storage/shippings/${shipping.image}`" :alt="shipping.name" width="50"></div>
@@ -95,7 +95,7 @@ export default {
     methods: {
         submitEstimateShippingCosts() {
             this.estimateLoading = true
-            this.$store.dispatch('estimateShippingCosts', {
+            this.$store.dispatch('cart_estimate_shipping_costs', {
                 customer: {
                     addresses: [
                         {
@@ -117,7 +117,7 @@ export default {
         ...mapState({
             countries: state => state.country.countries,
             estimateFormData: state => state.cart.estimateFormData,
-            estimateShippingCosts: state => state.cart.estimateShippingCosts,
+            cart_estimate_shipping_costs: state => state.cart.cart_estimate_shipping_costs,
             profile: state => state.customer.profile,
         }),
         regions: function() {

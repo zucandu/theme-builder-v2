@@ -55,14 +55,14 @@ const actions = {
      */
     async cart_update_qty_in_cart({ commit }, product) {
         if(product.cart_quantity > 0) {
-            commit('updateItemQuantity', await API_CART.cart_update_qty_in_cart(product))
+            commit('CART_UPDATE_QUANTITY_IN_CART', await API_CART.cart_update_qty_in_cart(product))
         } else {
             commit('CART_REMOVE_PRODUCT', await API_CART.cart_remove_product(product.id))
         }
     },
 
-    estimateShippingCosts({ commit }) {
-        commit('setEstimateShippingCosts', `{"shipping_methods":[{"code":"Hello World","name":"","description":"Green city","methods":[{"id":"14214","title":"USPS First Class Mail","cost":5.95}]}]}`)
+    cart_estimate_shipping_costs({ commit }) {
+        commit('CART_ESTIMATE_SHIPPING', `{"shipping_methods":[{"code":"Hello World","name":"","description":"Green city","methods":[{"id":"14214","title":"USPS First Class Mail","cost":5.95}]}]}`)
     },
 }
 
@@ -91,7 +91,7 @@ const mutations = {
         localStorage.setItem('cart', JSON.stringify(state.items))
     },
 
-    updateItemQuantity(state, response) {
+    CART_UPDATE_QUANTITY_IN_CART(state, response) {
         const item = state.items.find(item => item.id === response.data.product.id)
         item.qty = +response.data.product.cart_quantity
 
@@ -128,8 +128,8 @@ const mutations = {
         state.items = []
     },
 
-    setEstimateShippingCosts(state, json) {
-        state.estimateShippingCosts = JSON.parse(json).shipping_methods
+    CART_ESTIMATE_SHIPPING(state, json) {
+        state.cart_estimate_shipping_costs = JSON.parse(json).shipping_methods
     }
 
 
