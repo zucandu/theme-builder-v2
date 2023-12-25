@@ -47,13 +47,13 @@ const getters = {
             sale: getters.catalog_product_display_price(calculated.sale, qty)
         }
     },
-    childProductByAttributes: () => (product, selectedAtt) => {
+    catalog_product_get_child: () => (product, selectedAtt) => {
         if(product.id === 38) {
             return product.children[+selectedAtt[1]-1]
         }
     },
-    displayProductAttributes: () => ([]),
-    productVariants: (state) => {
+    catalog_product_display_attributes: () => ([]),
+    catalog_product_variants: (state) => {
         return state.productDetails.id === 38 ? [ 
             { 
                 "id": 1, 
@@ -87,7 +87,7 @@ const getters = {
             } 
         ] : undefined
     },
-    productAttributesReadonly: (state) => {
+    catalog_product_attributes_read_only: (state) => {
         return state.productDetails.id === 38 ? {
             "8": {
                 "translations": [
@@ -176,7 +176,7 @@ const getters = {
             }
         } : undefined
     },
-    productAttributesText: () => ([]),
+    catalog_product_attributes_text: () => ([]),
     
 }
   

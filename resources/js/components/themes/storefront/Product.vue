@@ -49,10 +49,10 @@
                     </div>
 
                     <!-- Attributes read only -->
-                    <ul v-if="Object.keys(productAttributesReadonly).length > 0" class="list-unstyled mt-3">
-                        <li v-for="optId in Object.keys(productAttributesReadonly)" :key="optId">
-                            <span class="fw-bold me-2">{{ setting_translation(productAttributesReadonly[optId], 'name', this.$i18n.locale) }}:</span>
-                            <span v-for="(optval, index) in productAttributesReadonly[optId].values" :key="optval.id">
+                    <ul v-if="Object.keys(catalog_product_attributes_read_only).length > 0" class="list-unstyled mt-3">
+                        <li v-for="optId in Object.keys(catalog_product_attributes_read_only)" :key="optId">
+                            <span class="fw-bold me-2">{{ setting_translation(catalog_product_attributes_read_only[optId], 'name', this.$i18n.locale) }}:</span>
+                            <span v-for="(optval, index) in catalog_product_attributes_read_only[optId].values" :key="optval.id">
                                 <template v-if="index !== 0">, </template>
                                 {{ setting_translation(optval, 'name', this.$i18n.locale) }}
                             </span>
@@ -65,9 +65,9 @@
                     </div>
 
                     <!-- Product variants -->
-                    <div class="row mt-3" v-if="productVariants.length > 0">
+                    <div class="row mt-3" v-if="catalog_product_variants.length > 0">
                         <div class="col-12">
-                            <div v-for="ao in productVariants" :key="ao.id" class="mb-3">
+                            <div v-for="ao in catalog_product_variants" :key="ao.id" class="mb-3">
                                 <template v-if="ao.values.length > 4">
                                     <div class="mb-2 fw-bold">{{ setting_translation(ao, 'name', $i18n.locale) }}:</div>
                                     <div class="dropdown">
@@ -95,9 +95,9 @@
                     </div>
 
                     <!-- Attributes text -->
-                    <div class="row mt-3" v-if="productAttributesText.length > 0">
+                    <div class="row mt-3" v-if="catalog_product_attributes_text.length > 0">
                         <div class="col-12">
-                            <div v-for="ao in productAttributesText" :key="ao.id" class="mb-3">
+                            <div v-for="ao in catalog_product_attributes_text" :key="ao.id" class="mb-3">
                                 <div :id="`option${ao.id}`">
                                     <div class="mb-2"><span class="fw-bold">{{ setting_translation(ao, 'name', $i18n.locale) }}:</span></div>
                                     <textarea v-model="formdata.meta[`${ao.id}_${aov.vid}`]" v-for="aov in ao.values" :key="aov.vid" class="form-control" :placeholder="setting_translation(aov, 'name', $i18n.locale)" rows="1"></textarea>
@@ -297,15 +297,15 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'setting_translation', 'setting_trans_obj', 'productVariants', 'productAttributesReadonly', 'productAttributesText', 
-            'childProductByAttributes', 'catalog_product_price'
+            'setting_translation', 'setting_trans_obj', 'catalog_product_variants', 'catalog_product_attributes_read_only', 'catalog_product_attributes_text', 
+            'catalog_product_get_child', 'catalog_product_price'
         ]),
         ...mapState({
             productDetails: state => state.product.productDetails,
             
         }),
         actualProductDetails() {
-            const actualProduct = this.childProductByAttributes(this.productDetails, this.selectedAttributes)
+            const actualProduct = this.catalog_product_get_child(this.productDetails, this.selectedAttributes)
             if(actualProduct !== undefined) {
                 return actualProduct;
             } else {
@@ -338,7 +338,7 @@ export default {
                     attrEls.forEach(e => document.querySelector(`#attr-${oid}-${e.getAttribute('data-aovid')}`).classList.remove('outofstock'))
                     this.productDetails.attributes.filter(at => +at.attribute_option_id === +oid)
                                                     .map(r => r.attribute_option_value_id)
-                                                    .forEach(ovid => this.childProductByAttributes(this.productDetails, { ...this.selectedAttributes, [oid]: ovid }).quantity === 0 
+                                                    .forEach(ovid => this.catalog_product_get_child(this.productDetails, { ...this.selectedAttributes, [oid]: ovid }).quantity === 0 
                                                         && document.querySelector(`#attr-${oid}-${ovid}`).classList.add('outofstock') )
                 })
             }
