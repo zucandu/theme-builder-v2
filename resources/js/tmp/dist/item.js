@@ -29,14 +29,12 @@ const getters = {
      */
      catalog_product_calc: () => (item) => ({
         retail: item.price,
-        sale: +item.sale_price > 0 ? item.sale_price : undefined,
+        sale: +item.sale_price > 0 ? item.sale_price : 0,
         final: +item.sale_price > 0 ? item.sale_price : item.price,
         tax: 0
     }),
     catalog_product_display_price: () => (price, qty) => {
-
         if(+price === 0) return 0
-
         const __price = price*qty
         return __price ? __price.toFixed(2) : '___'
     },
