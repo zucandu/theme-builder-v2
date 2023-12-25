@@ -58,10 +58,6 @@ const mutations = {
         state.paginationShowing = { from: paginator.from, to: paginator.to, total: paginator.total }
         state.filters = filters
         state.object = object
-    },
-    resetListing(state) {
-        state.products = [], state.paginationLinks = []
-        state.filters = {}, state.object = {}
     }
 }
 
