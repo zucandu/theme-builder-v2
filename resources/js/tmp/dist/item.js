@@ -184,34 +184,34 @@ const getters = {
 const actions = {
 
     async catalog_product_widget({commit}) {
-        commit('setProductWidget', await API_ITEM.catalog_product_widget())
+        commit('SET_PRODUCT_WIDGET', await API_ITEM.catalog_product_widget())
     },
 
     async catalog_product_get_info({commit}, slug) {
-        commit('setProductDetails', await API_ITEM.catalog_product_get_info(slug))
+        commit('SET_PRODUCT_DETAILS', await API_ITEM.catalog_product_get_info(slug))
     },
 
     async catalog_product_latest_reviews({commit}, id) {
-        commit('setReviews', await API_ITEM.catalog_product_latest_reviews(id))
+        commit('SET_PRODUCT_REVIEWS', await API_ITEM.catalog_product_latest_reviews(id))
     },
     
 }
 
 // mutations is often used to filter results
 const mutations = {
-    setProductWidget(state, response) {
+    SET_PRODUCT_WIDGET(state, response) {
         state.catalog_product_widget = response.data
     },
 
-    setProductDetails(state, response) {
+    SET_PRODUCT_DETAILS(state, response) {
         state.catalog_product_get_info = response.data.product
     },
 
-    setReviews(state, response) {
+    SET_PRODUCT_REVIEWS(state, response) {
         state.reviews = response.data.reviews
     },
 
-    resetProductDetails(state) {
+    reSET_PRODUCT_DETAILS(state) {
         state.catalog_product_get_info = {}
     }
 }
