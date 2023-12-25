@@ -34,6 +34,9 @@ const getters = {
         tax: 0
     }),
     catalog_product_display_price: () => (price, qty) => {
+
+        if(+price === 0) return 0
+
         const __price = price*qty
         return __price ? __price.toFixed(2) : '___'
     },
