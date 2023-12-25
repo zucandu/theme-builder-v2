@@ -48,7 +48,7 @@ export default {
     computed: {
         ...mapGetters(['setting_translation']),
         ...mapState({
-            banners: state => state.banner.banners
+            banners: state => state.global.globalBanners
         }),
         slideshow() {
             return this.banners.filter(b => b.group === 'slideshow') || []

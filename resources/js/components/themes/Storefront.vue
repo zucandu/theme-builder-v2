@@ -48,9 +48,7 @@ export default {
         }
 
         // Get all banners
-        if(this.banners.length === 0) {
-            this.$store.dispatch('allBanners')
-        }
+        if(this.banners.length === 0) this.$store.dispatch('global_banner_all')
 
         /* Tiny slider js */
         const tinysliderjs= document.createElement("script")
@@ -73,7 +71,7 @@ export default {
             language: state => state.setting.language,
             metaTags: state => state.setting.metaTags,
             profile: state => state.customer.profile,
-            banners: state => state.banner.banners
+            banners: state => state.global.globalBanners
         })
     },
 

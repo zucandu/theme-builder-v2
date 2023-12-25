@@ -2,7 +2,7 @@ import API_GLOBAL from '@/api/global';
 
 // initial state
 const state = {
-    banners: []
+    globalBanners: []
 }
 
 // getters
