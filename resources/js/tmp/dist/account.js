@@ -58,7 +58,7 @@ const getters = {
     customerOrderDetailsByRef: state => ref => state.profile.orders.find(order => order.reference === ref) || undefined,
     isNormalAccount: () => true,
     isCustomerLogged: (state) => !_.isEmpty(state.profile) && !_.isEmpty(localStorage.getItem('jwt_customer')),
-    customerAccessToken: () => !_.isEmpty(localStorage.getItem('jwt_customer')),
+    account_customer_access_token: () => !_.isEmpty(localStorage.getItem('jwt_customer')),
     customerNotifications: () => undefined,
     numberOfCustomerNotifications: () => 0,
     customerTax: () => undefined

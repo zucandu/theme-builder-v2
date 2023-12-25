@@ -228,7 +228,7 @@ export default {
         ...mapState({
             countries: state => state.country.countries,
             profile: state => state.customer.profile,
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         regions: function() {
             const regions = this.getZonesByCountryId(this.formdata.country_id)

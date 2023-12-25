@@ -104,7 +104,7 @@ export default {
     computed: {
         ...mapGetters(['isCustomerLogged', 'cartNumberOfItems']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig,
+            
             languages: state => state.setting.languages,
             language: state => state.setting.language,
             currencies: state => state.setting.currencies,

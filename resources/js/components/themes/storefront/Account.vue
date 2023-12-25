@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div v-else-if="customerAccessToken" class="col-12 col-lg-6 text-center">
+        <div v-else-if="account_customer_access_token" class="col-12 col-lg-6 text-center">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title h5">{{$t("You're viewing the account page as a guest")}}</div>
@@ -56,7 +56,7 @@ export default {
     created() {
 
         // Query customer profile when token exists
-        if(this.customerAccessToken && Object.keys(this.profile).length === 0) {
+        if(this.account_customer_access_token && Object.keys(this.profile).length === 0) {
             this.$store.dispatch('account').then(() => {
                 this.loaded = true
             })
@@ -92,7 +92,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['addressLength', 'isNormalAccount', 'customerAccessToken', 'isCustomerLogged']),
+        ...mapGetters(['addressLength', 'isNormalAccount', 'account_customer_access_token', 'isCustomerLogged']),
         ...mapState({
             profile: state => state.customer.profile,
             countries: state => state.country.countries

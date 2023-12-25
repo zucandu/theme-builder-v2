@@ -96,7 +96,7 @@ export default {
     computed: {
         ...mapGetters(['setting_translation', 'productPrice']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         chunkedRelatedProducts() {
             return _.chunk(this.relatedproducts, this.itemPerRow)[0]

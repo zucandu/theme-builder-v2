@@ -195,7 +195,7 @@ export default {
     computed: {
         ...mapGetters(['productPrice', 'displayPrice']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig,
+            
             order: state => state.order.orderFromDb,
             profile: state => state.customer.profile,
         })

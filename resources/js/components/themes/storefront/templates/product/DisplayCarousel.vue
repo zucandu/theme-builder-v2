@@ -111,7 +111,7 @@ export default {
     props: ['images', 'currentImage', 'productName'],
     computed: {
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         }),
     },
     watch: {

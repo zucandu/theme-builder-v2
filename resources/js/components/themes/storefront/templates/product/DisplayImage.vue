@@ -8,7 +8,7 @@ export default {
     props: ['src', 'height', 'baseUrl'],
     computed: {
         ...mapState({
-            storeConfig: state => state.setting.storeConfig,
+            
         })
     }
 }

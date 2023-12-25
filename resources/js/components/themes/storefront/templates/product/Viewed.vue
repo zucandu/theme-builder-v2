@@ -81,7 +81,7 @@ export default {
     computed: {
         ...mapGetters(['setting_translation', 'productPrice']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         chunkedViewed() {
             return _.chunk(this.viewed, this.itemPerRow)

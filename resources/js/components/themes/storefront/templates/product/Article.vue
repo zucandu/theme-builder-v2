@@ -70,7 +70,7 @@ export default {
     computed: {
         ...mapGetters(['setting_translation']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         }),
     }
 }

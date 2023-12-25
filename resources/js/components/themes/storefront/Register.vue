@@ -1,7 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
-            <div v-if="!customerAccessToken" class="card card-body">
+            <div v-if="!account_customer_access_token" class="card card-body">
                 <div class="card-title h5">{{$t('Register')}}</div>
                 <form @submit.prevent="register()">
                     <div class="mb-3">
@@ -93,9 +93,9 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['customerAccessToken']),
+        ...mapGetters(['account_customer_access_token']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         })
     }
 }

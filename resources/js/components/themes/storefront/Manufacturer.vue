@@ -219,7 +219,7 @@ export default {
             paginationShowing: state => state.listing.paginationShowing,
             filters: state => state.listing.filters,
             manufacturerDetails: state => state.listing.object,
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         manufacturerTranslation() {
             return !_.isEmpty(this.manufacturerDetails) ? this.setting_trans_obj(this.manufacturerDetails, this.$i18n.locale) : undefined

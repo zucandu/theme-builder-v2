@@ -85,7 +85,7 @@ export default {
     computed: {
         ...mapGetters(['productPrice', 'setting_translation']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig,
+            
         })
     }
 }

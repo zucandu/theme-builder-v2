@@ -132,7 +132,7 @@ export default {
         } else {
 
             // Customer with guest
-            if(this.customerAccessToken=== true) {
+            if(this.account_customer_access_token=== true) {
                 this.$store.dispatch('account').then(() => {
                     if(this.profile && this.profile.addresses.length === 0) {
                         this.checkoutStep = 'CheckoutAddress' // addressform
@@ -157,14 +157,14 @@ export default {
     },
     computed: {
         ...mapGetters(['setting_translation', 'cartTotal', 'isCustomerLogged', 
-                        'customerAccessToken', 'productPrice', 
+                        'account_customer_access_token', 'productPrice', 
                         'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
                         'ready2Checkout', 'orderTaxName', 'orderShippingMethods']),
         ...mapState({
             items: state => state.cart.items,
             profile: state => state.customer.profile,
             formOrderData: state => state.order.formOrderData,
-            storeConfig: state => state.setting.storeConfig
+            
         })
     }
 }

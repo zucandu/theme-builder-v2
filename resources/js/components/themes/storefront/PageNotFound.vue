@@ -21,7 +21,7 @@ import { mapState } from 'vuex'
 export default {
     computed: {
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         })
     }
 }

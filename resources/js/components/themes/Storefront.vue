@@ -43,7 +43,7 @@ export default {
         this.$store.dispatch('setting_initialize').then(() => this.$i18n.locale = this.language)
 
         // Loads account info
-        if(this.customerAccessToken && Object.keys(this.profile).length === 0) {
+        if(this.account_customer_access_token && Object.keys(this.profile).length === 0) {
             this.$store.dispatch('account')
         }
 
@@ -68,9 +68,8 @@ export default {
         next()
     },
     computed: {
-        ...mapGetters(['customerAccessToken', 'setting_set_meta_tags']),
+        ...mapGetters(['account_customer_access_token', 'setting_set_meta_tags']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig,
             language: state => state.setting.language,
             metaTags: state => state.setting.metaTags,
             profile: state => state.customer.profile,

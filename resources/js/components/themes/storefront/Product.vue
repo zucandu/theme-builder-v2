@@ -302,7 +302,7 @@ export default {
         ]),
         ...mapState({
             productDetails: state => state.product.productDetails,
-            storeConfig: state => state.setting.storeConfig,
+            
         }),
         actualProductDetails() {
             const actualProduct = this.childProductByAttributes(this.productDetails, this.selectedAttributes)

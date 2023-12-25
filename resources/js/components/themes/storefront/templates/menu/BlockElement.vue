@@ -92,7 +92,7 @@ export default {
     computed: {
         ...mapState({
             menuDetails: state => state.menu.menuDetails,
-            storeConfig: state => state.setting.storeConfig,
+            
         }),
         ...mapGetters(['setting_translation']),
     }

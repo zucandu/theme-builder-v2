@@ -115,7 +115,7 @@ export default {
         ...mapGetters(['isCustomer', 'setting_trans_obj', 'setting_translation']),
         ...mapState({
             productDetails: state => state.product.productDetails,
-            storeConfig: state => state.setting.storeConfig,
+            
             profile: state => state.customer.profile,
         }),
         productTranslation() {

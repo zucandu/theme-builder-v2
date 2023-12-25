@@ -229,7 +229,7 @@ export default {
             paginationLinks: state => state.listing.paginationLinks,
             paginationShowing: state => state.listing.paginationShowing,
             filters: state => state.listing.filters,
-            storeConfig: state => state.setting.storeConfig
+            
         })
     },
     watch: {

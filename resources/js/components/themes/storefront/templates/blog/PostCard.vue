@@ -38,7 +38,7 @@ export default {
     computed: {
         ...mapGetters(['setting_trans_obj', 'setting_translation']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         postTranslation() {
             return this.setting_trans_obj(this.item, this.$i18n.locale)

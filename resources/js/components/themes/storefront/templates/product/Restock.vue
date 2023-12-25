@@ -101,7 +101,7 @@ export default {
     computed: {
         ...mapState({
             profile: state => state.customer.profile,
-            storeConfig: state => state.setting.storeConfig
+            
         }),
     },
     watch: {

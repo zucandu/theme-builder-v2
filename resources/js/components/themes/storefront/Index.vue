@@ -228,7 +228,7 @@ export default {
         ...mapGetters(['productPrice', 'setting_translation']),
         ...mapState({
             productWidget: state => state.product.productWidget,
-            storeConfig: state => state.setting.storeConfig,
+            
             posts: state => state.blogpost.posts
         }),
         latestPosts() {

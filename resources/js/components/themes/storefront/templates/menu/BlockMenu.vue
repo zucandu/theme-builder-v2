@@ -28,7 +28,7 @@ export default {
     computed: {
         ...mapGetters(['setting_trans_obj', 'trim', 'productPrice']),
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         setting_translation() {
             return this.setting_trans_obj(this.item, this.$i18n.locale)

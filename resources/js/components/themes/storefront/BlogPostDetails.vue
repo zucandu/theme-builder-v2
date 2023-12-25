@@ -127,7 +127,7 @@ export default {
         ...mapGetters(['setting_trans_obj', 'setting_translation']),
         ...mapState({
             postDetails: state => state.blogpost.postDetails,
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         postTranslation() {
             return this.setting_trans_obj(this.postDetails, this.$i18n.locale) || undefined

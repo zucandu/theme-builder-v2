@@ -111,7 +111,7 @@ export default {
     },
     computed: {
         ...mapState({
-            storeConfig: state => state.setting.storeConfig
+            
         })
     },
     watch: {

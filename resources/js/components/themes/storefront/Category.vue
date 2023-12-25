@@ -225,7 +225,7 @@ export default {
             paginationShowing: state => state.listing.paginationShowing,
             filters: state => state.listing.filters,
             categoryDetails: state => state.listing.object,
-            storeConfig: state => state.setting.storeConfig
+            
         }),
         categoryTranslation() {
             return !_.isEmpty(this.categoryDetails) ? this.setting_trans_obj(this.categoryDetails, this.$i18n.locale) : undefined

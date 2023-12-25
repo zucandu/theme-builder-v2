@@ -65,7 +65,7 @@ export default {
     },
     computed: {
         ...mapState({
-            storeConfig: state => state.setting.storeConfig,
+            
             orderRef: state => state.order.orderRef
         })
     }
