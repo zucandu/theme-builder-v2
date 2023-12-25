@@ -47,11 +47,6 @@ export default {
             this.$store.dispatch('account')
         }
 
-        // Load config
-        if(Object.keys(this.storeConfig).length === 0) {
-            this.$store.commit('setConfigCache', zucConfig)
-        }
-
         // Get all banners
         if(this.banners.length === 0) {
             this.$store.dispatch('allBanners')
