@@ -29,6 +29,11 @@ class DiscoverController extends Controller
         return response()->json(json_decode(Storage::disk('public')->get('data/article-category-listing.json'), true));
     }
 
+    public function author()
+    {
+        return response()->json(json_decode(Storage::disk('public')->get('data/article-category-listing.json'), true));
+    }
+
     public function ids()
     {
         return response()->json(json_decode(Storage::disk('public')->get("data/discover-ids.json"), true));

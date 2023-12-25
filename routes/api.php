@@ -20,6 +20,7 @@ Route::group(['prefix' => 'theme-builder'], function() {
 
     Route::get('discover-listing', 'DiscoverController@show');
     Route::get('discover-category/{slug}', 'DiscoverController@category');
+    Route::get('discover-author/{slug}', 'DiscoverController@author');
     Route::get('discover-search', 'DiscoverController@search');
     Route::get('discover-latest', 'DiscoverController@index');
     Route::get('discover-ids/{ids}', 'DiscoverController@GetPostIds');
