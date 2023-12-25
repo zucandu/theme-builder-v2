@@ -13,7 +13,11 @@ export default {
         return axios.get(`/api/theme-builder/discover-search${params.querystr ? `?${params.querystr}` : ``}`)
     },
 
-    postDetails(slug) {
+    tool_post_listing_by_author(params) {
+        return axios.get(`/api/v1/storefront/discover-author/${params.slug}${params.querystr ? `?${params.querystr}` : ``}`)
+    },
+
+    tool_post_get_info(slug) {
         return axios.get(`/api/theme-builder/discover-${slug}`)
     },
 
