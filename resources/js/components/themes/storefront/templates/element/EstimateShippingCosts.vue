@@ -15,6 +15,7 @@
                     <div class="col-lg-4 mb-3">
                         <label for="country" class="form-label">{{ $t('Country') }}</label>
                         <select name="country" id="country" class="form-select" v-model="shippingCalculator.country_code">
+                            <option :value="undefined">{{ $t('Please select') }}</option>
                             <option v-for="(country, index) in countries" :value="country.iso_code_2" :key="index">{{ country.name }}</option>
                         </select>
                     </div>
