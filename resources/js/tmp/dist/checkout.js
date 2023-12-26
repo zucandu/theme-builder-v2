@@ -142,9 +142,11 @@ const mutations = {
         state.orderTrackingInfo = JSON.parse(json)
     },
 
-    orderComplete: () => {},
-    reORDER_SET_ORDERFromDb: () => {state.orderFromDb = {}},
-    reORDER_SET_ORDERDataDiscount: () => {state.orderFormData.discount = {}}
+    ORDER_ORDER_COMPLETE: (state, ref) => {
+    },
+    ORDER_RESET_DISCOUNT_DATA() {
+        state.orderFormData.discount = {}
+    }
     
 }
 
