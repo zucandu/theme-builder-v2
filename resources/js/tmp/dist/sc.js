@@ -110,7 +110,7 @@ const mutations = {
         localStorage.setItem('cart', JSON.stringify(state.items))
     },
 
-    CART_UPDATE_QUANTITY_IN_CART(state, response) {
+    /* CART_UPDATE_QUANTITY_IN_CART(state, response) {
         const products = response.data.products
         if(products.length > 0) {
             products.map(product => {
@@ -121,7 +121,7 @@ const mutations = {
             })
         }
         localStorage.setItem('cart', JSON.stringify(state.items))
-    },
+    }, */
 
     CART_RESET(state) {
         localStorage.removeItem('cart')

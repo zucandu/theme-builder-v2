@@ -1,19 +1,11 @@
 
 export default {
     cart_add_product(formdata) {
-        return axios.post('/api/theme-builder/shopping-cart/add-product', formdata, {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')
-            }
-        })
+        return axios.post('/api/theme-builder/shopping-cart/add-product')
     },
 
     cart_update_qty_in_cart(formdata) {
-        return axios.post('/api/theme-builder/shopping-cart/update-product', formdata, {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')
-            }
-        })
+        return axios.post('/api/theme-builder/shopping-cart/update-product', formdata)
     },
 
     cart_remove_product(id) {
@@ -21,10 +13,6 @@ export default {
     },
 
     restoreCart() {
-        return axios.get('/api/theme-builder/shopping-cart/restore', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')
-            }
-        })
+        return axios.get('/api/theme-builder/shopping-cart/restore')
     }
 }
