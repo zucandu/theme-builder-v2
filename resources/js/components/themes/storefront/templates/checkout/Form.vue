@@ -3,19 +3,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="h5 mb-3">{{ $t('Shipping & Payment Address') }}</div>
-                <div class="row" v-if="orderParams.profile && orderParams.profile.addresses && orderParams.profile.addresses.length > 0">
+                <div class="row" v-if="order_params.profile && order_params.profile.addresses && order_params.profile.addresses.length > 0">
                     <div class="col-6">
                         <div class="h6">{{ $t('Shipping Address') }}</div>
-                        <display-address :address="orderParams.shipping"></display-address>
-                        <button v-if="orderParams.profile.addresses.length > 1" class="btn btn-sm btn-link p-0 mb-3 mb-lg-0" @click.stop="editAddress(orderParams.shipping, 'shipping')">{{ $t('Edit Address') }}</button>
+                        <display-address :address="order_params.shipping"></display-address>
+                        <button v-if="order_params.profile.addresses.length > 1" class="btn btn-sm btn-link p-0 mb-3 mb-lg-0" @click.stop="editAddress(order_params.shipping, 'shipping')">{{ $t('Edit Address') }}</button>
                     </div>
                     <div class="col-6">
                         <div class="h6">{{ $t('Billing Address') }}</div>
-                        <display-address :address="orderParams.billing"></display-address>
-                        <button v-if="orderParams.profile.addresses.length > 1" class="btn btn-sm btn-link p-0 mb-3 mb-lg-0" @click.stop="editAddress(orderParams.billing, 'billing')">{{ $t('Edit Address') }}</button>
+                        <display-address :address="order_params.billing"></display-address>
+                        <button v-if="order_params.profile.addresses.length > 1" class="btn btn-sm btn-link p-0 mb-3 mb-lg-0" @click.stop="editAddress(order_params.billing, 'billing')">{{ $t('Edit Address') }}</button>
                     </div>
-                    <div  v-if="orderParams.profile.addresses.length === 1">
-                        <button class="btn btn-sm btn-link p-0" @click.stop="editAddress(orderParams.shipping)">{{ $t('Edit your current address or add a new?') }}</button>
+                    <div  v-if="order_params.profile.addresses.length === 1">
+                        <button class="btn btn-sm btn-link p-0" @click.stop="editAddress(order_params.shipping)">{{ $t('Edit your current address or add a new?') }}</button>
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@ export default {
         DisplayAddress, DisplayPrice
     },
     created() {
-        this.$store.dispatch('initializingCheckout', this.orderParams).then(() => {
+        this.$store.dispatch('initializingCheckout', this.order_params).then(() => {
             this.formdata = { ...this.formdata, ...this.formOrderData }
         }).finally(() => this.initLoaded = true)
     },
@@ -159,7 +159,7 @@ export default {
         applyDiscount() {
             
             this.$store.dispatch('applyDiscount', this.formOrderData.promotion).then(() => {
-                this.$store.commit('connectPaymentGateway', this.orderParams)
+                this.$store.commit('connectPaymentGateway', this.order_params)
             }).catch(error => {
                 
                 this.$store.commit('SETTING_SET_ALERT', {
@@ -186,7 +186,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['catalog_product_display_price', 'orderParams', 'order_shipping_methods', 'order_payment_methods', 'order_promotions']),
+        ...mapGetters(['catalog_product_display_price', 'order_params', 'order_shipping_methods', 'order_payment_methods', 'order_promotions']),
         ...mapState({
             formOrderData: state => state.order.formOrderData,
         })
@@ -198,13 +198,13 @@ export default {
             // So, this code only should work when old value exists
             if(Object.keys(oldv).length > 0) {
                 this.$store.commit('setFormOrderData', { payment: newv } )
-                this.$store.commit('connectPaymentGateway', this.orderParams)
+                this.$store.commit('connectPaymentGateway', this.order_params)
             }
         },
         'formdata.shipping': function(v) {
             if(v !== this.formOrderData.shipping) {
                 this.$store.commit('setFormOrderData', { shipping: v } )
-                this.$store.commit('connectPaymentGateway', this.orderParams)
+                this.$store.commit('connectPaymentGateway', this.order_params)
             }
         },
         'formdata.comments': {
@@ -216,7 +216,7 @@ export default {
         order_payment_methods(v) {
             if(v && Object.keys(this.formdata.payment).length === 0) {
                 this.$store.commit('setFormOrderData', { payment: v[0] })
-                this.$store.commit('connectPaymentGateway', this.orderParams)
+                this.$store.commit('connectPaymentGateway', this.order_params)
             }
         }
     }

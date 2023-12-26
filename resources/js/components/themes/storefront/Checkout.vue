@@ -4,7 +4,7 @@
             <div class="h1 text-center">{{ $t('Checkout') }}</div>
             <div v-if="!account_customer_logged" class="text-center text-uppercase letter-spacing-1px">{{ $t('Already have an account?') }} <router-link :to="{ path: `/login`, query: { redirect: `/checkout` } }">{{ $t('Log in') }}</router-link></div>
             <transition name="fade">
-                <div class="row" v-if="ready2Checkout">
+                <div class="row" v-if="order_ready_to_checkout">
                     <div class="left-column col-lg-6 pt-lg-5 pt-3">
                         <component :is="checkoutStep" @updateCheckoutStep="updateCheckoutStep" :params="checkoutParams"></component>
                     </div>
@@ -71,7 +71,7 @@
                                                 <tr>
                                                     <td colspan="3" class="text-end border-0">{{$t('Total:')}}</td>
                                                     <td class="text-end border-0">
-                                                        <display-price :price="orderTotal"></display-price>
+                                                        <display-price :price="order_total"></display-price>
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </transition>
-            <template v-if="!ready2Checkout">
+            <template v-if="!order_ready_to_checkout">
                 <checkout-loading></checkout-loading>
             </template>
         </div>
@@ -158,8 +158,8 @@ export default {
     computed: {
         ...mapGetters(['setting_translation', 'cart_total', 'account_customer_logged', 
                         'account_customer_access_token', 'catalog_product_price', 
-                        'order_shipping_cost', 'order_tax_amount', 'orderTotal', 
-                        'ready2Checkout', 'order_tax_name', 'order_shipping_methods']),
+                        'order_shipping_cost', 'order_tax_amount', 'order_total', 
+                        'order_ready_to_checkout', 'order_tax_name', 'order_shipping_methods']),
         ...mapState({
             items: state => state.cart.items,
             profile: state => state.customer.profile,

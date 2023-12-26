@@ -22,9 +22,9 @@ const getters = {
     order_tax_amount: () => 0,
     order_tax_name: () => undefined,
     order_discount_amount: () => 0,
-    orderTotal: () => 12.3,
-    ready2Checkout: () => true,
-    orderParams: state => {
+    order_total: () => 12.3,
+    order_ready_to_checkout: () => true,
+    order_params: state => {
         return {
             profile: {"id": 1,"firstname": "Hello","lastname": "World","email": "tester@test.com","username": null,"default_billing_address_id": 1,"default_shipping_address_id": 1,"avatar": "avatar.png","is_guest": 0,"newsletter": 0,"created_at": "2021-12-02 11:11:59","updated_at": "2021-12-11 03:14:44","addresses": [{"id": 1,"customer_id": 1,"company": null,"name": "Hello World","address_line_1": "5465 S OAKRIDGE DR","address_line_2": null,"city": "HOMOSASSA","postcode": "90001","zone_code": "CA","zone_name": "California","country_code": "US","country_name": "United States","phone": "1234567890"}],"tax": null,"notifications": []},
             items: [
