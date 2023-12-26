@@ -7,7 +7,9 @@ const state = {
         shipping: {id: 'Flat', title: 'Flat Rate', cost: 2.3},
         payment: {},
         promotion: {},
-        discount: []
+        discount: [
+            { "id": "CouponModule", "module": "Discount Coupon (18LJ51)", "details": { "module_track_id": 1, "amount": 1, "type": "F" } }
+        ]
     },
     orderFromDb: {},
     orderTrackingInfo: [],
