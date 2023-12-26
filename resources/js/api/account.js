@@ -10,7 +10,7 @@ export default {
     },
 
     account_customer_update(formdata) {
-        return axios.get('/api/theme-builder/account-update', formdata);
+        return axios.post('/api/theme-builder/account-update', formdata);
     },
     
 }
