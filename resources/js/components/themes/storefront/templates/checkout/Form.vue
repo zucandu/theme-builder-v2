@@ -151,14 +151,14 @@ export default {
         DisplayAddress, DisplayPrice
     },
     created() {
-        this.$store.dispatch('initializingCheckout', this.order_params).then(() => {
-            this.formdata = { ...this.formdata, ...this.formOrderData }
+        this.$store.dispatch('order_init_checkout', this.order_params).then(() => {
+            this.formdata = { ...this.formdata, ...this.orderFormData }
         }).finally(() => this.initLoaded = true)
     },
     methods: {
         applyDiscount() {
             
-            this.$store.dispatch('applyDiscount', this.formOrderData.promotion).then(() => {
+            this.$store.dispatch('applyDiscount', this.orderFormData.promotion).then(() => {
                 this.$store.commit('connectPaymentGateway', this.order_params)
             }).catch(error => {
                 
@@ -188,7 +188,7 @@ export default {
     computed: {
         ...mapGetters(['catalog_product_display_price', 'order_params', 'order_shipping_methods', 'order_payment_methods', 'order_promotions']),
         ...mapState({
-            formOrderData: state => state.order.formOrderData,
+            orderFormData: state => state.order.orderFormData,
         })
     },
     watch: {
@@ -202,7 +202,7 @@ export default {
             }
         },
         'formdata.shipping': function(v) {
-            if(v !== this.formOrderData.shipping) {
+            if(v !== this.orderFormData.shipping) {
                 this.$store.commit('setFormOrderData', { shipping: v } )
                 this.$store.commit('connectPaymentGateway', this.order_params)
             }

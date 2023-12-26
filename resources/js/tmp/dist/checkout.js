@@ -3,7 +3,7 @@ const state = {
     shippingMethods: [],
     paymentMethods: [],
     discountModules: [],
-    formOrderData: {
+    orderFormData: {
         shipping: {},
         payment: {},
         promotion: {},
@@ -59,8 +59,8 @@ const getters = {
             language: 'EN',
             billing: {"id": 1,"customer_id": 1,"company": null,"name": "Hello World","address_line_1": "5465 S OAKRIDGE DR","address_line_2": null,"city": "HOMOSASSA","postcode": "90001","zone_code": "CA","zone_name": "California","country_code": "US","country_name": "United States","phone": "1234567890"},
             shipping: {"id": 1,"customer_id": 1,"company": null,"name": "Hello World","address_line_1": "5465 S OAKRIDGE DR","address_line_2": null,"city": "HOMOSASSA","postcode": "90001","zone_code": "CA","zone_name": "California","country_code": "US","country_name": "United States","phone": "1234567890"},
-            paymentmethod: state.formOrderData.payment,
-            shippingmethod: state.formOrderData.shipping,
+            paymentmethod: state.orderFormData.payment,
+            shippingmethod: state.orderFormData.shipping,
             discountmodules: {}
         }
     }
@@ -69,11 +69,11 @@ const getters = {
 // actions
 const actions = {
 
-    initializingCheckout({ commit }) {
+    order_init_checkout({ commit }) {
         const { shippingModules, paymentModules, discountModules } = JSON.parse(`{"shippingModules":[{"code":"Flat","name":"Flat Rate","description":"Flat Rate","methods":[{"id":"Flat","title":"Flat Rate","cost":2.3}]}],"paymentModules":[{"id":"MoneyOrder","module":"Check\/Money Order","image":"paypal-visa-mastercard-american.credit-card.png"}],"discountModules":[{"id":"CouponModule","module":"Discount Coupon","fields":[{"label":"Coupon Code","name":"coupon_code","input":"text","placeholder":"Please enter your coupon code"}]}]}`)
-        commit('setShippingMethods', shippingModules)
-        commit('setPaymentMethods', paymentModules)
-        commit('setDiscountModules', discountModules)
+        commit('ORDER_SHIPPING_METHODS', shippingModules)
+        commit('ORDER_PAYMENT_METHODS', paymentModules)
+        commit('ORDER_DISCOUNT_MODULES', discountModules)
 
     },
     orderDetailsByRef({ commit },) {
@@ -91,30 +91,30 @@ const actions = {
 // mutations is often used to filter results
 const mutations = {
 
-    setShippingMethods(state, shippingModules) {
+    ORDER_SHIPPING_METHODS(state, shippingModules) {
         state.shippingMethods = shippingModules;
     },
 
-    setPaymentMethods(state, paymentModules) {
+    ORDER_PAYMENT_METHODS(state, paymentModules) {
         state.paymentMethods = paymentModules;
     },
 
-    setDiscountModules(state, discountModules) {
+    ORDER_DISCOUNT_MODULES(state, discountModules) {
         state.discountModules = discountModules;
     },
 
     setFormOrderData(state, obj) {
-        state.formOrderData = { ...state.formOrderData, ...obj }
+        state.orderFormData = { ...state.orderFormData, ...obj }
     },
 
     setFormPromotionData(state, obj) {
-        state.formOrderData.promotion = { ...state.formOrderData.promotion, ...obj }
+        state.orderFormData.promotion = { ...state.orderFormData.promotion, ...obj }
     },
 
     setOrder: (state, json) => {state.orderFromDb = JSON.parse(json).order},
 
     connectPaymentGateway: (state) => {
-        if(state.formOrderData.payment.id && state.formOrderData.shipping.id) {
+        if(state.orderFormData.payment.id && state.orderFormData.shipping.id) {
             document.getElementById("render-payment-gateway").innerHTML = "";
             const btn = document.createElement("button");
             btn.setAttribute('class', 'btn btn-primary btn-large w-100');
@@ -132,7 +132,7 @@ const mutations = {
      * @param {*} response 
      */
     setDiscount(state, json) {
-        state.formOrderData.discount = JSON.parse(json).discount
+        state.orderFormData.discount = JSON.parse(json).discount
     },
     
     /**
@@ -144,7 +144,7 @@ const mutations = {
 
     orderComplete: () => {},
     resetOrderFromDb: () => {state.orderFromDb = {}},
-    resetOrderDataDiscount: () => {state.formOrderData.discount = {}}
+    resetOrderDataDiscount: () => {state.orderFormData.discount = {}}
     
 }
 

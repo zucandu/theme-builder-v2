@@ -1,6 +1,6 @@
 
 export default {
-    initializingCheckout(formdata) {
+    order_init_checkout(formdata) {
         return axios.post('/api/theme-builder/checkout-init', formdata);
     },
 

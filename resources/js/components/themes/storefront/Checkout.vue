@@ -47,14 +47,14 @@
                                                         <display-price :price="cart_total"></display-price>
                                                     </td>
                                                 </tr>
-                                                <tr v-if="formOrderData.shipping.id">
-                                                    <td colspan="3" class="text-end border-0">{{$t('Shipping')}} ({{formOrderData.shipping.title}}):</td>
+                                                <tr v-if="orderFormData.shipping.id">
+                                                    <td colspan="3" class="text-end border-0">{{$t('Shipping')}} ({{orderFormData.shipping.title}}):</td>
                                                     <td class="text-end border-0">
                                                         <display-price :price="order_shipping_cost"></display-price>
                                                     </td>
                                                 </tr>
-                                                <template v-if="formOrderData.discount.length > 0">
-                                                    <tr v-for="(discount, index) in formOrderData.discount" :key="index">
+                                                <template v-if="orderFormData.discount.length > 0">
+                                                    <tr v-for="(discount, index) in orderFormData.discount" :key="index">
                                                         <td colspan="3" class="text-end border-0">{{$t(discount.module)}}</td>
                                                         <td class="text-end border-0">
                                                             <span>-</span>
@@ -85,7 +85,7 @@
 
                                 </div>
                                 <div class="checkout-payment-gateway-container order-md-1 order-0 mb-3 mb-lg-0">
-                                    <div v-if="Object.keys(formOrderData.payment).length === 0 || Object.keys(formOrderData.shipping).length === 0" class="alert alert-warning">
+                                    <div v-if="Object.keys(orderFormData.payment).length === 0 || Object.keys(orderFormData.shipping).length === 0" class="alert alert-warning">
                                         {{ $t('Please select shipping and payment method.') }}
                                     </div>
                                     <checkout-payment-gateway></checkout-payment-gateway>
@@ -163,7 +163,7 @@ export default {
         ...mapState({
             items: state => state.cart.items,
             profile: state => state.customer.profile,
-            formOrderData: state => state.order.formOrderData,
+            orderFormData: state => state.order.orderFormData,
             
         })
     }
