@@ -7,9 +7,7 @@ const state = {
         shipping: {id: 'Flat', title: 'Flat Rate', cost: 2.3},
         payment: {},
         promotion: {},
-        discount: [
-            { "id": "CouponModule", "module": "Discount Coupon (18LJ51)", "details": { "module_track_id": 1, "amount": 1, "type": "F" } }
-        ]
+        discount: []
     },
     orderFromDb: {},
     orderTrackingInfo: [],
@@ -23,8 +21,8 @@ const getters = {
     order_shipping_cost: state => state.orderFormData.shipping.cost,
     order_tax_amount: () => 0,
     order_tax_name: () => undefined,
-    order_discount_amount: () => 0,
-    order_total: (state, getters, rootState, rootGetters) => +rootGetters.cart_total + +getters.order_shipping_cost,
+    order_discount_amount: state => (state.orderFormData.discount && state.orderFormData.discount[0]) ? +state.orderFormData.discount[0].details.amount : 0,
+    order_total: (state, getters, rootState, rootGetters) => +rootGetters.cart_total + +getters.order_shipping_cost - getters.order_discount_amount,
     order_ready_to_checkout: () => true,
     order_params: state => {
         return {

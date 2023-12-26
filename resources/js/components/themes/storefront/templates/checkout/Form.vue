@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-12">
+            <div class="col-12">{{ orderFormData.discount[0].details }}
                 <div class="h5 mb-3">{{ $t('Shipping Methods') }}</div>
                 <transition name="fade">
                     <div v-if="initLoaded">
