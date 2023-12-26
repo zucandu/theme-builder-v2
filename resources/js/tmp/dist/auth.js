@@ -10,22 +10,22 @@ const getters = {}
 const actions = {
     
     async account_auth_register({commit}, formdata) {
-        commit('setToken', await AUTH.account_auth_register(formdata))
+        commit('SET_CUSTOMER_TOKEN', await AUTH.account_auth_register(formdata))
     },
 
-    async login({ commit }, formdata) {
-        commit('setToken', await AUTH.apiLogin(formdata))
+    async account_auth_login({ commit }, formdata) {
+        commit('SET_CUSTOMER_TOKEN', await AUTH.account_auth_login(formdata))
     },
 
     logout({ commit }) {
-        commit('setToken')
-        commit('customerResetProfile')
+        commit('SET_CUSTOMER_TOKEN')
+        commit('ACCOUNT_CUSTOMER_RESET')
     }
 }
 
 // mutations is often used to filter results
 const mutations = {
-    setToken : (state, response) => {response === undefined ? localStorage.removeItem('jwt_customer') : localStorage.setItem('jwt_customer', response.data.token)}
+    SET_CUSTOMER_TOKEN : (state, response) => {response === undefined ? localStorage.removeItem('jwt_customer') : localStorage.setItem('jwt_customer', response.data.token)}
 };
 
 export default {

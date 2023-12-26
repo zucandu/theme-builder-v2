@@ -4,7 +4,7 @@ export default {
         return axios.post('/api/theme-builder/register', formdata);
     },
     
-    apiLogin(formdata) {
+    account_auth_login(formdata) {
         return Axios.post('/api/theme-builder/login', formdata);
     },
 }
