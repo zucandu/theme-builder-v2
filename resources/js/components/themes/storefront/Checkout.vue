@@ -50,7 +50,7 @@
                                                 <tr v-if="formOrderData.shipping.id">
                                                     <td colspan="3" class="text-end border-0">{{$t('Shipping')}} ({{formOrderData.shipping.title}}):</td>
                                                     <td class="text-end border-0">
-                                                        <display-price :price="orderShippingCost"></display-price>
+                                                        <display-price :price="order_shipping_cost"></display-price>
                                                     </td>
                                                 </tr>
                                                 <template v-if="formOrderData.discount.length > 0">
@@ -62,10 +62,10 @@
                                                         </td>
                                                     </tr>
                                                 </template>
-                                                <tr v-if="orderTaxAmount > 0">
+                                                <tr v-if="order_tax_amount > 0">
                                                     <td colspan="3" class="text-end border-0">{{ $t('Sales Tax') }}:</td>
                                                     <td class="text-end border-0">
-                                                        <display-price :price="orderTaxAmount"></display-price>
+                                                        <display-price :price="order_tax_amount"></display-price>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -158,8 +158,8 @@ export default {
     computed: {
         ...mapGetters(['setting_translation', 'cart_total', 'account_customer_logged', 
                         'account_customer_access_token', 'catalog_product_price', 
-                        'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
-                        'ready2Checkout', 'orderTaxName', 'order_shipping_methods']),
+                        'order_shipping_cost', 'order_tax_amount', 'orderTotal', 
+                        'ready2Checkout', 'order_tax_name', 'order_shipping_methods']),
         ...mapState({
             items: state => state.cart.items,
             profile: state => state.customer.profile,
