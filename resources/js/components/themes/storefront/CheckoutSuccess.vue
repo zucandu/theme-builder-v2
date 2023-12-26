@@ -125,7 +125,7 @@ export default {
         document.title = this.$t(`Thank you for your order #${this.$route.params.ref}`)
 
         // load order from ref
-        this.$store.dispatch('orderDetailsByRef', this.$route.params.ref).then(() => {
+        this.$store.dispatch('order_get_info_by_ref', this.$route.params.ref).then(() => {
             if(this.profile.is_guest !== 1) {
                 this.$store.dispatch('account_customer_get_info')
             }

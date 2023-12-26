@@ -138,7 +138,7 @@ export default {
     created() {
 
         // load order from ref
-        this.$store.dispatch('orderDetailsByRef', this.$route.params.ref).then(() => {
+        this.$store.dispatch('order_get_info_by_ref', this.$route.params.ref).then(() => {
             if(this.order && this.order.items && this.order.items.length > 0) {
                 this.order.items.map(item => {
                     this.formdata.resolution[item.product_id] = `refund`
@@ -162,7 +162,7 @@ export default {
             this.loading = true
 
             this.$store.dispatch('rmaRequest', this.formdata).then(() => {
-                this.$store.dispatch('orderDetailsByRef', this.$route.params.ref).then(() => {
+                this.$store.dispatch('order_get_info_by_ref', this.$route.params.ref).then(() => {
                     this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t(`We have received your request and we will contact you as soon as possible.`)

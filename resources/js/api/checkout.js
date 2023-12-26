@@ -4,7 +4,7 @@ export default {
         return axios.post('/api/theme-builder/checkout-init', formdata);
     },
 
-    orderDetailsByRef(ref) {
+    order_get_info_by_ref(ref) {
         return axios.get(`/api/theme-builder/orderdetails/${ref}`, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')
@@ -12,7 +12,7 @@ export default {
         })
     },
 
-    orderTrackingDetails(id) {
+    orderTrackingInfo(id) {
         return axios.get(`/api/theme-builder/account-track-order/${id}`, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt_customer')

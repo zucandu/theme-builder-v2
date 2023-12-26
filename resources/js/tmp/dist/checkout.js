@@ -10,7 +10,7 @@ const state = {
         discount: []
     },
     orderFromDb: {},
-    orderTrackingDetails: [],
+    orderTrackingInfo: [],
 }
 
 // getters
@@ -76,11 +76,11 @@ const actions = {
         commit('ORDER_DISCOUNT_MODULES', discountModules)
 
     },
-    orderDetailsByRef({ commit },) {
+    order_get_info_by_ref({ commit },) {
         commit('setOrder', `{"order":{"id":14252342346,"reference":"698412HE28PGYN23QNWIYE4L","customer_id":1,"firstname":"Steven","lastname":"Garret","email":"hello@example.com","payment_method":"Check\/Money Order","payment_code":"MoneyOrder","shipping_method":"Flat Rate","shipping_code":"Flat","status":1,"currency":"USD","language":"en","subtotal":"1221.0000","shipping_amount":"2.3600","order_tax_name":null,"order_tax":"0.0000","order_total":"1223.3600","is_guest":0,"recover_abandoned":0,"ip_address":"127.0.0.1","session_id":33,"meta":null,"created_at":"2021-12-08 08:38:13","updated_at":null,"addresses":[{"id":1,"customer_id":1,"order_id":14252342346,"company":null,"name":"Steven Garret","address_line_1":"5465 S OAKRIDGE DR","address_line_2":null,"city":"HOMOSASSA","postcode":"90001","zone_name":"California","country_name":"United States","phone":"1234567890","address_type":"shipping","created_at":null,"updated_at":null}],"items":[{"id":1,"order_id":14252342346,"product_id":9,"sku":"Model9","name":"Hood CDA EVCK4SS 40cm Cylinder","price":"359.0000","tax":"0.0000","tax_included":0,"qty":2,"meta":null,"created_at":null,"updated_at":null,"images":[{"id":9,"product_id":9,"src":"09.jpg","created_at":null,"updated_at":null}]},{"id":2,"order_id":14252342346,"product_id":7,"sku":"Model7","name":"DEF 18W-804","price":"503.0000","tax":"0.0000","tax_included":0,"qty":1,"meta":null,"created_at":null,"updated_at":null,"images":[{"id":7,"product_id":7,"src":"07.jpg","created_at":null,"updated_at":null}]}],"orderstatus":{"name":"Pending"},"comments":[{"id":1,"order_id":14252342346,"order_status_id":1,"hidden":0,"note":"Thank you for ordered. We will update your order as soon as possible.","courier":null,"tracking_number":null,"admin":null,"created_at":"08 December, 2021 15:13 PM","updated_at":null}],"discounts":[],"returns":[]}}`)
     },
     
-    orderTrackingDetails({ commit }) {
+    orderTrackingInfo({ commit }) {
         commit('setOrderTrackingDetails', `{"order_id":14252342346,"step":2,"trackdetails":{"date":"11 December, 2021","message":"Your order is being processed and you will be notified of the result shortly","location":""},"courier":null,"tracking_number":null,"orderstatus":{"id":1,"name":"Pending","deleted_at":null,"created_at":"2021-12-01 06:24:50","updated_at":"2021-12-01 06:24:50"}}`)
     },
     applyDiscount ({ commit }) {
@@ -139,7 +139,7 @@ const mutations = {
      * Set order tracking from order id
      */
      setOrderTrackingDetails(state, json) {
-        state.orderTrackingDetails = JSON.parse(json)
+        state.orderTrackingInfo = JSON.parse(json)
     },
 
     orderComplete: () => {},
