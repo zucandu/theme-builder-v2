@@ -2,7 +2,7 @@
     <div class="card" v-if="profile">
         <div class="card-header fw-bold">{{ $t("Profile") }}</div>
         <div class="card-body">
-            <form @submit.prevent="updateProfile()">
+            <form @submit.prevent="account_customer_update()">
                 <div class="mb-3">
                     <label for="avatar" class="form-label">{{ $t('Avatar') }}</label>
                     <div style="width:220px">
@@ -58,8 +58,8 @@ export default {
         Object.keys(this.profile).map(v => this.formdata[v] = this.profile[v])
     },
     methods: {
-        updateProfile() {
-            this.$store.dispatch('updateProfile', this.formdata).then(() => {
+        account_customer_update() {
+            this.$store.dispatch('account_customer_update', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Updated!')

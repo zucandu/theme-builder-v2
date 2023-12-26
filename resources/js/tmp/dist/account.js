@@ -52,7 +52,7 @@ const actions = {
     },
 
     async account_customer_update({ commit }, formdata) {
-        commit('SET_ACCOUNT', await API_CUSTOMER.account_customer_update(formdata))
+        commit('SET_ACCOUNT', await API_ACCOUNT.account_customer_update(formdata))
     },
 
     async account_customer_orders({commit}) {
