@@ -1,5 +1,3 @@
-import apiOrder from '@/api/checkout'
-
 // initial state
 const state = {
     shippingMethods: [],
@@ -17,9 +15,9 @@ const state = {
 
 // getters
 const getters = {
-    orderShippingMethods: state => state.shippingMethods || undefined,
-    orderPaymentMethods: state => state.paymentMethods || undefined,
-    orderPromotions: state => state.discountModules || undefined,
+    order_shipping_methods: state => state.shippingMethods || undefined,
+    order_payment_methods: state => state.paymentMethods || undefined,
+    order_promotions: state => state.discountModules || undefined,
     orderShippingCost: () => 2.3,
     orderTaxAmount: () => 0,
     orderTaxName: () => undefined,

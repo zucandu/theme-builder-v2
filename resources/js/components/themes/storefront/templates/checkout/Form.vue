@@ -25,7 +25,7 @@
                 <div class="h5 mb-3">{{ $t('Shipping Methods') }}</div>
                 <transition name="fade">
                     <div v-if="initLoaded">
-                        <div class="mb-3 card card-body" v-for="shipping in orderShippingMethods" :key="shipping.code">
+                        <div class="mb-3 card card-body" v-for="shipping in order_shipping_methods" :key="shipping.code">
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="fw-bold">{{ $t(shipping.name) }}</div>
                                 <div v-if="shipping.image"><img :src="`/storage/shippings/${shipping.image}`" :alt="shipping.name" width="50"></div>
@@ -60,11 +60,11 @@
                     </div>
                 </div>
             </div>
-            <div v-if="orderPromotions.length > 0" class="col-12">
+            <div v-if="order_promotions.length > 0" class="col-12">
                 <div class="h5 mb-3">{{ $t('Promotions') }}</div>
                 <transition name="fade">
                     <div v-if="initLoaded">
-                        <div class="mb-3 card card-body" v-for="discount in orderPromotions" :key="discount.id">
+                        <div class="mb-3 card card-body" v-for="discount in order_promotions" :key="discount.id">
                             <div class="h6">{{ $t(discount.module)}}</div>
                             <div v-for="(dfield, dindex) in discount.fields" :key="dindex">
                                 <template v-if="dfield.input === 'text'">
@@ -93,7 +93,7 @@
                 <div class="h5 mb-3">{{ $t('Payment Methods') }}</div>
                 <transition name="fade">
                     <div v-if="initLoaded">
-                        <div class="mb-3 card card-body" v-for="payment in orderPaymentMethods" :key="payment.id">
+                        <div class="mb-3 card card-body" v-for="payment in order_payment_methods" :key="payment.id">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="form-check">
                                     <input v-model="formdata.payment" class="form-check-input" type="radio" :value="payment" :id="`payment-method-${payment.id}`">
@@ -186,7 +186,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['catalog_product_display_price', 'orderParams', 'orderShippingMethods', 'orderPaymentMethods', 'orderPromotions']),
+        ...mapGetters(['catalog_product_display_price', 'orderParams', 'order_shipping_methods', 'order_payment_methods', 'order_promotions']),
         ...mapState({
             formOrderData: state => state.order.formOrderData,
         })
@@ -194,7 +194,7 @@ export default {
     watch: {
         'formdata.payment': function(newv, oldv) {
 
-            // orderPaymentMethods method will select the first payment method if no payment method is selected
+            // order_payment_methods method will select the first payment method if no payment method is selected
             // So, this code only should work when old value exists
             if(Object.keys(oldv).length > 0) {
                 this.$store.commit('setFormOrderData', { payment: newv } )
@@ -213,7 +213,7 @@ export default {
                 this.$store.commit('setFormOrderData', { comments: v } )
             },
         },
-        orderPaymentMethods(v) {
+        order_payment_methods(v) {
             if(v && Object.keys(this.formdata.payment).length === 0) {
                 this.$store.commit('setFormOrderData', { payment: v[0] })
                 this.$store.commit('connectPaymentGateway', this.orderParams)

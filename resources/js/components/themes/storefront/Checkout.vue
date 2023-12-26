@@ -159,7 +159,7 @@ export default {
         ...mapGetters(['setting_translation', 'cart_total', 'account_customer_logged', 
                         'account_customer_access_token', 'catalog_product_price', 
                         'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
-                        'ready2Checkout', 'orderTaxName', 'orderShippingMethods']),
+                        'ready2Checkout', 'orderTaxName', 'order_shipping_methods']),
         ...mapState({
             items: state => state.cart.items,
             profile: state => state.customer.profile,
