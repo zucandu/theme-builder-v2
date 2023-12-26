@@ -47,8 +47,8 @@ const getters = {
 // actions
 const actions = {
 
-    sendMail({}) {
-        alert('OK')
+    async global_send_mail({}, formdata) {
+        await API_GLOBAL.global_send_mail(formdata)
     },
 
     /**

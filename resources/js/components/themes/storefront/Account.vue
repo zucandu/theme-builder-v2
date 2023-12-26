@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div v-else-if="account_customer_access_token" class="col-12 col-lg-6 text-center">
+        <div v-else-if="Object.keys(profile).length > 0 && +profile.is_guest === 1" class="col-12 col-lg-6 text-center">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title h5">{{$t("You're viewing the account page as a guest")}}</div>
@@ -78,7 +78,7 @@ export default {
     methods: {
         convertGuest2NormalAccount() {
             this.converting = true
-            this.$store.dispatch('convertGuest2NormalAccount').then(() => {
+            this.$store.dispatch('account_customer_set_account').then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t("We have emailed you a temporary password. Please check your email and change it as soon as possible.")

@@ -220,7 +220,6 @@ export default {
         ...mapState({
             order: state => state.order.orderFromDb,
             orderTrackingInfo: state => state.order.orderTrackingInfo,
-            
             profile: state => state.customer.profile,
         }),
         orderAddress() {
