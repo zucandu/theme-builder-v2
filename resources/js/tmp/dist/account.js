@@ -76,7 +76,7 @@ const mutations = {
 
     SET_ACCOUNT: (state, response) => {state.profile = response.data.profile},
     SET_ACCOUNT_ORDERS: (state, response) => {state.orders = response.data.orders},
-    ACCOUNT_CUSTOMER_RESET: (state) => {state.profile},
+    ACCOUNT_CUSTOMER_RESET: (state) => state.profile = {},
 }
 
 export default {
