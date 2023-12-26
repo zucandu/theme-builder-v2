@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </form>
-            <template v-if="cart_estimate_shipping_costs.length > 0">
-                <div v-for="shipping in cart_estimate_shipping_costs" :key="shipping.code" class="mt-3">
+            <template v-if="estimateShippingCost.length > 0">
+                <div v-for="shipping in estimateShippingCost" :key="shipping.code" class="mt-3">
                     <div class="d-flex justify-content-between mb-3 align-items-center">
                         <div class="h6 fw-bold">{{ shipping.name }}</div>
                         <div v-if="shipping.image"><img :src="`/storage/shippings/${shipping.image}`" :alt="shipping.name" width="50"></div>
@@ -117,7 +117,7 @@ export default {
         ...mapState({
             countries: state => state.country.countries,
             estimateFormData: state => state.cart.estimateFormData,
-            cart_estimate_shipping_costs: state => state.cart.cart_estimate_shipping_costs,
+            estimateShippingCost: state => state.cart.estimateShippingCost,
             profile: state => state.customer.profile,
         }),
         regions: function() {
@@ -134,7 +134,7 @@ export default {
     },
     watch: {
         picked(v) {
-            this.$store.commit('setEstimateFormData', {
+            this.$store.commit('CART_SET_ESTIMATE_FORMDATA', {
                 country_code: v.country_code,
                 zone_code: v.zone_code,
                 zone_name: v.zone_name,

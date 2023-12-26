@@ -13,7 +13,7 @@ const state = {
         zone_name: undefined,
         postcode: undefined
     },
-    cart_estimate_shipping_costs: [],
+    estimateShippingCost: [],
 }
 
 // getters
@@ -129,8 +129,16 @@ const mutations = {
     },
 
     CART_ESTIMATE_SHIPPING(state, json) {
-        state.cart_estimate_shipping_costs = JSON.parse(json).shipping_methods
-    }
+        state.estimateShippingCost = JSON.parse(json).shipping_methods
+    },
+    CART_SET_ESTIMATE_FORMDATA: () => {
+        state.shippingCalculator = {
+            country_code: 'US',
+            zone_code: 'CA',
+            zone_name: 'California',
+            postcode: '90001'
+        }
+    },
 
 
 }
