@@ -1,4 +1,4 @@
-import auth from '@/api/auth'
+import AUTH from '@/api/AUTH'
 
 // initial state
 const state = {}
@@ -10,11 +10,11 @@ const getters = {}
 const actions = {
     
     async register({commit}, formdata) {
-        commit('setToken', await auth.apiRegister(formdata))
+        commit('setToken', await AUTH.apiRegister(formdata))
     },
 
     async login({ commit }, formdata) {
-        commit('setToken', await auth.apiLogin(formdata))
+        commit('setToken', await AUTH.apiLogin(formdata))
     },
 
     logout({ commit }) {
