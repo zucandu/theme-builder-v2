@@ -90,10 +90,10 @@
                         </tfoot>
                     </table>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <router-link class="btn btn-primary" to="/">{{ $t('Continue Shopping') }}</router-link>
                         </div>
-                        <div class="col-md-8 text-end">
+                        <div class="col-md-7 text-end">
                             <router-link to="/account/orders" class="btn btn-primary">{{ $t('My Account') }}</router-link>
                             <router-link to="/logout" class="btn btn-link ms-3">{{ $t('Logout') }}</router-link>
                         </div>
