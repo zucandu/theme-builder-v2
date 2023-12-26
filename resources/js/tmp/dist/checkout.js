@@ -22,7 +22,7 @@ const getters = {
     order_tax_amount: () => 0,
     order_tax_name: () => undefined,
     order_discount_amount: () => 0,
-    order_total: () => 12.3,
+    order_total: (state, getters, rootState, rootGetters) => +rootGetters.cart_total + +getters.order_shipping_cost,
     order_ready_to_checkout: () => true,
     order_params: state => {
         return {
