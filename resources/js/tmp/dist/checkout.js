@@ -77,14 +77,14 @@ const actions = {
 
     },
     order_get_info_by_ref({ commit },) {
-        commit('setOrder', `{"order":{"id":14252342346,"reference":"698412HE28PGYN23QNWIYE4L","customer_id":1,"firstname":"Steven","lastname":"Garret","email":"hello@example.com","payment_method":"Check\/Money Order","payment_code":"MoneyOrder","shipping_method":"Flat Rate","shipping_code":"Flat","status":1,"currency":"USD","language":"en","subtotal":"1221.0000","shipping_amount":"2.3600","order_tax_name":null,"order_tax":"0.0000","order_total":"1223.3600","is_guest":0,"recover_abandoned":0,"ip_address":"127.0.0.1","session_id":33,"meta":null,"created_at":"2021-12-08 08:38:13","updated_at":null,"addresses":[{"id":1,"customer_id":1,"order_id":14252342346,"company":null,"name":"Steven Garret","address_line_1":"5465 S OAKRIDGE DR","address_line_2":null,"city":"HOMOSASSA","postcode":"90001","zone_name":"California","country_name":"United States","phone":"1234567890","address_type":"shipping","created_at":null,"updated_at":null}],"items":[{"id":1,"order_id":14252342346,"product_id":9,"sku":"Model9","name":"Hood CDA EVCK4SS 40cm Cylinder","price":"359.0000","tax":"0.0000","tax_included":0,"qty":2,"meta":null,"created_at":null,"updated_at":null,"images":[{"id":9,"product_id":9,"src":"09.jpg","created_at":null,"updated_at":null}]},{"id":2,"order_id":14252342346,"product_id":7,"sku":"Model7","name":"DEF 18W-804","price":"503.0000","tax":"0.0000","tax_included":0,"qty":1,"meta":null,"created_at":null,"updated_at":null,"images":[{"id":7,"product_id":7,"src":"07.jpg","created_at":null,"updated_at":null}]}],"orderstatus":{"name":"Pending"},"comments":[{"id":1,"order_id":14252342346,"order_status_id":1,"hidden":0,"note":"Thank you for ordered. We will update your order as soon as possible.","courier":null,"tracking_number":null,"admin":null,"created_at":"08 December, 2021 15:13 PM","updated_at":null}],"discounts":[],"returns":[]}}`)
+        commit('ORDER_SET_ORDER', `{"order":{"id":14252342346,"reference":"698412HE28PGYN23QNWIYE4L","customer_id":1,"firstname":"Steven","lastname":"Garret","email":"hello@example.com","payment_method":"Check\/Money Order","payment_code":"MoneyOrder","shipping_method":"Flat Rate","shipping_code":"Flat","status":1,"currency":"USD","language":"en","subtotal":"1221.0000","shipping_amount":"2.3600","order_tax_name":null,"order_tax":"0.0000","order_total":"1223.3600","is_guest":0,"recover_abandoned":0,"ip_address":"127.0.0.1","session_id":33,"meta":null,"created_at":"2021-12-08 08:38:13","updated_at":null,"addresses":[{"id":1,"customer_id":1,"order_id":14252342346,"company":null,"name":"Steven Garret","address_line_1":"5465 S OAKRIDGE DR","address_line_2":null,"city":"HOMOSASSA","postcode":"90001","zone_name":"California","country_name":"United States","phone":"1234567890","address_type":"shipping","created_at":null,"updated_at":null}],"items":[{"id":1,"order_id":14252342346,"product_id":9,"sku":"Model9","name":"Hood CDA EVCK4SS 40cm Cylinder","price":"359.0000","tax":"0.0000","tax_included":0,"qty":2,"meta":null,"created_at":null,"updated_at":null,"images":[{"id":9,"product_id":9,"src":"09.jpg","created_at":null,"updated_at":null}]},{"id":2,"order_id":14252342346,"product_id":7,"sku":"Model7","name":"DEF 18W-804","price":"503.0000","tax":"0.0000","tax_included":0,"qty":1,"meta":null,"created_at":null,"updated_at":null,"images":[{"id":7,"product_id":7,"src":"07.jpg","created_at":null,"updated_at":null}]}],"orderstatus":{"name":"Pending"},"comments":[{"id":1,"order_id":14252342346,"order_status_id":1,"hidden":0,"note":"Thank you for ordered. We will update your order as soon as possible.","courier":null,"tracking_number":null,"admin":null,"created_at":"08 December, 2021 15:13 PM","updated_at":null}],"discounts":[],"returns":[]}}`)
     },
     
-    orderTrackingInfo({ commit }) {
-        commit('setOrderTrackingDetails', `{"order_id":14252342346,"step":2,"trackdetails":{"date":"11 December, 2021","message":"Your order is being processed and you will be notified of the result shortly","location":""},"courier":null,"tracking_number":null,"orderstatus":{"id":1,"name":"Pending","deleted_at":null,"created_at":"2021-12-01 06:24:50","updated_at":"2021-12-01 06:24:50"}}`)
+    order_tracking_info_by_ref({ commit }) {
+        commit('ORDER_SET_TRACKING', `{"order_id":14252342346,"step":2,"trackdetails":{"date":"11 December, 2021","message":"Your order is being processed and you will be notified of the result shortly","location":""},"courier":null,"tracking_number":null,"orderstatus":{"id":1,"name":"Pending","deleted_at":null,"created_at":"2021-12-01 06:24:50","updated_at":"2021-12-01 06:24:50"}}`)
     },
-    applyDiscount ({ commit }) {
-        commit('setDiscount', `{"discount":[{"id":"CouponModule","module":"Discount Coupon (18LJ51)","details":{"module_track_id":1,"amount":1,"type":"F"}}]}`)
+    order_apply_discount ({ commit }) {
+        commit('ORDER_SET_DISCOUNT', `{"discount":[{"id":"CouponModule","module":"Discount Coupon (18LJ51)","details":{"module_track_id":1,"amount":1,"type":"F"}}]}`)
     },
 }
 
@@ -103,17 +103,17 @@ const mutations = {
         state.discountModules = discountModules;
     },
 
-    setFormOrderData(state, obj) {
+    ORDER_SET_FORMDATA(state, obj) {
         state.orderFormData = { ...state.orderFormData, ...obj }
     },
 
-    setFormPromotionData(state, obj) {
+    ORDER_SET_PROMODATA(state, obj) {
         state.orderFormData.promotion = { ...state.orderFormData.promotion, ...obj }
     },
 
-    setOrder: (state, json) => {state.orderFromDb = JSON.parse(json).order},
+    ORDER_SET_ORDER: (state, json) => {state.orderFromDb = JSON.parse(json).order},
 
-    connectPaymentGateway: (state) => {
+    ORDER_CONNECT_PAYMENT: (state) => {
         if(state.orderFormData.payment.id && state.orderFormData.shipping.id) {
             document.getElementById("render-payment-gateway").innerHTML = "";
             const btn = document.createElement("button");
@@ -131,20 +131,20 @@ const mutations = {
      * @param {*} state 
      * @param {*} response 
      */
-    setDiscount(state, json) {
+    ORDER_SET_DISCOUNT(state, json) {
         state.orderFormData.discount = JSON.parse(json).discount
     },
     
     /**
      * Set order tracking from order id
      */
-     setOrderTrackingDetails(state, json) {
+     ORDER_SET_TRACKING(state, json) {
         state.orderTrackingInfo = JSON.parse(json)
     },
 
     orderComplete: () => {},
-    resetOrderFromDb: () => {state.orderFromDb = {}},
-    resetOrderDataDiscount: () => {state.orderFormData.discount = {}}
+    reORDER_SET_ORDERFromDb: () => {state.orderFromDb = {}},
+    reORDER_SET_ORDERDataDiscount: () => {state.orderFormData.discount = {}}
     
 }
 

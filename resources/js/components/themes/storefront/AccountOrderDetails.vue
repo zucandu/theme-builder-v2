@@ -199,7 +199,7 @@ export default {
     created() {
         // load order from ref
         this.$store.dispatch('order_get_info_by_ref', this.$route.params.ref).then(() => {
-            this.$store.dispatch('orderTrackingInfo', this.order.id).then(() => {
+            this.$store.dispatch('order_tracking_info_by_ref', this.order.id).then(() => {
                 this.loaded = true
             })
         }).catch(error => {

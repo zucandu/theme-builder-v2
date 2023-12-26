@@ -70,14 +70,14 @@
                                 <template v-if="dfield.input === 'text'">
                                     <div class="mb-3">
                                         <label class="form-label">{{ $t(dfield.label)}}</label>
-                                        <input type="text" class="form-control" @input="setFormPromotionData(discount.id,  dfield.name, $event.target.value)">
+                                        <input type="text" class="form-control" @input="ORDER_SET_PROMODATA(discount.id,  dfield.name, $event.target.value)">
                                     </div>
                                 </template>
                                 <template v-else-if="dfield.input === 'readonly'">
                                     <div>{{ $t(dfield.label)}}: {{dfield.value}}</div>
                                 </template>
                             </div>
-                            <button class="btn btn-primary" type="button" @click.stop="applyDiscount">{{ $t('Submit') }}</button>
+                            <button class="btn btn-primary" type="button" @click.stop="order_apply_discount">{{ $t('Submit') }}</button>
                         </div>
                     </div>
                 </transition>
@@ -156,10 +156,10 @@ export default {
         }).finally(() => this.initLoaded = true)
     },
     methods: {
-        applyDiscount() {
+        order_apply_discount() {
             
-            this.$store.dispatch('applyDiscount', this.orderFormData.promotion).then(() => {
-                this.$store.commit('connectPaymentGateway', this.order_params)
+            this.$store.dispatch('order_apply_discount', this.orderFormData.promotion).then(() => {
+                this.$store.commit('ORDER_CONNECT_PAYMENT', this.order_params)
             }).catch(error => {
                 
                 this.$store.commit('SETTING_SET_ALERT', {
@@ -172,13 +172,13 @@ export default {
             })
         },
 
-        setFormPromotionData(module, field, value) {
+        ORDER_SET_PROMODATA(module, field, value) {
             const obj = {
                 [module]: {
                     [field]: value
                 }
             }
-            this.$store.commit('setFormPromotionData', obj)
+            this.$store.commit('ORDER_SET_PROMODATA', obj)
         },
 
         editAddress(address, edit_address_type = undefined) {
@@ -197,26 +197,26 @@ export default {
             // order_payment_methods method will select the first payment method if no payment method is selected
             // So, this code only should work when old value exists
             if(Object.keys(oldv).length > 0) {
-                this.$store.commit('setFormOrderData', { payment: newv } )
-                this.$store.commit('connectPaymentGateway', this.order_params)
+                this.$store.commit('ORDER_SET_FORMDATA', { payment: newv } )
+                this.$store.commit('ORDER_CONNECT_PAYMENT', this.order_params)
             }
         },
         'formdata.shipping': function(v) {
             if(v !== this.orderFormData.shipping) {
-                this.$store.commit('setFormOrderData', { shipping: v } )
-                this.$store.commit('connectPaymentGateway', this.order_params)
+                this.$store.commit('ORDER_SET_FORMDATA', { shipping: v } )
+                this.$store.commit('ORDER_CONNECT_PAYMENT', this.order_params)
             }
         },
         'formdata.comments': {
             deep: true,
             handler(v) {
-                this.$store.commit('setFormOrderData', { comments: v } )
+                this.$store.commit('ORDER_SET_FORMDATA', { comments: v } )
             },
         },
         order_payment_methods(v) {
             if(v && Object.keys(this.formdata.payment).length === 0) {
-                this.$store.commit('setFormOrderData', { payment: v[0] })
-                this.$store.commit('connectPaymentGateway', this.order_params)
+                this.$store.commit('ORDER_SET_FORMDATA', { payment: v[0] })
+                this.$store.commit('ORDER_CONNECT_PAYMENT', this.order_params)
             }
         }
     }
