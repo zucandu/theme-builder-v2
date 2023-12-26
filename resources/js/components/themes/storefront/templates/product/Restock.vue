@@ -9,7 +9,7 @@
                 </div>
                 <div class="modal-body">
                     <p><strong>{{ productName }}</strong></p>
-                    <form @submit.prevent="restockNotifySignup()">
+                    <form @submit.prevent="catalog_product_restock_notify()">
                         <div class="mb-3">
                             <label for="email-address" class="form-label">{{ $t('Email address') }}</label>
                             <input v-model="formdata.email" type="email" class="form-control" id="email-address" placeholder="E.g. name@example.com" required>
@@ -60,7 +60,7 @@ export default {
         }}
     },
     methods: {
-        async restockNotifySignup() {
+        async catalog_product_restock_notify() {
 
             // Get Google reCAPTCHA token if the site key is set
             const _ = this
@@ -81,7 +81,7 @@ export default {
                 locale: this.$i18n.locale
             }}
 
-            this.$store.dispatch('restockNotifySignup', this.formdata).then(() => {
+            this.$store.dispatch('catalog_product_restock_notify', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('You have been successfully subscribed to the restock notification list.')
@@ -100,8 +100,7 @@ export default {
     },
     computed: {
         ...mapState({
-            profile: state => state.customer.profile,
-            
+            profile: state => state.customer.profile
         }),
     },
     watch: {

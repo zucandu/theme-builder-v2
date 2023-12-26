@@ -67,7 +67,6 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal';
 import Carousel from 'bootstrap/js/dist/carousel';
-import { mapState } from 'vuex'
 export default {
     data: () => ({
         carousel: undefined,
@@ -109,11 +108,6 @@ export default {
         }
     },
     props: ['images', 'currentImage', 'productName'],
-    computed: {
-        ...mapState({
-            
-        }),
-    },
     watch: {
         currentImage(obj) {
             if(obj !== undefined) {

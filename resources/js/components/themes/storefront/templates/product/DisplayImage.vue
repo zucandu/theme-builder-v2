@@ -3,13 +3,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
-    props: ['src', 'height', 'baseUrl'],
-    computed: {
-        ...mapState({
-            
-        })
-    }
+    props: ['src', 'height', 'baseUrl']
 }
 </script>

@@ -43,7 +43,7 @@
 import DisplayRating from '@theme/storefront/templates/product/DisplayRating'
 import ProductDisplayPrice from '@theme/storefront/templates/product/DisplayPrice'
 import ProductRestockModal from '@theme/storefront/templates/product/Restock'
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     data: () => ({
         showModal: false,
@@ -80,9 +80,6 @@ export default {
     },
     computed: {
         ...mapGetters(['setting_translation', 'catalog_product_price']),
-        ...mapState({
-            
-        }),
         chunkedViewed() {
             return _.chunk(this.viewed, this.itemPerRow)
         }

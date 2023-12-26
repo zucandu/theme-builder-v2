@@ -52,7 +52,7 @@
 <script>
 import DisplayRating from '@theme/storefront/templates/product/DisplayRating'
 import ProductDisplayPrice from '@theme/storefront/templates/product/DisplayPrice'
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     data: () => ({
         cartQty: {}
@@ -83,10 +83,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['catalog_product_price', 'setting_translation']),
-        ...mapState({
-            
-        })
+        ...mapGetters(['catalog_product_price', 'setting_translation'])
     }
 }
 </script>

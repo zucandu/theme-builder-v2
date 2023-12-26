@@ -54,7 +54,7 @@
 import DisplayRating from '@theme/storefront/templates/product/DisplayRating'
 import ProductDisplayPrice from '@theme/storefront/templates/product/DisplayPrice'
 import ProductRestockModal from '@theme/storefront/templates/product/Restock'
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     data: () => ({
         loadedRelatedProduct: false,
@@ -95,9 +95,6 @@ export default {
     },
     computed: {
         ...mapGetters(['setting_translation', 'catalog_product_price']),
-        ...mapState({
-            
-        }),
         chunkedRelatedProducts() {
             return _.chunk(this.relatedproducts, this.itemPerRow)[0]
         }

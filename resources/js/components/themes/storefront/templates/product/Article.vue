@@ -38,7 +38,7 @@
 
 <script>
 import Modal from 'bootstrap/js/dist/modal';
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     data: () => ({
         loadedArticle: false,
@@ -68,10 +68,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation']),
-        ...mapState({
-            
-        }),
+        ...mapGetters(['setting_translation'])
     }
 }
 </script>
