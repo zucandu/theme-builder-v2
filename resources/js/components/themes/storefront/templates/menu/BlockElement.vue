@@ -92,7 +92,6 @@ export default {
     computed: {
         ...mapState({
             tool_menu_get_info: state => state.menu.tool_menu_get_info,
-            
         }),
         ...mapGetters(['setting_translation']),
     }

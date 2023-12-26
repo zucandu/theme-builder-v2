@@ -104,7 +104,6 @@ export default {
     computed: {
         ...mapGetters(['account_customer_logged', 'cart_number_of_items']),
         ...mapState({
-            
             languages: state => state.setting.languages,
             language: state => state.setting.language,
             currencies: state => state.setting.currencies,

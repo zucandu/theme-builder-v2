@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="w-100 small">
                                         <div class="d-flex justify-content-between align-items-start">
-                                            <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`" v-html="`${item.qty} x ${setting_translation(item, 'name', $i18n.locale)}`"></router-link>
+                                            <router-link :to="`/${setting_translation(item, 'slug', $i18n.locale)}`">{{ item.qty }} x <span v-html="setting_translation(item, 'name', $i18n.locale)"></span></router-link>
                                             <button class="btn btn-link btn-sm p-0 text-secondary text-decoration-none ms-3" @click.stop="this.$store.dispatch('cart_remove_product', item.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -95,7 +95,6 @@ export default {
     computed: {
         ...mapGetters(['setting_translation', 'catalog_product_price', 'cart_total']),
         ...mapState({
-            
             items: state => state.cart.items,
         })
     }

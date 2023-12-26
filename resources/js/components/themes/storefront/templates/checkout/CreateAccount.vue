@@ -227,8 +227,7 @@ export default {
         'country_get_zone_by_id', 'country_get_zone_by_code', 'account_customer_address_total', 'cart_all_items']),
         ...mapState({
             countries: state => state.country.countries,
-            profile: state => state.customer.profile,
-            
+            profile: state => state.customer.profile
         }),
         regions: function() {
             const regions = this.country_get_zones_by_country_id(this.formdata.country_id)

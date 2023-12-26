@@ -44,18 +44,12 @@
 <script>
 import SubscribeForm from '@theme/storefront/templates/element/SubscribeForm'
 import BlockElement from '@theme/storefront/templates/menu/BlockElement'
-import { mapState } from 'vuex'
 export default {
     data: () => ({
         year: new Date().getFullYear()
     }),
     components: {
         SubscribeForm, BlockElement
-    },
-    computed: {
-        ...mapState({
-            
-        })
     }
 }
 </script>

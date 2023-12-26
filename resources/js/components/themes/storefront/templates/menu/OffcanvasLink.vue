@@ -1,14 +1,14 @@
 <template>
     <template v-if="(item.children && item.children.length) || (item.blocks && item.blocks.length)">
         <a @click.stop="_toggle($event)" href="javascript:void(0);" :class="`text-decoration-none px-3 d-block ${item.heading === 1 ? `heading` : ``} ${ extraClass !== undefined ? extraClass : '' }`">
-            {{ setting_translation.title }}
+            {{ translation.title }}
         </a>
     </template>
     <template v-else>
         <router-link v-if="item.link !== `webaddress`" @click="closeOffcanvas" :to="url" :class="`text-decoration-none px-3 d-block ${item.heading === 1 ? `heading` : ``} ${ extraClass !== undefined ? extraClass : '' }`">
-            {{ setting_translation.title }}
+            {{ translation.title }}
         </router-link>
-        <a v-else :href="setting_translation.url" target="_blank" :class="`text-decoration-none px-3 d-block ${item.heading === 1 ? `heading` : ``} ${ extraClass !== undefined ? extraClass : '' }`">{{ setting_translation.title }}</a>
+        <a v-else :href="translation.url" target="_blank" :class="`text-decoration-none px-3 d-block ${item.heading === 1 ? `heading` : ``} ${ extraClass !== undefined ? extraClass : '' }`">{{ translation.title }}</a>
     </template>
 </template>
 
@@ -27,11 +27,11 @@ export default {
     },
     computed: {
         ...mapGetters(['setting_trans_obj', 'global_trim']),
-        setting_translation() {
+        translation() {
             return this.setting_trans_obj(this.item, this.$i18n.locale)
         },
         url() {
-            return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.setting_translation.url}` : `/${_.trim(this.setting_translation.url, '/')}`
+            return ['page', 'product', 'banner'].includes(this.item.link) === false ? `/${this.item.link}/${this.translation.url}` : `/${_.trim(this.translation.url, '/')}`
         }
     }
 }

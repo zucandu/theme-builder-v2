@@ -156,7 +156,7 @@ export default {
                 this.formdata = Object.assign({}, this.formdata, {
                     id: this.$route.params.id
                 })
-                this.$store.dispatch('updateAddress', this.formdata).then(() => {
+                this.$store.dispatch('account_customer_update_address', this.formdata).then(() => {
                     this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('Updated!')

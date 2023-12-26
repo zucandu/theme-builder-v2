@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
     data: () => ({
         formdata: {
@@ -53,11 +52,6 @@ export default {
                 Object.keys(this.formdata).map(key => this.formdata[key] = undefined)
             })
         }
-    },
-    computed: {
-        ...mapState({
-            
-        })
     }
 }
 </script>

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     props: ['item'],
     methods: {
@@ -37,9 +37,6 @@ export default {
     },
     computed: {
         ...mapGetters(['setting_trans_obj', 'setting_translation']),
-        ...mapState({
-            
-        }),
         postTranslation() {
             return this.setting_trans_obj(this.item, this.$i18n.locale)
         }
