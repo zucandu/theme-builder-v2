@@ -168,7 +168,7 @@ export default {
                 })
 
                 // reset discount amount
-                this.$store.commit('resetOrderDataDiscount')
+                this.$store.commit('ORDER_RESET_DISCOUNT_DATA')
             })
         },
 

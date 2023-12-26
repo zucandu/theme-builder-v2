@@ -292,7 +292,6 @@ export default {
         ...mapGetters(['cart_total', 'cart_has_out_of_stock', 'setting_translation', 'productImageSrc', 'catalog_product_price', 'cart_all_items']),
         ...mapState({
             items: state => state.cart.items,
-            
             productWidget: state => state.product.productWidget,
         })
     }

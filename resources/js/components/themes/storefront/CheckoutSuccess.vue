@@ -41,7 +41,7 @@
                                 </td>
                                 <td>
                                     <div class="w300px">{{ item.name }}</div>
-                                    <div class="text-gray-500">{{ $t('Qty') }}: {{ item.qty }}</div>
+                                    <div class="text-secondary">{{ $t('Qty') }}: {{ item.qty }}</div>
 
                                     <!-- Hook product title. -->
                                     <template v-for="(component, index) in $pluginStorefrontHooks['checkout_success_product_title']" :key="index">
@@ -90,10 +90,10 @@
                         </tfoot>
                     </table>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <router-link class="btn btn-primary" to="/">{{ $t('Continue Shopping') }}</router-link>
                         </div>
-                        <div class="col-md-7 text-end">
+                        <div class="col-md-8 text-end">
                             <router-link to="/account/orders" class="btn btn-primary">{{ $t('My Account') }}</router-link>
                             <router-link to="/logout" class="btn btn-link ms-3">{{ $t('Logout') }}</router-link>
                         </div>
@@ -126,9 +126,7 @@ export default {
 
         // load order from ref
         this.$store.dispatch('order_get_info_by_ref', this.$route.params.ref).then(() => {
-            if(this.profile.is_guest !== 1) {
-                this.$store.dispatch('account_customer_get_info')
-            }
+            if(this.profile.is_guest !== 1) this.$store.dispatch('account_customer_get_info')
             this.$store.commit('CART_RESET')
         }).catch(error => {
             this.$store.commit('SETTING_SET_ALERT', {
@@ -142,7 +140,7 @@ export default {
     methods: {
         convertGuest2NormalAccount() {
             this.converting = true
-            this.$store.dispatch('convertGuest2NormalAccount').then(() => {
+            this.$store.dispatch('account_customer_set_account').then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t("We have emailed you a temporary password. Please check your email and change it as soon as possible.")

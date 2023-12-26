@@ -91,9 +91,6 @@ export default {
     created() {
         this.queryPostDetails(this.$route.params.slug)
     },
-    unmounted() {
-        this.$store.commit('resetPostDetails')
-    },
     beforeRouteUpdate (to, from, next) {
         if(to.params.slug !== this.$route.params.slug) {
             this.queryPostDetails(to.params.slug)

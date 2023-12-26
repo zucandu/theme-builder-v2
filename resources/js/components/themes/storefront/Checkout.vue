@@ -163,8 +163,7 @@ export default {
         ...mapState({
             items: state => state.cart.items,
             profile: state => state.customer.profile,
-            orderFormData: state => state.order.orderFormData,
-            
+            orderFormData: state => state.order.orderFormData
         })
     }
 }
