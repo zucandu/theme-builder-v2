@@ -39,26 +39,24 @@ const getters = {
         "country_name":"United States",
         "phone":"1234567890"
     }),
-    isNormalAccount: () => true,
-    isCustomerLogged: (state) => !_.isEmpty(state.profile) && !_.isEmpty(localStorage.getItem('jwt_customer')),
+    account_customer_is_normal_account: () => true,
+    account_customer_logged: (state) => !_.isEmpty(state.profile) && !_.isEmpty(localStorage.getItem('jwt_customer')),
     account_customer_access_token: () => !_.isEmpty(localStorage.getItem('jwt_customer')),
-    customerNotifications: () => undefined,
-    numberOfCustomerNotifications: () => 0,
-    customerTax: () => undefined
+    account_customer_tax: () => undefined
 }
   
 // actions
 const actions = {
-    async account({commit}) {
-        commit('setAccount', await API_ACCOUNT.account())
+    async account_customer_get_info({commit}) {
+        commit('SET_ACCOUNT', await API_ACCOUNT.account_customer_get_info())
     },
 
-    async accountOrders({commit}) {
-        commit('setAccountOrders', await API_ACCOUNT.accountOrders())
+    async account_customer_orders({commit}) {
+        commit('SET_ACCOUNT_ORDERS', await API_ACCOUNT.account_customer_orders())
     },
 
     async addNewAddress({commit}) {
-        commit('setAccount', await API_ACCOUNT.account())
+        commit('SET_ACCOUNT', await API_ACCOUNT.account())
     },
     subscribeNewsletter({}, formdata) {
         console.log(formdata)
@@ -68,8 +66,8 @@ const actions = {
 // mutations is often used to filter results
 const mutations = {
 
-    setAccount: (state, response) => {state.profile = response.data.profile},
-    setAccountOrders: (state, response) => {state.orders = response.data.orders},
+    SET_ACCOUNT: (state, response) => {state.profile = response.data.profile},
+    SET_ACCOUNT_ORDERS: (state, response) => {state.orders = response.data.orders},
     ACCOUNT_CUSTOMER_RESET: (state) => {state.profile},
 }
 

@@ -1,11 +1,11 @@
 
 export default {
 
-    account() {
+    account_customer_get_info() {
         return axios.get('/api/theme-builder/account-profile');
     },
 
-    accountOrders() {
+    account_customer_orders() {
         return axios.get(`/api/theme-builder/account-orders`)
     },
     

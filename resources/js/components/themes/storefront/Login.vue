@@ -44,7 +44,7 @@ export default {
         login() {
 
             this.$store.dispatch('account_auth_login', this.formdata).then(() => {
-                this.$store.dispatch('account').then(() => {
+                this.$store.dispatch('account_customer_get_info').then(() => {
                     if(this.$route.query.redirect) {
                         this.$router.push(this.$route.query.redirect)
                     } else {

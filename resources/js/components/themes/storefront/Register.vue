@@ -78,7 +78,7 @@ export default {
             }
 
             this.$store.dispatch('account_auth_register', this.formdata).then(() => {
-                this.$store.dispatch('account').then(() => {
+                this.$store.dispatch('account_customer_get_info').then(() => {
                     this.$router.push('/')
                 })
             }).catch(error => {

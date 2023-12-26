@@ -44,7 +44,7 @@ export default {
 
         // Loads account info
         if(this.account_customer_access_token && Object.keys(this.profile).length === 0) {
-            this.$store.dispatch('account')
+            this.$store.dispatch('account_customer_get_info')
         }
 
         // Get all banners

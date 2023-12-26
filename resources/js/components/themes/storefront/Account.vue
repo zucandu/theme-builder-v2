@@ -1,6 +1,6 @@
 <template>
     <section v-if="loaded" class="row justify-content-center account-area">
-        <div v-if="isNormalAccount" class="col-12">
+        <div v-if="account_customer_is_normal_account" class="col-12">
             <div class="row">
                 <div class="col-lg-3 no-print">
                     <account-left-nav></account-left-nav>
@@ -57,13 +57,13 @@ export default {
 
         // Query customer profile when token exists
         if(this.account_customer_access_token && Object.keys(this.profile).length === 0) {
-            this.$store.dispatch('account').then(() => {
+            this.$store.dispatch('account_customer_get_info').then(() => {
                 this.loaded = true
             })
         } else {
 
             // If customer does not log in, redirect login page
-            if(this.isCustomerLogged === true) {
+            if(this.account_customer_logged === true) {
                 this.loaded = true
             } else {
                 this.$router.push('/login')
@@ -92,7 +92,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['account_customer_address_total', 'isNormalAccount', 'account_customer_access_token', 'isCustomerLogged']),
+        ...mapGetters(['account_customer_address_total', 'account_customer_is_normal_account', 'account_customer_access_token', 'account_customer_logged']),
         ...mapState({
             profile: state => state.customer.profile,
             countries: state => state.country.countries

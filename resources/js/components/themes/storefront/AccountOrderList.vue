@@ -65,7 +65,7 @@ export default {
         DisplayPriceWithCurrency, LoadingContent
     },
     created() {
-        this.$store.dispatch('accountOrders').then(() => {
+        this.$store.dispatch('account_customer_orders').then(() => {
             this.loadedOrders = true
             if(this.orders.length === 0) {
                 this.noOrder = true

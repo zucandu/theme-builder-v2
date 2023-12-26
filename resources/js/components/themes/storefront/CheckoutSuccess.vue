@@ -127,7 +127,7 @@ export default {
         // load order from ref
         this.$store.dispatch('orderDetailsByRef', this.$route.params.ref).then(() => {
             if(this.profile.is_guest !== 1) {
-                this.$store.dispatch('account')
+                this.$store.dispatch('account_customer_get_info')
             }
             this.$store.commit('CART_RESET')
         }).catch(error => {

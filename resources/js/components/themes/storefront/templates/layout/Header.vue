@@ -15,9 +15,9 @@
                         <display-menu menu-key="secondary"></display-menu>
                     </div>
                     <div class="col-lg-3 col-md-7 d-md-flex d-none align-items-center justify-content-end">
-                        <router-link v-if="isCustomerLogged" to="/account" class="z-nav-link text-decoration-none d-md-inline d-none">{{ $t('My account') }}</router-link>
+                        <router-link v-if="account_customer_logged" to="/account" class="z-nav-link text-decoration-none d-md-inline d-none">{{ $t('My account') }}</router-link>
                         <router-link v-else to="/register" class="z-nav-link text-decoration-none d-md-inline d-none">{{ $t('Register') }}</router-link>
-                        <router-link v-if="isCustomerLogged" to="/logout" class="z-nav-link ms-3 text-decoration-none d-md-inline d-none">{{ $t('Log out') }}</router-link>
+                        <router-link v-if="account_customer_logged" to="/logout" class="z-nav-link ms-3 text-decoration-none d-md-inline d-none">{{ $t('Log out') }}</router-link>
                         <router-link v-else to="/login" class="z-nav-link ms-3 text-decoration-none d-md-inline d-none">{{ $t('Login') }}</router-link>
                         <router-link to="/account" class="btn d-md-none me-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -102,7 +102,7 @@ export default {
 		}
     },
     computed: {
-        ...mapGetters(['isCustomerLogged', 'cart_number_of_items']),
+        ...mapGetters(['account_customer_logged', 'cart_number_of_items']),
         ...mapState({
             
             languages: state => state.setting.languages,

@@ -1,8 +1,8 @@
 <template>
-    <div :class="`row justify-content-center ${isCustomerLogged ? `customer-logged` : ``}`">
+    <div :class="`row justify-content-center ${account_customer_logged ? `customer-logged` : ``}`">
         <div class="col-12">
             <div class="h1 text-center">{{ $t('Checkout') }}</div>
-            <div v-if="!isCustomerLogged" class="text-center text-uppercase letter-spacing-1px">{{ $t('Already have an account?') }} <router-link :to="{ path: `/login`, query: { redirect: `/checkout` } }">{{ $t('Log in') }}</router-link></div>
+            <div v-if="!account_customer_logged" class="text-center text-uppercase letter-spacing-1px">{{ $t('Already have an account?') }} <router-link :to="{ path: `/login`, query: { redirect: `/checkout` } }">{{ $t('Log in') }}</router-link></div>
             <transition name="fade">
                 <div class="row" v-if="ready2Checkout">
                     <div class="left-column col-lg-6 pt-lg-5 pt-3">
@@ -123,7 +123,7 @@ export default {
     created() {
 
         // Customer with normal account
-        if(this.isCustomerLogged === true) {
+        if(this.account_customer_logged === true) {
             if(this.profile.addresses.length === 0) {
                 this.checkoutStep = 'CheckoutAddress' // addressform
             } else {
@@ -133,7 +133,7 @@ export default {
 
             // Customer with guest
             if(this.account_customer_access_token=== true) {
-                this.$store.dispatch('account').then(() => {
+                this.$store.dispatch('account_customer_get_info').then(() => {
                     if(this.profile && this.profile.addresses.length === 0) {
                         this.checkoutStep = 'CheckoutAddress' // addressform
                     } else {
@@ -156,7 +156,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'cart_total', 'isCustomerLogged', 
+        ...mapGetters(['setting_translation', 'cart_total', 'account_customer_logged', 
                         'account_customer_access_token', 'catalog_product_price', 
                         'orderShippingCost', 'orderTaxAmount', 'orderTotal', 
                         'ready2Checkout', 'orderTaxName', 'orderShippingMethods']),
