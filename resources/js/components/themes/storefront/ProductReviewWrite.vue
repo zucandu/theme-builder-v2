@@ -86,7 +86,7 @@ export default {
             }
 
             // Submit review
-            this.$store.dispatch('addProductReview', { ...this.formdata, locale: this.$i18n.locale, product_id: this.productDetails.id }).then(() => {
+            this.$store.dispatch('catalog_product_add_review', { ...this.formdata, locale: this.$i18n.locale, product_id: this.productDetails.id }).then(() => {
                 
                 this.resetForm()
                 this.$store.commit('SETTING_SET_ALERT', {
