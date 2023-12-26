@@ -77,7 +77,7 @@ export default {
                 }
             }
 
-            this.$store.dispatch('register', this.formdata).then(() => {
+            this.$store.dispatch('account_auth_register', this.formdata).then(() => {
                 this.$store.dispatch('account').then(() => {
                     this.$router.push('/')
                 })

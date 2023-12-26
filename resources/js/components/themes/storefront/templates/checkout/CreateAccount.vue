@@ -166,7 +166,7 @@ export default {
                 }
             }
 
-            this.$store.dispatch('register', this.formdata).then(() => {
+            this.$store.dispatch('account_auth_register', this.formdata).then(() => {
                     
                 // set country name
                 const country = this.country_get_by_id(this.formdata.country_id)

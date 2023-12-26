@@ -9,8 +9,8 @@ const getters = {}
 // actions 
 const actions = {
     
-    async register({commit}, formdata) {
-        commit('setToken', await AUTH.apiRegister(formdata))
+    async account_auth_register({commit}, formdata) {
+        commit('setToken', await AUTH.account_auth_register(formdata))
     },
 
     async login({ commit }, formdata) {
