@@ -26,7 +26,7 @@ export default {
     props: ['item', 'extraClass'],
     components: { ProductDisplayPrice, DisplayRating },
     computed: {
-        ...mapGetters(['setting_trans_obj', 'trim', 'catalog_product_price']),
+        ...mapGetters(['setting_trans_obj', 'global_trim', 'catalog_product_price']),
         ...mapState({
             
         }),

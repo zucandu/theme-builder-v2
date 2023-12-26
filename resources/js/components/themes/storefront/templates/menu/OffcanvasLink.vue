@@ -26,7 +26,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['setting_trans_obj', 'trim']),
+        ...mapGetters(['setting_trans_obj', 'global_trim']),
         setting_translation() {
             return this.setting_trans_obj(this.item, this.$i18n.locale)
         },

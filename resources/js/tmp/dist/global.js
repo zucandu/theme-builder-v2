@@ -7,15 +7,15 @@ const state = {
 
 // getters
 const getters = {
-    trim: () => (str, ch) => _.trim(str, ch),
-    compare: () => (a, b) => a < b ? -1 : (a > b ? 1 : 0),
-    urlParamValueFromName: () => (url, paramName) => {
+    global_trim: () => (str, ch) => _.trim(str, ch),
+    global_compare: () => (a, b) => a < b ? -1 : (a > b ? 1 : 0),
+    global_url_param: () => (url, paramName) => {
         if(!url) return undefined
         let objURL = new URL(url)
         return objURL.searchParams.get(paramName)
     },
 
-    urlGetAllParams: () => (excludingParams = []) => {
+    global_all_url_params: () => (excludingParams = []) => {
         let __excludingParams = [ ...excludingParams, 'just_created']
 
         let __params = {}

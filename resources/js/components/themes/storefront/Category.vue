@@ -88,7 +88,7 @@
                 </template>
             </section>
             <section class="zuc-listing-products__pagination text-end" v-if="paginationLinks.length > 0 && !noProduct">
-                <router-link :to="{ path: `/category/${$route.params.slug}`, query: Object.assign({}, urlGetAllParams(['page']), { page: urlParamValueFromName(link.url, 'page') })}" v-for="(link, index) in paginationLinks" :key="index" :class="`btn btn-outline-dark mx-1${(!link.url ? ' disabled' : '')}${(link.active === true ? ' btn-primary text-white' : '')}`"><span v-html="link.label"></span></router-link>
+                <router-link :to="{ path: `/category/${$route.params.slug}`, query: Object.assign({}, global_all_url_params(['page']), { page: global_url_param(link.url, 'page') })}" v-for="(link, index) in paginationLinks" :key="index" :class="`btn btn-outline-dark mx-1${(!link.url ? ' disabled' : '')}${(link.active === true ? ' btn-primary text-white' : '')}`"><span v-html="link.label"></span></router-link>
             </section>
             <section v-if="loading" class="row g-3 mt-lg-5 mt-3">
                 <div v-for="i in 20" :key="i" class="col-lg-3 col-md-4 col-6">
@@ -149,10 +149,10 @@ export default {
     created() {
 
         // Set the selected filter
-        this.sortBy = this.urlParamValueFromName(window.location.href, 'sort') || this.sortBy
+        this.sortBy = this.global_url_param(window.location.href, 'sort') || this.sortBy
 
         // First load
-        this.queryProductListing(this.$route.params.slug, this.urlGetAllParams())
+        this.queryProductListing(this.$route.params.slug, this.global_all_url_params())
 
     },
     beforeRouteUpdate (to, from, next) {
@@ -215,7 +215,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'catalog_product_price', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'setting_trans_obj', 'global_url_param', 'catalog_product_price', 'global_all_url_params']),
         ...mapState({
             products: state => state.listing.products,
             paginationLinks: state => state.listing.paginationLinks,
@@ -231,12 +231,12 @@ export default {
     watch: {
         sortBy(newval, oldval) {
             if(newval !== oldval) {
-                this.$router.replace({ query: { ...this.urlGetAllParams(), sort: newval } })
+                this.$router.replace({ query: { ...this.global_all_url_params(), sort: newval } })
             }
         },
         selectedFilters(nv, ov) {
             if(Object.keys(nv).length !== Object.keys(ov).length) {
-                this.$router.replace({ query: { ...this.urlGetAllParams(), flt: nv ? nv.join('|') : undefined } })
+                this.$router.replace({ query: { ...this.global_all_url_params(), flt: nv ? nv.join('|') : undefined } })
             }
         },
         categoryTranslation(v) {

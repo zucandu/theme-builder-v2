@@ -119,7 +119,7 @@ export default {
     created() {
 
         // Pass params to selected
-        const paramFilterStr = this.urlParamValueFromName(window.location.href, 'flt')
+        const paramFilterStr = this.global_url_param(window.location.href, 'flt')
         if(paramFilterStr) {
             this.selected = paramFilterStr.split('|')
         }
@@ -129,7 +129,7 @@ export default {
         [...document.querySelectorAll('.collapse')].map(collapseEl => new Collapse(collapseEl))
     },
     computed: {
-        ...mapGetters(['setting_translation', 'global_price_range', 'urlParamValueFromName'])
+        ...mapGetters(['setting_translation', 'global_price_range', 'global_url_param'])
     },
     watch: {
         selected(v) {

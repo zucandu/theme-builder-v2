@@ -16,7 +16,7 @@
                         </template>
                         <div v-if="!noItem" class="row mt-5 justify-content-center">
                             <div class="col-12 text-end">
-                                <router-link :to="{ path: `/blog/category/${$route.params.slug}`, query: { ...urlGetAllParams(['page']), page: urlParamValueFromName(link.url, 'page') }}" v-for="(link, index) in paginationLinks" :key="index" :class="`btn btn-outline-dark mx-1${(!link.url ? ' disabled' : '')}${(link.active === true ? ' btn-primary text-white' : '')}`"><span v-html="link.label"></span></router-link>
+                                <router-link :to="{ path: `/blog/category/${$route.params.slug}`, query: { ...global_all_url_params(['page']), page: global_url_param(link.url, 'page') }}" v-for="(link, index) in paginationLinks" :key="index" :class="`btn btn-outline-dark mx-1${(!link.url ? ' disabled' : '')}${(link.active === true ? ' btn-primary text-white' : '')}`"><span v-html="link.label"></span></router-link>
                             </div>
                         </div>
                     </section>
@@ -58,7 +58,7 @@ export default {
     }),
     components: { BlockElement, PostCard, PostLoading },
     created() {
-        this.queryPostListing(this.$route.params.slug, this.urlGetAllParams())
+        this.queryPostListing(this.$route.params.slug, this.global_all_url_params())
     },
     methods: {
         queryPostListing(slug, params) {
@@ -102,7 +102,7 @@ export default {
         next()
     },
     computed: {
-        ...mapGetters(['setting_translation', 'setting_trans_obj', 'urlParamValueFromName', 'urlGetAllParams']),
+        ...mapGetters(['setting_translation', 'setting_trans_obj', 'global_url_param', 'global_all_url_params']),
         ...mapState({
             posts: state => state.blogpost.posts,
             paginationLinks: state => state.blogpost.paginationLinks,
