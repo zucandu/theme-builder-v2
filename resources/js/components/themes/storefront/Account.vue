@@ -92,7 +92,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['addressLength', 'isNormalAccount', 'account_customer_access_token', 'isCustomerLogged']),
+        ...mapGetters(['account_customer_address_total', 'isNormalAccount', 'account_customer_access_token', 'isCustomerLogged']),
         ...mapState({
             profile: state => state.customer.profile,
             countries: state => state.country.countries

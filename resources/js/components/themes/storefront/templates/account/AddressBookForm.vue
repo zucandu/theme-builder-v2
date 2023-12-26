@@ -55,7 +55,7 @@
                     <input v-model="formdata.postcode" class="form-control" id="postcode" :placeholder="$t('Enter your zip code')" required>
                 </div>
             </div>
-            <div class="row mb-3" v-if="addressLength > 0">
+            <div class="row mb-3" v-if="account_customer_address_total > 0">
                 <div class="col-12" v-if="isShippingAddress === false">
                     <input v-model="formdata.default_shipping_address_id" class="form-check-input" type="checkbox" id="cb-default-shipping-address">
                     <label class="form-check-label ms-2" for="cb-default-shipping-address">{{ $t('Set as default shipping address ') }}</label>
@@ -187,7 +187,7 @@ export default {
     computed: {
         ...mapGetters([
             'country_get_zones_by_country_id', 'country_get_by_id', 'country_get_by_code', 
-            'country_get_zone_by_id', 'country_get_zone_by_code', 'addressLength'
+            'country_get_zone_by_id', 'country_get_zone_by_code', 'account_customer_address_total'
         ]),
         ...mapState({
             countries: state => state.country.countries,

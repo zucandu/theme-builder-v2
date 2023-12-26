@@ -273,7 +273,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['addressLength', 'defaultBillingAddress', 'defaultShippingAddress', 
+        ...mapGetters(['account_customer_address_total', 'account_customer_billing_address', 'account_customer_shipping_address', 
         'country_get_zones_by_country_id', 'country_get_by_id', 'country_get_by_code', 'country_get_zone_by_id', 'country_get_zone_by_code']),
         ...mapState({
             countries: state => state.country.countries,

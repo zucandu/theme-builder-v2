@@ -8,9 +8,8 @@ const state = {
 
 // getters
 const getters = {
-    customerId: () => 1,
-    addressLength: () => 1,
-    defaultBillingAddress: () => ({
+    account_customer_address_total: () => 1,
+    account_customer_billing_address: () => ({
         "id":1,
         "customer_id":1,
         "company":null,
@@ -25,7 +24,7 @@ const getters = {
         "country_name":"United States",
         "phone":"1234567890"
     }),
-    defaultShippingAddress: () => ({
+    account_customer_shipping_address: () => ({
         "id":1,
         "customer_id":1,
         "company":null,
@@ -40,22 +39,6 @@ const getters = {
         "country_name":"United States",
         "phone":"1234567890"
     }),
-    getAddressById: state => () => ({
-        "id":1,
-        "customer_id":1,
-        "company":null,
-        "name":"Hello World",
-        "address_line_1":"5465 S OAKRIDGE DR",
-        "address_line_2":null,
-        "city":"HOMOSASSA",
-        "postcode":"90001",
-        "zone_code":"CA",
-        "zone_name":"California",
-        "country_code":"US",
-        "country_name":"United States",
-        "phone":"1234567890"
-    }),
-    customerOrderDetailsByRef: state => ref => state.profile.orders.find(order => order.reference === ref) || undefined,
     isNormalAccount: () => true,
     isCustomerLogged: (state) => !_.isEmpty(state.profile) && !_.isEmpty(localStorage.getItem('jwt_customer')),
     account_customer_access_token: () => !_.isEmpty(localStorage.getItem('jwt_customer')),

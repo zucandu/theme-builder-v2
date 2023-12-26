@@ -1,4 +1,4 @@
-import AUTH from '@/api/AUTH'
+import AUTH from '@/api/auth'
 
 // initial state
 const state = {}

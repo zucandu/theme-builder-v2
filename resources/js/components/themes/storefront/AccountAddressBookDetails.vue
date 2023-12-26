@@ -5,10 +5,10 @@
             <div class="row" v-if="profile && profile.addresses && profile.addresses.length > 0">
                 <div class="col-md-6">
                     <div class="h6">{{$t('Current Shipping Address')}}</div>
-                    <display-address :address="defaultShippingAddress"></display-address>
+                    <display-address :address="account_customer_shipping_address"></display-address>
                     <hr class="my-3 bg-secondary">
                     <div class="h6">{{$t('Current Billing Address')}}</div>
-                    <display-address :address="defaultBillingAddress"></display-address>
+                    <display-address :address="account_customer_billing_address"></display-address>
                 </div>
                 <div class="col-md-5 offset-md-1">
                     <div class="h6">{{$t('Additional Address Entries')}}</div>
@@ -65,7 +65,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['addressLength', 'defaultBillingAddress', 'defaultShippingAddress']),
+        ...mapGetters(['account_customer_address_total', 'account_customer_billing_address', 'account_customer_shipping_address']),
         ...mapState({
             profile: state => state.customer.profile
         })
