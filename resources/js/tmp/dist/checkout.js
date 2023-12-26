@@ -4,7 +4,7 @@ const state = {
     paymentMethods: [],
     discountModules: [],
     orderFormData: {
-        shipping: {},
+        shipping: {id: 'Flat', title: 'Flat Rate', cost: 2.3},
         payment: {},
         promotion: {},
         discount: []
@@ -18,7 +18,7 @@ const getters = {
     order_shipping_methods: state => state.shippingMethods || undefined,
     order_payment_methods: state => state.paymentMethods || undefined,
     order_promotions: state => state.discountModules || undefined,
-    order_shipping_cost: () => 2.3,
+    order_shipping_cost: state => state.orderFormData.shipping.cost,
     order_tax_amount: () => 0,
     order_tax_name: () => undefined,
     order_discount_amount: () => 0,
