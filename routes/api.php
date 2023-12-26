@@ -34,6 +34,7 @@ Route::group(['prefix' => 'theme-builder'], function() {
 
     Route::get('account-profile', 'AccountController@profile');
     Route::get('account-orders', 'AccountController@orders');
+    Route::post('account-update', 'AccountController@update');
     Route::get('orderdetails/{ref}', 'OrderController@index');
     Route::get('account-track-order/{id}', 'OrderController@edit');
     Route::post('account-wishlist-add', 'AccountController@store');
