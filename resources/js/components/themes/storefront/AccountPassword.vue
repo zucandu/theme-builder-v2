@@ -30,7 +30,7 @@ export default {
     methods: {
         updatePassword() {
 
-            this.$store.dispatch('updatePassword', this.formdata).then(() => {
+            this.$store.dispatch('account_customer_update_password', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Updated!')
