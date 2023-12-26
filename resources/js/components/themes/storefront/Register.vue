@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
     data: () => ({
         formdata: {
@@ -93,10 +93,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['account_customer_access_token']),
-        ...mapState({
-            
-        })
+        ...mapGetters(['account_customer_access_token'])
     }
 }
 </script>

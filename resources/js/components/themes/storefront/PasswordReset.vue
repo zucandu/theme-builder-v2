@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         resetPassword() {
-            this.$store.dispatch('resetPassword', this.formdata).then(() => {
+            this.$store.dispatch('account_auth_reset_password', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Your password has been reset. Please login and happy shopping!')

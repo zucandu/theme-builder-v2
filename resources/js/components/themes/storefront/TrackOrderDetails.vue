@@ -209,7 +209,6 @@ export default {
         ...mapState({
             order: state => state.order.orderFromDb,
             orderTrackingInfo: state => state.order.orderTrackingInfo,
-            
         }),
         shippingAddress() {
             return this.order.addresses.find(addr => addr.address_type === 'shipping')

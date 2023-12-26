@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
 export default {
     data: () => ({
         formdata: {
@@ -45,7 +44,7 @@ export default {
                 }
             }
 
-            this.$store.dispatch('forgotPassword', this.formdata).then(() => {
+            this.$store.dispatch('account_auth_forgot_password', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('We have e-mailed your password reset link!')
@@ -57,11 +56,6 @@ export default {
                 });
             })
         },
-    },
-    computed: {
-        ...mapState({
-            
-        })
     }
 }
 </script>

@@ -20,7 +20,6 @@ import DisplayToast from '@theme/storefront/templates/element/DisplayToast'
 
 // Modules
 import storefront from '@/store/storefront'
-
 import { mapGetters, mapState } from 'vuex'
 export default {
     data: () => ({

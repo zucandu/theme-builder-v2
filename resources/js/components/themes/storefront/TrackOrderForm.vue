@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
     data: () => ({
         formdata: {
@@ -48,22 +47,13 @@ export default {
                 }
             }
             
-            this.$store.dispatch('verifyOrderByGuest', this.formdata).then(() => {
-                this.$router.push(`/track-order/${this.orderRef}`)
-            }).catch(error => {
+            this.$store.dispatch('order_get_ref', this.formdata).then(resp => this.$router.push(`/track-order/${resp.data.ref}`)).catch(error => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'danger', 
                     'message': this.$t(error.response.data.message)
                 })
             })
-            
         }
-    },
-    computed: {
-        ...mapState({
-            
-            orderRef: state => state.order.orderRef
-        })
     }
 }
 </script>
