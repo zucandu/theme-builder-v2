@@ -43,7 +43,7 @@ export default {
     methods: {
         login() {
 
-            this.$store.dispatch('login', this.formdata).then(() => {
+            this.$store.dispatch('account_auth_login', this.formdata).then(() => {
                 this.$store.dispatch('account').then(() => {
                     if(this.$route.query.redirect) {
                         this.$router.push(this.$route.query.redirect)

@@ -1,4 +1,4 @@
-import apiAccount from '@/api/account'
+import API_ACCOUNT from '@/api/account'
 
 // initial state
 const state = {
@@ -67,15 +67,15 @@ const getters = {
 // actions
 const actions = {
     async account({commit}) {
-        commit('setAccount', await apiAccount.account())
+        commit('setAccount', await API_ACCOUNT.account())
     },
 
     async accountOrders({commit}) {
-        commit('setAccountOrders', await apiAccount.accountOrders())
+        commit('setAccountOrders', await API_ACCOUNT.accountOrders())
     },
 
     async addNewAddress({commit}) {
-        commit('setAccount', await apiAccount.account())
+        commit('setAccount', await API_ACCOUNT.account())
     },
     subscribeNewsletter({}, formdata) {
         console.log(formdata)
