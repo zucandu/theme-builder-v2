@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="subscribeNewsletter" class="w-100">
+    <form @submit.prevent="account_customer_subscribe" class="w-100">
         <div class="d-flex">
             <input v-model="formdata.email" type="text" class="form-control form-control-lg z-subscribe-input" :placeholder="$t('Your email address')" required>
             <button class="btn btn-dark btn-lg d-flex align-items-center">
@@ -24,7 +24,7 @@ export default {
         }
     }),
     methods: {
-        async subscribeNewsletter() {
+        async account_customer_subscribe() {
 
             // Get Google reCAPTCHA token if the site key is set
             const _ = this
@@ -39,7 +39,7 @@ export default {
                 }
             }
 
-            this.$store.dispatch('subscribeNewsletter', this.formdata).then(() => {
+            this.$store.dispatch('account_customer_subscribe', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t('Thank you for subscribing to our newsletter.')

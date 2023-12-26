@@ -55,10 +55,10 @@ const actions = {
         commit('SET_ACCOUNT_ORDERS', await API_ACCOUNT.account_customer_orders())
     },
 
-    async addNewAddress({commit}) {
+    async account_customer_create_address({commit}) {
         commit('SET_ACCOUNT', await API_ACCOUNT.account())
     },
-    subscribeNewsletter({}, formdata) {
+    account_customer_subscribe({}, formdata) {
         console.log(formdata)
     },
 }

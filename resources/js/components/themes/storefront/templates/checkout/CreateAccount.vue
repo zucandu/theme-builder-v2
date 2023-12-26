@@ -192,7 +192,7 @@ export default {
                 // Set full name
                 this.formdata = Object.assign({}, this.formdata, { name: `${this.formdata.firstname} ${this.formdata.lastname}` })
 
-                this.$store.dispatch('addNewAddress', this.formdata).then(() => {
+                this.$store.dispatch('account_customer_create_address', this.formdata).then(() => {
                     this.$emit('updateCheckoutStep', { step: 'CheckoutForm' })
                 }).catch(error => {
                     this.$store.commit('SETTING_SET_ALERT', {

@@ -169,7 +169,7 @@ export default {
                     });
                 });
             } else {
-                this.$store.dispatch('addNewAddress', this.formdata).then(() => {
+                this.$store.dispatch('account_customer_create_address', this.formdata).then(() => {
                     this.$store.commit('SETTING_SET_ALERT', {
                         'color': 'success', 
                         'message': this.$t('A new address has been created')

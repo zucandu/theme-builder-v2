@@ -4,7 +4,7 @@
             <div class="card card-body">
                 <div class="card-title h5">{{ $t("We're sorry to see you go!") }}</div>
                 <p>{{ $t("Was it something we said? We're sorry that you've decided to leave us. Please enter your email address from below form which you'd like to unsubscribe.") }}</p>
-                <form @submit.prevent="unsubscribeNewsletter()">
+                <form @submit.prevent="unaccount_customer_subscribe()">
                     <div class="mb-3">
                         <label for="email-address" class="form-label">{{$t('Email address')}}</label>
                         <input v-model="formdata.email" type="email" class="form-control" id="email-address" placeholder="name@example.com" required>
@@ -26,8 +26,8 @@ export default {
         }
     }),
     methods: {
-        unsubscribeNewsletter() {
-            this.$store.dispatch('unsubscribeNewsletter', this.formdata).then(() => {
+        unaccount_customer_subscribe() {
+            this.$store.dispatch('unaccount_customer_subscribe', this.formdata).then(() => {
                 this.$store.commit('SETTING_SET_ALERT', {
                     'color': 'success', 
                     'message': this.$t("You've been unsubscribed from our newsletter."),
